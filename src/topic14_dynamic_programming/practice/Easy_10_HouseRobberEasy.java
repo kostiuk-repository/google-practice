@@ -9,7 +9,7 @@ public class Easy_10_HouseRobberEasy {
      */
     public int rob(int[] nums) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

@@ -9,7 +9,7 @@ public class Medium_05_CoinChange {
      */
     public int coinChange(int[] coins, int amount) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

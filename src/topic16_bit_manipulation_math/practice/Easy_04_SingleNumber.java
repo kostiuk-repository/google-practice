@@ -9,7 +9,7 @@ public class Easy_04_SingleNumber {
      */
     public int singleNumber(int[] nums) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

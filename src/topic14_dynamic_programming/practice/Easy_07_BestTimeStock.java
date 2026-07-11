@@ -9,7 +9,7 @@ public class Easy_07_BestTimeStock {
      */
     public int maxProfit(int[] prices) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

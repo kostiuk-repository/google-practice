@@ -9,7 +9,7 @@ public class Easy_03_MinCostClimbingStairs {
      */
     public int minCostClimbingStairs(int[] cost) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

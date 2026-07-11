@@ -9,7 +9,7 @@ public class Medium_01_HouseRobber {
      */
     public int rob(int[] nums) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

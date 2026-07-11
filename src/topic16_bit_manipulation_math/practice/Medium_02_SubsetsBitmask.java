@@ -12,7 +12,7 @@ public class Medium_02_SubsetsBitmask {
      */
     public List<List<Integer>> subsets(int[] nums) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return null;
     }
 
     /* 

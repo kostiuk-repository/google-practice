@@ -9,7 +9,7 @@ public class Medium_02_LongestIncreasingSubsequence {
      */
     public int lengthOfLIS(int[] nums) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

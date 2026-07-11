@@ -8,8 +8,7 @@ public class Easy_02_MonotonicArray {
      * Monotonic Array.
      */
     public boolean isMonotonic(int[] nums) {
-        // TODO: Implement your solution here.
-        return new int[0];
+        return false;
     }
 
     /* 

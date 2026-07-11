@@ -9,7 +9,7 @@ public class Easy_06_PowerOfTwo {
      */
     public boolean isPowerOfTwo(int n) {
         // TODO: Implement your solution here.
-        return 0;
+        return false;
     }
 
     /* 

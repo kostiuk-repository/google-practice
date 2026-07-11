@@ -9,7 +9,7 @@ public class Easy_10_Base7 {
      */
     public String convertToBase7(int num) {
         // TODO: Implement your solution here.
-        return 0;
+        return null;
     }
 
     /* 

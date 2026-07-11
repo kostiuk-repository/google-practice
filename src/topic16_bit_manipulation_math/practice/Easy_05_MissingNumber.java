@@ -9,7 +9,7 @@ public class Easy_05_MissingNumber {
      */
     public int missingNumber(int[] nums) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

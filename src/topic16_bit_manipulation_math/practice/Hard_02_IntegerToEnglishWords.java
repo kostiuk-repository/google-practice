@@ -9,7 +9,7 @@ public class Hard_02_IntegerToEnglishWords {
      */
     public String numberToWords(int num) {
         // TODO: Implement your solution here.
-        return 0;
+        return null;
     }
 
     /* 

@@ -9,7 +9,7 @@ public class Easy_04_DivisorGame {
      */
     public boolean divisorGame(int n) {
         // TODO: Implement your solution here.
-        return 0;
+        return false;
     }
 
     /* 

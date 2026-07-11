@@ -9,7 +9,7 @@ public class Medium_04_PartitionEqualSubsetSum {
      */
     public boolean canPartition(int[] nums) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return false;
     }
 
     /* 
