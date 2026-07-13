@@ -7,10 +7,10 @@ import java.util.HashSet;
 
 public class Hard_02_AlienDictionary {
 
-    /**
-     * Problem: Hard_02_AlienDictionary
-     * 
-     * Alien Dictionary.
+        /**
+     * Problem: Alien Dictionary
+     *
+
      */
     public String alienOrder(String[] words) {
         // TODO: Implement your solution here.

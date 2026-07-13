@@ -5,10 +5,10 @@ import java.util.Map;
 
 public class Medium_05_LongestSubstringKDistinct {
 
-    /**
-     * Problem: Medium_05_LongestSubstringKDistinct
-     * 
-     * Longest Substring with At Most K Distinct Characters.
+        /**
+     * Problem: Longest Substring with At Most K Distinct Characters
+     *
+
      */
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
         // TODO: Implement your solution here.

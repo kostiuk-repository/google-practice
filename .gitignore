@@ -32,3 +32,6 @@ bin/
 # IDE and Project Files
 .idea/
 *.iml
+
+# Compiled class files
+*.class
