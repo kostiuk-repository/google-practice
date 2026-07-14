@@ -8,7 +8,6 @@ public class Easy_07_IsomorphicStringsTest {
 
     @Test
     public void testIsIsomorphic() {
-        // TODO: Implement your test cases for isIsomorphic here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

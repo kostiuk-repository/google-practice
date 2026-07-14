@@ -8,7 +8,6 @@ public class Medium_03_LongestCommonSubsequenceTest {
 
     @Test
     public void testLongestCommonSubsequence() {
-        // TODO: Implement your test cases for longestCommonSubsequence here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

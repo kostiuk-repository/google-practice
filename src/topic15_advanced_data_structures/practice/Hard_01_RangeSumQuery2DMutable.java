@@ -2,6 +2,16 @@ package topic15_advanced_data_structures.practice;
 
 public class Hard_01_RangeSumQuery2DMutable {
 
+    public Hard_01_RangeSumQuery2DMutable() {}
+
+    public Hard_01_RangeSumQuery2DMutable(int[][] matrix) {
+        // TODO: Initialize your mutable 2D range-sum data structure here.
+    }
+
+    public void update(int row, int col, int val) {
+        // TODO: Implement your solution here.
+    }
+
         /**
      * Problem: Range Sum Query 2D - Mutable
      *

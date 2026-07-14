@@ -8,7 +8,6 @@ public class Hard_01_MaxProductOfWordLengthsTest {
 
     @Test
     public void testMaxProduct() {
-        // TODO: Implement your test cases for maxProduct here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

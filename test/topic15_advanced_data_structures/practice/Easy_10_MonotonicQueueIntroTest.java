@@ -8,7 +8,6 @@ public class Easy_10_MonotonicQueueIntroTest {
 
     @Test
     public void testMaxSlidingWindowIntro() {
-        // TODO: Implement your test cases for maxSlidingWindowIntro here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

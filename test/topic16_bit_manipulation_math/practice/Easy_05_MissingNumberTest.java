@@ -8,7 +8,6 @@ public class Easy_05_MissingNumberTest {
 
     @Test
     public void testMissingNumber() {
-        // TODO: Implement your test cases for missingNumber here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Hard_03_ShortestPathAllKeysTest {
 
     @Test
     public void testShortestPathAllKeys() {
-        // TODO: Implement your test cases for shortestPathAllKeys here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

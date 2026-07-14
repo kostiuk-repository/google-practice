@@ -8,7 +8,6 @@ public class Easy_02_SameTreeTest {
 
     @Test
     public void testIsSameTree() {
-        // TODO: Implement your test cases for isSameTree here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

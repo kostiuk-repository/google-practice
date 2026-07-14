@@ -8,7 +8,6 @@ public class Easy_06_RemoveAdjacentDuplicatesTest {
 
     @Test
     public void testRemoveDuplicates() {
-        // TODO: Implement your test cases for removeDuplicates here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

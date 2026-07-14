@@ -8,7 +8,6 @@ public class Easy_05_DestinationCityTest {
 
     @Test
     public void testDestCity() {
-        // TODO: Implement your test cases for destCity here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

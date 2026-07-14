@@ -8,7 +8,6 @@ public class Easy_10_SortAnArrayTest {
 
     @Test
     public void testSortArray() {
-        // TODO: Implement your test cases for sortArray here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

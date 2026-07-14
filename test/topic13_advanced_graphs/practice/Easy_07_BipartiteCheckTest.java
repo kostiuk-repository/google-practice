@@ -8,7 +8,6 @@ public class Easy_07_BipartiteCheckTest {
 
     @Test
     public void testIsBipartite() {
-        // TODO: Implement your test cases for isBipartite here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

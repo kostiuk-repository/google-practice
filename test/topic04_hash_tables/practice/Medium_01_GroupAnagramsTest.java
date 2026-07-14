@@ -8,7 +8,6 @@ public class Medium_01_GroupAnagramsTest {
 
     @Test
     public void testGroupAnagrams() {
-        // TODO: Implement your test cases for groupAnagrams here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

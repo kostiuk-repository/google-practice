@@ -8,7 +8,6 @@ public class Easy_05_MaxVowelsTest {
 
     @Test
     public void testMaxVowels() {
-        // TODO: Implement your test cases for maxVowels here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

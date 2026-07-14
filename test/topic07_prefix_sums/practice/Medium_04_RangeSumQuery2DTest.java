@@ -8,7 +8,6 @@ public class Medium_04_RangeSumQuery2DTest {
 
     @Test
     public void testSumRegion() {
-        // TODO: Implement your test cases for sumRegion here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

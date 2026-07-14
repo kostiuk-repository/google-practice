@@ -8,7 +8,6 @@ public class Easy_05_InvertTreeTest {
 
     @Test
     public void testInvertTree() {
-        // TODO: Implement your test cases for invertTree here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

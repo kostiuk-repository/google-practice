@@ -8,7 +8,6 @@ public class Easy_09_TakeGiftsFromRichestTest {
 
     @Test
     public void testPickGifts() {
-        // TODO: Implement your test cases for pickGifts here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

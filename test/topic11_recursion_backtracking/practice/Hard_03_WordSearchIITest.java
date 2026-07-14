@@ -8,7 +8,6 @@ public class Hard_03_WordSearchIITest {
 
     @Test
     public void testFindWords() {
-        // TODO: Implement your test cases for findWords here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

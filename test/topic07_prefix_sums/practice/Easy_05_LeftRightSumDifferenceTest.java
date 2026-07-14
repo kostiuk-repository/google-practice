@@ -8,7 +8,6 @@ public class Easy_05_LeftRightSumDifferenceTest {
 
     @Test
     public void testLeftRightDifference() {
-        // TODO: Implement your test cases for leftRightDifference here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

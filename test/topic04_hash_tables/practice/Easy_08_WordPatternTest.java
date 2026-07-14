@@ -8,7 +8,6 @@ public class Easy_08_WordPatternTest {
 
     @Test
     public void testWordPattern() {
-        // TODO: Implement your test cases for wordPattern here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

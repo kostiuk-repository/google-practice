@@ -8,7 +8,6 @@ public class Easy_04_MakeArrayZeroTest {
 
     @Test
     public void testMinimumOperations() {
-        // TODO: Implement your test cases for minimumOperations here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

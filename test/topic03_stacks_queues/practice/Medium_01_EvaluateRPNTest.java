@@ -8,7 +8,6 @@ public class Medium_01_EvaluateRPNTest {
 
     @Test
     public void testEvalRPN() {
-        // TODO: Implement your test cases for evalRPN here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

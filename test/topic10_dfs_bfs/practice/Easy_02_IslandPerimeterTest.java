@@ -8,7 +8,6 @@ public class Easy_02_IslandPerimeterTest {
 
     @Test
     public void testIslandPerimeter() {
-        // TODO: Implement your test cases for islandPerimeter here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

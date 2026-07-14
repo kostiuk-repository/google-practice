@@ -8,7 +8,6 @@ public class Easy_05_HappyNumberTest {
 
     @Test
     public void testIsHappy() {
-        // TODO: Implement your test cases for isHappy here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

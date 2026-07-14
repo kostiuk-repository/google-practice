@@ -8,7 +8,6 @@ public class Easy_02_ContainsDuplicateTest {
 
     @Test
     public void testContainsDuplicate() {
-        // TODO: Implement your test cases for containsDuplicate here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

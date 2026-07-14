@@ -8,7 +8,6 @@ public class Easy_03_MinDifferenceTest {
 
     @Test
     public void testMinimumDifference() {
-        // TODO: Implement your test cases for minimumDifference here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Hard_02_SplitArrayLargestSumTest {
 
     @Test
     public void testSplitArray() {
-        // TODO: Implement your test cases for splitArray here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

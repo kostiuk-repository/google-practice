@@ -8,7 +8,6 @@ public class Hard_02_ReverseNodesInKGroupTest {
 
     @Test
     public void testReverseKGroup() {
-        // TODO: Implement your test cases for reverseKGroup here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

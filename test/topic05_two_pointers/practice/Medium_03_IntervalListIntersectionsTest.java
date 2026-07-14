@@ -8,7 +8,6 @@ public class Medium_03_IntervalListIntersectionsTest {
 
     @Test
     public void testIntervalIntersection() {
-        // TODO: Implement your test cases for intervalIntersection here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

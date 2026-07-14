@@ -8,7 +8,6 @@ public class Easy_08_LeafSimilarTreesTest {
 
     @Test
     public void testLeafSimilar() {
-        // TODO: Implement your test cases for leafSimilar here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

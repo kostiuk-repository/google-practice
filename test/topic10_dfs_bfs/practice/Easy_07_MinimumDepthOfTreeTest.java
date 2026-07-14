@@ -8,7 +8,6 @@ public class Easy_07_MinimumDepthOfTreeTest {
 
     @Test
     public void testMinDepth() {
-        // TODO: Implement your test cases for minDepth here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

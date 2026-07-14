@@ -8,7 +8,6 @@ public class Easy_03_LinkedListCycleTest {
 
     @Test
     public void testHasCycle() {
-        // TODO: Implement your test cases for hasCycle here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

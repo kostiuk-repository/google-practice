@@ -8,7 +8,6 @@ public class Hard_03_AllPossibleFBTTest {
 
     @Test
     public void testAllPossibleFBT() {
-        // TODO: Implement your test cases for allPossibleFBT here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

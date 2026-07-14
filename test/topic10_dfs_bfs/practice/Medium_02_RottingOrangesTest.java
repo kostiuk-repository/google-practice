@@ -8,7 +8,6 @@ public class Medium_02_RottingOrangesTest {
 
     @Test
     public void testOrangesRotting() {
-        // TODO: Implement your test cases for orangesRotting here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Easy_10_NextGreaterElementITest {
 
     @Test
     public void testNextGreaterElement() {
-        // TODO: Implement your test cases for nextGreaterElement here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

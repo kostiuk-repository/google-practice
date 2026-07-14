@@ -8,7 +8,6 @@ public class Easy_10_FizzBuzzTest {
 
     @Test
     public void testFizzBuzz() {
-        // TODO: Implement your test cases for fizzBuzz here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

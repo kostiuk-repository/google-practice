@@ -8,7 +8,6 @@ public class Easy_01_BinarySearchTest {
 
     @Test
     public void testSearch() {
-        // TODO: Implement your test cases for search here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

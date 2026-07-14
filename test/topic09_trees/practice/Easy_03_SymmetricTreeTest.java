@@ -8,7 +8,6 @@ public class Easy_03_SymmetricTreeTest {
 
     @Test
     public void testIsSymmetric() {
-        // TODO: Implement your test cases for isSymmetric here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

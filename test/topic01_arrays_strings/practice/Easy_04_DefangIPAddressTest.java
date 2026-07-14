@@ -8,7 +8,6 @@ public class Easy_04_DefangIPAddressTest {
 
     @Test
     public void testDefangIPaddr() {
-        // TODO: Implement your test cases for defangIPaddr here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

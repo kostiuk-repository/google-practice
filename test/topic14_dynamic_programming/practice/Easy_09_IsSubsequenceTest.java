@@ -8,7 +8,6 @@ public class Easy_09_IsSubsequenceTest {
 
     @Test
     public void testIsSubsequence() {
-        // TODO: Implement your test cases for isSubsequence here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Medium_05_AsteroidCollisionTest {
 
     @Test
     public void testAsteroidCollision() {
-        // TODO: Implement your test cases for asteroidCollision here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

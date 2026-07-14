@@ -8,7 +8,6 @@ public class Easy_08_IntersectionOfTwoListsTest {
 
     @Test
     public void testGetIntersectionNode() {
-        // TODO: Implement your test cases for getIntersectionNode here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

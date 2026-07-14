@@ -8,7 +8,6 @@ public class Medium_05_CompareVersionNumbersTest {
 
     @Test
     public void testCompareVersion() {
-        // TODO: Implement your test cases for compareVersion here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

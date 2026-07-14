@@ -8,7 +8,6 @@ public class Medium_05_StringIntegerAtoiTest {
 
     @Test
     public void testMyAtoi() {
-        // TODO: Implement your test cases for myAtoi here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

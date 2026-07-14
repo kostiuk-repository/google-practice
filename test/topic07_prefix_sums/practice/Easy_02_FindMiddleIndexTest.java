@@ -8,7 +8,6 @@ public class Easy_02_FindMiddleIndexTest {
 
     @Test
     public void testFindMiddleIndex() {
-        // TODO: Implement your test cases for findMiddleIndex here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

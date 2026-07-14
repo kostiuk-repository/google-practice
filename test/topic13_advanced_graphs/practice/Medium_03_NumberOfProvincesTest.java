@@ -8,7 +8,6 @@ public class Medium_03_NumberOfProvincesTest {
 
     @Test
     public void testFindCircleNum() {
-        // TODO: Implement your test cases for findCircleNum here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

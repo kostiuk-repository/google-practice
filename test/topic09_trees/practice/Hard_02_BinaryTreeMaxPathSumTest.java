@@ -8,7 +8,6 @@ public class Hard_02_BinaryTreeMaxPathSumTest {
 
     @Test
     public void testMaxPathSum() {
-        // TODO: Implement your test cases for maxPathSum here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

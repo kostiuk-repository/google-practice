@@ -8,7 +8,6 @@ public class Easy_01_FibonacciNumberTest {
 
     @Test
     public void testFib() {
-        // TODO: Implement your test cases for fib here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

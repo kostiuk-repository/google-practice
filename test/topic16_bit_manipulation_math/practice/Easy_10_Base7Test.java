@@ -8,7 +8,6 @@ public class Easy_10_Base7Test {
 
     @Test
     public void testConvertToBase7() {
-        // TODO: Implement your test cases for convertToBase7 here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

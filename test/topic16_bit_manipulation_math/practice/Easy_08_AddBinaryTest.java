@@ -8,7 +8,6 @@ public class Easy_08_AddBinaryTest {
 
     @Test
     public void testAddBinary() {
-        // TODO: Implement your test cases for addBinary here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

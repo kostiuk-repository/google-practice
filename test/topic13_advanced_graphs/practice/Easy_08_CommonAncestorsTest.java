@@ -8,7 +8,6 @@ public class Easy_08_CommonAncestorsTest {
 
     @Test
     public void testHasCommonAncestor() {
-        // TODO: Implement your test cases for hasCommonAncestor here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

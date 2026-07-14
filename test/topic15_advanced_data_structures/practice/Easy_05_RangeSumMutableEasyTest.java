@@ -8,7 +8,6 @@ public class Easy_05_RangeSumMutableEasyTest {
 
     @Test
     public void testUpdate() {
-        // TODO: Implement your test cases for update here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

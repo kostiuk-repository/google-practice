@@ -2,6 +2,12 @@ package topic07_prefix_sums.practice;
 
 public class Medium_04_RangeSumQuery2D {
 
+    public Medium_04_RangeSumQuery2D() {}
+
+    public Medium_04_RangeSumQuery2D(int[][] matrix) {
+        // TODO: Initialize your 2D prefix-sum data structure here.
+    }
+
         /**
      * Problem: Range Sum Query 2D - Immutable
      *

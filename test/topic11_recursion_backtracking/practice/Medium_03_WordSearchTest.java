@@ -8,7 +8,6 @@ public class Medium_03_WordSearchTest {
 
     @Test
     public void testExist() {
-        // TODO: Implement your test cases for exist here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

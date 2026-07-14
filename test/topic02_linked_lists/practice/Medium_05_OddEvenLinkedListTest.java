@@ -8,7 +8,6 @@ public class Medium_05_OddEvenLinkedListTest {
 
     @Test
     public void testOddEvenList() {
-        // TODO: Implement your test cases for oddEvenList here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

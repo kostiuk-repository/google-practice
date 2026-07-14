@@ -8,7 +8,6 @@ public class Easy_08_PascalTriangleTest {
 
     @Test
     public void testGenerate() {
-        // TODO: Implement your test cases for generate here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

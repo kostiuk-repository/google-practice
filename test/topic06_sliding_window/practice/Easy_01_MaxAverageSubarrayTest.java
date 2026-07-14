@@ -8,7 +8,6 @@ public class Easy_01_MaxAverageSubarrayTest {
 
     @Test
     public void testFindMaxAverage() {
-        // TODO: Implement your test cases for findMaxAverage here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

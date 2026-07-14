@@ -8,7 +8,6 @@ public class Hard_02_FindMedianFromDataStreamTest {
 
     @Test
     public void testFindMedian() {
-        // TODO: Implement your test cases for findMedian here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

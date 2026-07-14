@@ -8,7 +8,6 @@ public class Easy_05_MinOperationsHalveSumTest {
 
     @Test
     public void testHalveArray() {
-        // TODO: Implement your test cases for halveArray here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

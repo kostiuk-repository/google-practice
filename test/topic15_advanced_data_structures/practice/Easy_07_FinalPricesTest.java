@@ -8,7 +8,6 @@ public class Easy_07_FinalPricesTest {
 
     @Test
     public void testFinalPrices() {
-        // TODO: Implement your test cases for finalPrices here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

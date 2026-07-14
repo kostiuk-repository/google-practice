@@ -8,7 +8,6 @@ public class Easy_10_DietPlanPerformanceTest {
 
     @Test
     public void testDietPlanPerformance() {
-        // TODO: Implement your test cases for dietPlanPerformance here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Medium_05_FindMinRotatedArrayTest {
 
     @Test
     public void testFindMin() {
-        // TODO: Implement your test cases for findMin here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

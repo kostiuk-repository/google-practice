@@ -8,7 +8,6 @@ public class Easy_03_CountPrefixesTest {
 
     @Test
     public void testCountPrefixes() {
-        // TODO: Implement your test cases for countPrefixes here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Easy_10_CalculatePowerTest {
 
     @Test
     public void testMyPow() {
-        // TODO: Implement your test cases for myPow here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

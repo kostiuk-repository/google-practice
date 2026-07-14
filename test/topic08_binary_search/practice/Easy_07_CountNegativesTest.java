@@ -8,7 +8,6 @@ public class Easy_07_CountNegativesTest {
 
     @Test
     public void testCountNegatives() {
-        // TODO: Implement your test cases for countNegatives here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

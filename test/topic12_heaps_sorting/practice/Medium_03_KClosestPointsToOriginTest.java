@@ -8,7 +8,6 @@ public class Medium_03_KClosestPointsToOriginTest {
 
     @Test
     public void testKClosest() {
-        // TODO: Implement your test cases for kClosest here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

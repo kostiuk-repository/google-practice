@@ -8,7 +8,6 @@ public class Medium_01_CloneGraphTest {
 
     @Test
     public void testCloneGraph() {
-        // TODO: Implement your test cases for cloneGraph here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

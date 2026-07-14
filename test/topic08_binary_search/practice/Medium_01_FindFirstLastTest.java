@@ -8,7 +8,6 @@ public class Medium_01_FindFirstLastTest {
 
     @Test
     public void testSearchRange() {
-        // TODO: Implement your test cases for searchRange here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Medium_02_SubarraySumEqualsKTest {
 
     @Test
     public void testSubarraySum() {
-        // TODO: Implement your test cases for subarraySum here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

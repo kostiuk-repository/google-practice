@@ -8,7 +8,6 @@ public class Easy_04_SubtreeOfAnotherTest {
 
     @Test
     public void testIsSubtree() {
-        // TODO: Implement your test cases for isSubtree here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

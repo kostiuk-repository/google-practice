@@ -8,7 +8,6 @@ public class Medium_02_ContainerWithMostWaterTest {
 
     @Test
     public void testMaxArea() {
-        // TODO: Implement your test cases for maxArea here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

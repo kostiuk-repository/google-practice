@@ -8,7 +8,6 @@ public class Easy_10_LowestCommonAncestorBSTTest {
 
     @Test
     public void testLowestCommonAncestor() {
-        // TODO: Implement your test cases for lowestCommonAncestor here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

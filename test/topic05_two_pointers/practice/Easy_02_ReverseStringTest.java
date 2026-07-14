@@ -8,7 +8,6 @@ public class Easy_02_ReverseStringTest {
 
     @Test
     public void testReverseString() {
-        // TODO: Implement your test cases for reverseString here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

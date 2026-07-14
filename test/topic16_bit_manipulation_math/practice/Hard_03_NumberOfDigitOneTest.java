@@ -8,7 +8,6 @@ public class Hard_03_NumberOfDigitOneTest {
 
     @Test
     public void testCountDigitOne() {
-        // TODO: Implement your test cases for countDigitOne here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

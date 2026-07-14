@@ -8,7 +8,6 @@ public class Medium_01_SingleNumberIITest {
 
     @Test
     public void testSingleNumber() {
-        // TODO: Implement your test cases for singleNumber here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

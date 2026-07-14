@@ -8,25 +8,21 @@ public class Easy_04_MinStackTest {
 
     @Test
     public void testPush() {
-        // TODO: Implement your test cases for push here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testPop() {
-        // TODO: Implement your test cases for pop here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testTop() {
-        // TODO: Implement your test cases for top here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testGetMin() {
-        // TODO: Implement your test cases for getMin here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Medium_02_CombinationSumTest {
 
     @Test
     public void testCombinationSum() {
-        // TODO: Implement your test cases for combinationSum here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Easy_08_MinAmountTimeFillCupsTest {
 
     @Test
     public void testFillCups() {
-        // TODO: Implement your test cases for fillCups here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

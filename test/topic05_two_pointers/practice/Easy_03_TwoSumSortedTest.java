@@ -8,7 +8,6 @@ public class Easy_03_TwoSumSortedTest {
 
     @Test
     public void testTwoSum() {
-        // TODO: Implement your test cases for twoSum here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

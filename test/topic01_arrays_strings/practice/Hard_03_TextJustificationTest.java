@@ -8,7 +8,6 @@ public class Hard_03_TextJustificationTest {
 
     @Test
     public void testFullJustify() {
-        // TODO: Implement your test cases for fullJustify here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

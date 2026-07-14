@@ -8,7 +8,6 @@ public class Easy_05_SqrtTest {
 
     @Test
     public void testMySqrt() {
-        // TODO: Implement your test cases for mySqrt here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Medium_02_RangeSumQueryMutableTest {
 
     @Test
     public void testSumRange() {
-        // TODO: Implement your test cases for sumRange here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

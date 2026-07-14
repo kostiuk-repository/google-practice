@@ -8,7 +8,6 @@ public class Medium_04_BoatsToSavePeopleTest {
 
     @Test
     public void testNumRescueBoats() {
-        // TODO: Implement your test cases for numRescueBoats here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

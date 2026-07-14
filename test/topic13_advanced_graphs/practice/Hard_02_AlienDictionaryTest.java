@@ -8,7 +8,6 @@ public class Hard_02_AlienDictionaryTest {
 
     @Test
     public void testAlienOrder() {
-        // TODO: Implement your test cases for alienOrder here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

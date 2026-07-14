@@ -8,7 +8,6 @@ public class Easy_06_FirstUniqueCharTest {
 
     @Test
     public void testFirstUniqChar() {
-        // TODO: Implement your test cases for firstUniqChar here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

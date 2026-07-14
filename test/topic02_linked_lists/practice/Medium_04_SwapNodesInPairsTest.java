@@ -8,7 +8,6 @@ public class Medium_04_SwapNodesInPairsTest {
 
     @Test
     public void testSwapPairs() {
-        // TODO: Implement your test cases for swapPairs here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

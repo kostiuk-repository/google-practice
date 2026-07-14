@@ -5,6 +5,10 @@ import java.util.Collections;
 
 public class Hard_02_FindMedianFromDataStream {
 
+    public void addNum(int num) {
+        // TODO: Add the value to the two-heap data structure here.
+    }
+
         /**
      * Problem: Find Median from Data Stream
      *

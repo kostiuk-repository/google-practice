@@ -8,7 +8,6 @@ public class Easy_04_MaxDepthNaryTreeTest {
 
     @Test
     public void testMaxDepth() {
-        // TODO: Implement your test cases for maxDepth here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

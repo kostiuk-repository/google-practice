@@ -2,6 +2,21 @@ package topic08_binary_search.practice;
 
 public class Easy_10_GuessNumber {
 
+    private final int pick;
+
+    public Easy_10_GuessNumber() {
+        this(1);
+    }
+
+    /** Test-friendly replacement for the platform-provided picked number. */
+    public Easy_10_GuessNumber(int pick) {
+        this.pick = pick;
+    }
+
+    protected int guess(int value) {
+        return Integer.compare(pick, value);
+    }
+
         /**
      * Problem: Guess Number Higher or Lower
      *

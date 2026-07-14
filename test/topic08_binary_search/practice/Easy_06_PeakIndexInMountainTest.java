@@ -8,7 +8,6 @@ public class Easy_06_PeakIndexInMountainTest {
 
     @Test
     public void testPeakIndexInMountainArray() {
-        // TODO: Implement your test cases for peakIndexInMountainArray here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

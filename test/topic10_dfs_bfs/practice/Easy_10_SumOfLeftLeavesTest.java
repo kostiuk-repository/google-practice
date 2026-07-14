@@ -8,7 +8,6 @@ public class Easy_10_SumOfLeftLeavesTest {
 
     @Test
     public void testSumOfLeftLeaves() {
-        // TODO: Implement your test cases for sumOfLeftLeaves here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

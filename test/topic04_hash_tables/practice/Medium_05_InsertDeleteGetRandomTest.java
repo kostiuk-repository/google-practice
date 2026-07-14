@@ -8,19 +8,16 @@ public class Medium_05_InsertDeleteGetRandomTest {
 
     @Test
     public void testInsert() {
-        // TODO: Implement your test cases for insert here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testRemove() {
-        // TODO: Implement your test cases for remove here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testGetRandom() {
-        // TODO: Implement your test cases for getRandom here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

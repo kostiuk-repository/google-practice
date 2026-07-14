@@ -8,7 +8,6 @@ public class Easy_08_TimeNeededToBuyTicketsTest {
 
     @Test
     public void testTimeRequiredToBuy() {
-        // TODO: Implement your test cases for timeRequiredToBuy here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

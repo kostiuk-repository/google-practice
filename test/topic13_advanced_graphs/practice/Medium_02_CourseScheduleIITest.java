@@ -8,7 +8,6 @@ public class Medium_02_CourseScheduleIITest {
 
     @Test
     public void testFindOrder() {
-        // TODO: Implement your test cases for findOrder here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

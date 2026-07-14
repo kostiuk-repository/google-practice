@@ -8,37 +8,31 @@ public class Medium_04_DesignCircularQueueTest {
 
     @Test
     public void testEnQueue() {
-        // TODO: Implement your test cases for enQueue here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testDeQueue() {
-        // TODO: Implement your test cases for deQueue here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testFront() {
-        // TODO: Implement your test cases for Front here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testRear() {
-        // TODO: Implement your test cases for Rear here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testIsEmpty() {
-        // TODO: Implement your test cases for isEmpty here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testIsFull() {
-        // TODO: Implement your test cases for isFull here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

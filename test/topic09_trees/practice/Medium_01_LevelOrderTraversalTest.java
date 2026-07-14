@@ -8,7 +8,6 @@ public class Medium_01_LevelOrderTraversalTest {
 
     @Test
     public void testLevelOrder() {
-        // TODO: Implement your test cases for levelOrder here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

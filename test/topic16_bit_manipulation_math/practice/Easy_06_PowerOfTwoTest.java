@@ -8,7 +8,6 @@ public class Easy_06_PowerOfTwoTest {
 
     @Test
     public void testIsPowerOfTwo() {
-        // TODO: Implement your test cases for isPowerOfTwo here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

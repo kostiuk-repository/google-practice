@@ -8,25 +8,21 @@ public class Easy_02_ImplementQueueUsingStacksTest {
 
     @Test
     public void testPush() {
-        // TODO: Implement your test cases for push here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testPop() {
-        // TODO: Implement your test cases for pop here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testPeek() {
-        // TODO: Implement your test cases for peek here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testEmpty() {
-        // TODO: Implement your test cases for empty here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

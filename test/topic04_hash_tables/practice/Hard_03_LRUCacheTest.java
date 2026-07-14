@@ -8,13 +8,11 @@ public class Hard_03_LRUCacheTest {
 
     @Test
     public void testGet() {
-        // TODO: Implement your test cases for get here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testPut() {
-        // TODO: Implement your test cases for put here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

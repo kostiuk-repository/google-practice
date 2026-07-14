@@ -8,7 +8,6 @@ public class Medium_05_CarPoolingTest {
 
     @Test
     public void testCarPooling() {
-        // TODO: Implement your test cases for carPooling here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

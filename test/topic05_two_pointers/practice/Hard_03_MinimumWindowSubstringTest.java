@@ -8,7 +8,6 @@ public class Hard_03_MinimumWindowSubstringTest {
 
     @Test
     public void testMinWindow() {
-        // TODO: Implement your test cases for minWindow here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

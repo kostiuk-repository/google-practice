@@ -27,10 +27,23 @@ package topic01_arrays_strings.practice;
  * Second read(2) returns "bc", buf = ["b", "c"]
  */
 class Reader4 {
-    // Fake implementation of read4 for compilation/IDE reference.
-    // In actual system, this is API provided by the platform.
+    private final String content;
+    private int position;
+
+    Reader4() {
+        this("");
+    }
+
+    Reader4(String content) {
+        this.content = content;
+    }
+
     int read4(char[] buf4) {
-        return 0;
+        int count = 0;
+        while (count < 4 && position < content.length()) {
+            buf4[count++] = content.charAt(position++);
+        }
+        return count;
     }
 }
 
@@ -42,6 +55,15 @@ public class Hard_02_Read4 extends Reader4 {
     private char[] internalBuffer = new char[4];
     private int internalPtr = 0;
     private int internalCount = 0;
+
+    public Hard_02_Read4() {
+        super();
+    }
+
+    /** Test-friendly replacement for the platform-provided file source. */
+    public Hard_02_Read4(String content) {
+        super(content);
+    }
 
     /**
      * @param buf Destination buffer

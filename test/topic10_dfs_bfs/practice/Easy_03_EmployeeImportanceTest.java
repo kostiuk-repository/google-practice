@@ -8,7 +8,6 @@ public class Easy_03_EmployeeImportanceTest {
 
     @Test
     public void testGetImportance() {
-        // TODO: Implement your test cases for getImportance here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

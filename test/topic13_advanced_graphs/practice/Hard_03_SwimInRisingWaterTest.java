@@ -8,7 +8,6 @@ public class Hard_03_SwimInRisingWaterTest {
 
     @Test
     public void testSwimInWater() {
-        // TODO: Implement your test cases for swimInWater here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

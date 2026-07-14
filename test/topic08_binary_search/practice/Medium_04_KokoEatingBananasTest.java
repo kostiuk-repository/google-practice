@@ -8,7 +8,6 @@ public class Medium_04_KokoEatingBananasTest {
 
     @Test
     public void testMinEatingSpeed() {
-        // TODO: Implement your test cases for minEatingSpeed here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Medium_01_HouseRobberTest {
 
     @Test
     public void testRob() {
-        // TODO: Implement your test cases for rob here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

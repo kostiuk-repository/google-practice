@@ -8,19 +8,16 @@ public class Easy_10_DesignHashMapTest {
 
     @Test
     public void testPut() {
-        // TODO: Implement your test cases for put here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testGet() {
-        // TODO: Implement your test cases for get here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testRemove() {
-        // TODO: Implement your test cases for remove here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

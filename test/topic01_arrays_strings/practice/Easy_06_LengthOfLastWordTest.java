@@ -8,7 +8,6 @@ public class Easy_06_LengthOfLastWordTest {
 
     @Test
     public void testLengthOfLastWord() {
-        // TODO: Implement your test cases for lengthOfLastWord here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

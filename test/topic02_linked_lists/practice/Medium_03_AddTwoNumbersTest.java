@@ -8,7 +8,6 @@ public class Medium_03_AddTwoNumbersTest {
 
     @Test
     public void testAddTwoNumbers() {
-        // TODO: Implement your test cases for addTwoNumbers here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

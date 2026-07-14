@@ -8,7 +8,6 @@ public class Easy_10_MergeNodesTest {
 
     @Test
     public void testMergeNodes() {
-        // TODO: Implement your test cases for mergeNodes here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

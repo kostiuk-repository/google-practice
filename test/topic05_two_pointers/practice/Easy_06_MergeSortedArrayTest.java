@@ -8,7 +8,6 @@ public class Easy_06_MergeSortedArrayTest {
 
     @Test
     public void testMerge() {
-        // TODO: Implement your test cases for merge here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

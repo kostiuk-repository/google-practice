@@ -8,7 +8,6 @@ public class Easy_08_SquaresOfSortedArrayTest {
 
     @Test
     public void testSortedSquares() {
-        // TODO: Implement your test cases for sortedSquares here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

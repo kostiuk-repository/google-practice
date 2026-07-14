@@ -8,7 +8,6 @@ public class Medium_04_ProductExceptSelfTest {
 
     @Test
     public void testProductExceptSelf() {
-        // TODO: Implement your test cases for productExceptSelf here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

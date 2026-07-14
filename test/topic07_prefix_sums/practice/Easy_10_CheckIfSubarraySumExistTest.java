@@ -8,7 +8,6 @@ public class Easy_10_CheckIfSubarraySumExistTest {
 
     @Test
     public void testCheckSubarraySum() {
-        // TODO: Implement your test cases for checkSubarraySum here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

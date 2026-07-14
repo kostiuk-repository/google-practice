@@ -8,7 +8,6 @@ public class Easy_04_LongestCommonPrefixTest {
 
     @Test
     public void testLongestCommonPrefix() {
-        // TODO: Implement your test cases for longestCommonPrefix here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

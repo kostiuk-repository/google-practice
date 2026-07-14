@@ -8,7 +8,6 @@ public class Hard_01_RangeSumQuery2DMutableTest {
 
     @Test
     public void testSumRegion() {
-        // TODO: Implement your test cases for sumRegion here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

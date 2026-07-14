@@ -8,7 +8,6 @@ public class Easy_06_FindPivotIndexTest {
 
     @Test
     public void testPivotIndex() {
-        // TODO: Implement your test cases for pivotIndex here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

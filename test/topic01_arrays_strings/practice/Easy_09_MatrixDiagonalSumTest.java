@@ -8,7 +8,6 @@ public class Easy_09_MatrixDiagonalSumTest {
 
     @Test
     public void testDiagonalSum() {
-        // TODO: Implement your test cases for diagonalSum here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

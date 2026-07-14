@@ -8,7 +8,6 @@ public class Easy_09_BinaryToIntegerTest {
 
     @Test
     public void testGetDecimalValue() {
-        // TODO: Implement your test cases for getDecimalValue here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

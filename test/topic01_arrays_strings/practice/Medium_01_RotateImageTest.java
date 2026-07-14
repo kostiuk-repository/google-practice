@@ -8,7 +8,6 @@ public class Medium_01_RotateImageTest {
 
     @Test
     public void testRotate() {
-        // TODO: Implement your test cases for rotate here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

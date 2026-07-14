@@ -8,7 +8,6 @@ public class Easy_04_SingleNumberTest {
 
     @Test
     public void testSingleNumber() {
-        // TODO: Implement your test cases for singleNumber here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

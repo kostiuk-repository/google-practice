@@ -8,7 +8,6 @@ public class Hard_02_Read4Test {
 
     @Test
     public void testRead() {
-        // TODO: Implement your test cases for read here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

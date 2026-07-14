@@ -8,7 +8,6 @@ public class Hard_01_FirstMissingPositiveTest {
 
     @Test
     public void testFirstMissingPositive() {
-        // TODO: Implement your test cases for firstMissingPositive here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Easy_09_FindTargetIndicesTest {
 
     @Test
     public void testTargetIndices() {
-        // TODO: Implement your test cases for targetIndices here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Hard_02_FindDuplicateNumberTest {
 
     @Test
     public void testFindDuplicate() {
-        // TODO: Implement your test cases for findDuplicate here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

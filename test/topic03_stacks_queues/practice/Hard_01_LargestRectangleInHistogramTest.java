@@ -8,7 +8,6 @@ public class Hard_01_LargestRectangleInHistogramTest {
 
     @Test
     public void testLargestRectangleArea() {
-        // TODO: Implement your test cases for largestRectangleArea here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

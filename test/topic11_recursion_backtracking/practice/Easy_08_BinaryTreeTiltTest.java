@@ -8,7 +8,6 @@ public class Easy_08_BinaryTreeTiltTest {
 
     @Test
     public void testFindTilt() {
-        // TODO: Implement your test cases for findTilt here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

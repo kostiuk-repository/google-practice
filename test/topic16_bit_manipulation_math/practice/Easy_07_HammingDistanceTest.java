@@ -8,7 +8,6 @@ public class Easy_07_HammingDistanceTest {
 
     @Test
     public void testHammingDistance() {
-        // TODO: Implement your test cases for hammingDistance here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Easy_10_PathMaxProbEasyTest {
 
     @Test
     public void testMaxProbability() {
-        // TODO: Implement your test cases for maxProbability here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

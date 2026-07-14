@@ -8,7 +8,6 @@ public class Easy_02_MonotonicArrayTest {
 
     @Test
     public void testIsMonotonic() {
-        // TODO: Implement your test cases for isMonotonic here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

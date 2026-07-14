@@ -8,25 +8,21 @@ public class Medium_04_DesignTwitterTest {
 
     @Test
     public void testPostTweet() {
-        // TODO: Implement your test cases for postTweet here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testGetNewsFeed() {
-        // TODO: Implement your test cases for getNewsFeed here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testFollow() {
-        // TODO: Implement your test cases for follow here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testUnfollow() {
-        // TODO: Implement your test cases for unfollow here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

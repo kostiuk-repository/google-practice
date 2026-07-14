@@ -8,7 +8,6 @@ public class Hard_01_TrappingRainWaterTest {
 
     @Test
     public void testTrap() {
-        // TODO: Implement your test cases for trap here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

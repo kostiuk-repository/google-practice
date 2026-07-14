@@ -8,7 +8,6 @@ public class Easy_03_MinVerticesReachAllTest {
 
     @Test
     public void testFindSmallestSetOfVertices() {
-        // TODO: Implement your test cases for findSmallestSetOfVertices here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

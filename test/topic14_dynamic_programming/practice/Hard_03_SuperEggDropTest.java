@@ -8,7 +8,6 @@ public class Hard_03_SuperEggDropTest {
 
     @Test
     public void testSuperEggDrop() {
-        // TODO: Implement your test cases for superEggDrop here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

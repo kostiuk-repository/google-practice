@@ -8,7 +8,6 @@ public class Easy_07_CrawlerLogFolderTest {
 
     @Test
     public void testMinOperations() {
-        // TODO: Implement your test cases for minOperations here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

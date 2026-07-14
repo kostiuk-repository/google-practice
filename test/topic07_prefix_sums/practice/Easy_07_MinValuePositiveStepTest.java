@@ -8,7 +8,6 @@ public class Easy_07_MinValuePositiveStepTest {
 
     @Test
     public void testMinStartValue() {
-        // TODO: Implement your test cases for minStartValue here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

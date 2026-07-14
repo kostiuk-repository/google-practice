@@ -8,7 +8,6 @@ public class Medium_01_CharacterReplacementTest {
 
     @Test
     public void testCharacterReplacement() {
-        // TODO: Implement your test cases for characterReplacement here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

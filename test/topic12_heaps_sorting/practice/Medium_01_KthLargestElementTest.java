@@ -8,7 +8,6 @@ public class Medium_01_KthLargestElementTest {
 
     @Test
     public void testFindKthLargest() {
-        // TODO: Implement your test cases for findKthLargest here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

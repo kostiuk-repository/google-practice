@@ -8,7 +8,6 @@ public class Medium_05_PalindromePartitioningTest {
 
     @Test
     public void testPartition() {
-        // TODO: Implement your test cases for partition here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

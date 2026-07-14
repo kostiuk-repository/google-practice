@@ -8,7 +8,6 @@ public class Medium_02_ReorderListTest {
 
     @Test
     public void testReorderList() {
-        // TODO: Implement your test cases for reorderList here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

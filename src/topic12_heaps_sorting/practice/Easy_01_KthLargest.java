@@ -4,6 +4,12 @@ import java.util.PriorityQueue;
 
 public class Easy_01_KthLargest {
 
+    public Easy_01_KthLargest() {}
+
+    public Easy_01_KthLargest(int k, int[] nums) {
+        // TODO: Initialize the size-k heap here.
+    }
+
         /**
      * Problem: Kth Largest Element in a Stream
      *

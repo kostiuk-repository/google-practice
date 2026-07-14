@@ -8,7 +8,6 @@ public class Easy_10_GuessNumberTest {
 
     @Test
     public void testGuessNumber() {
-        // TODO: Implement your test cases for guessNumber here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

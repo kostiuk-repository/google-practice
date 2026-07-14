@@ -8,7 +8,6 @@ public class Easy_08_LargestNumberTwiceTest {
 
     @Test
     public void testDominantIndex() {
-        // TODO: Implement your test cases for dominantIndex here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

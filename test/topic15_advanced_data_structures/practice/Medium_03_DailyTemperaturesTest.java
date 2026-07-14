@@ -8,7 +8,6 @@ public class Medium_03_DailyTemperaturesTest {
 
     @Test
     public void testDailyTemperatures() {
-        // TODO: Implement your test cases for dailyTemperatures here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

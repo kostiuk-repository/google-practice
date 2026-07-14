@@ -8,7 +8,6 @@ public class Easy_09_MergeTreesTest {
 
     @Test
     public void testMergeTrees() {
-        // TODO: Implement your test cases for mergeTrees here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

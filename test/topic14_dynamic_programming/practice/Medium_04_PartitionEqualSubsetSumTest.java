@@ -8,7 +8,6 @@ public class Medium_04_PartitionEqualSubsetSumTest {
 
     @Test
     public void testCanPartition() {
-        // TODO: Implement your test cases for canPartition here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

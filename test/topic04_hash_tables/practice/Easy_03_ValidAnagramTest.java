@@ -8,7 +8,6 @@ public class Easy_03_ValidAnagramTest {
 
     @Test
     public void testIsAnagram() {
-        // TODO: Implement your test cases for isAnagram here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

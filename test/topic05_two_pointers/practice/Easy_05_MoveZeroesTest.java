@@ -8,7 +8,6 @@ public class Easy_05_MoveZeroesTest {
 
     @Test
     public void testMoveZeroes() {
-        // TODO: Implement your test cases for moveZeroes here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

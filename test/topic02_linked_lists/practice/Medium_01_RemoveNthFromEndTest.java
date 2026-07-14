@@ -8,7 +8,6 @@ public class Medium_01_RemoveNthFromEndTest {
 
     @Test
     public void testRemoveNthFromEnd() {
-        // TODO: Implement your test cases for removeNthFromEnd here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Easy_01_InorderTraversalTest {
 
     @Test
     public void testInorderTraversal() {
-        // TODO: Implement your test cases for inorderTraversal here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Medium_04_SumOfTwoIntegersTest {
 
     @Test
     public void testGetSum() {
-        // TODO: Implement your test cases for getSum here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

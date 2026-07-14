@@ -8,7 +8,6 @@ public class Easy_03_MakeStringGreatTest {
 
     @Test
     public void testMakeGood() {
-        // TODO: Implement your test cases for makeGood here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

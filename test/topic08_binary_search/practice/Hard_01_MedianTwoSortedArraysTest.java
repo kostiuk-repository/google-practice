@@ -8,7 +8,6 @@ public class Hard_01_MedianTwoSortedArraysTest {
 
     @Test
     public void testFindMedianSortedArrays() {
-        // TODO: Implement your test cases for findMedianSortedArrays here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

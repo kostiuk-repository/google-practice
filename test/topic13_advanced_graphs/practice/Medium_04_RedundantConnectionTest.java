@@ -8,7 +8,6 @@ public class Medium_04_RedundantConnectionTest {
 
     @Test
     public void testFindRedundantConnection() {
-        // TODO: Implement your test cases for findRedundantConnection here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

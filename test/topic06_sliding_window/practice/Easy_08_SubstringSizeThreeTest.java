@@ -8,7 +8,6 @@ public class Easy_08_SubstringSizeThreeTest {
 
     @Test
     public void testCountGoodSubstrings() {
-        // TODO: Implement your test cases for countGoodSubstrings here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

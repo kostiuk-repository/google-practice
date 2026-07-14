@@ -8,7 +8,6 @@ public class Easy_04_IntersectionTwoArraysTest {
 
     @Test
     public void testIntersection() {
-        // TODO: Implement your test cases for intersection here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

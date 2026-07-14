@@ -8,7 +8,6 @@ public class Medium_02_TopKFrequentElementsTest {
 
     @Test
     public void testTopKFrequent() {
-        // TODO: Implement your test cases for topKFrequent here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

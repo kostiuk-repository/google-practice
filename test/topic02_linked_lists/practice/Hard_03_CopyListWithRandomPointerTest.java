@@ -8,7 +8,6 @@ public class Hard_03_CopyListWithRandomPointerTest {
 
     @Test
     public void testCopyRandomList() {
-        // TODO: Implement your test cases for copyRandomList here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

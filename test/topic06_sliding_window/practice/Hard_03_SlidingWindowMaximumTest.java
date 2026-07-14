@@ -8,7 +8,6 @@ public class Hard_03_SlidingWindowMaximumTest {
 
     @Test
     public void testMaxSlidingWindow() {
-        // TODO: Implement your test cases for maxSlidingWindow here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

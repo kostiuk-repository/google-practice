@@ -8,7 +8,6 @@ public class Easy_09_DailyTemperaturesEasyTest {
 
     @Test
     public void testDailyTemperatures() {
-        // TODO: Implement your test cases for dailyTemperatures here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

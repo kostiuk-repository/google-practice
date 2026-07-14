@@ -8,7 +8,6 @@ public class Medium_04_ValidateBSTTest {
 
     @Test
     public void testIsValidBST() {
-        // TODO: Implement your test cases for isValidBST here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

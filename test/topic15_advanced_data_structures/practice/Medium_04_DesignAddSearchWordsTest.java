@@ -8,7 +8,6 @@ public class Medium_04_DesignAddSearchWordsTest {
 
     @Test
     public void testSearch() {
-        // TODO: Implement your test cases for search here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

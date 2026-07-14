@@ -8,7 +8,6 @@ public class Easy_02_LastStoneWeightTest {
 
     @Test
     public void testLastStoneWeight() {
-        // TODO: Implement your test cases for lastStoneWeight here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

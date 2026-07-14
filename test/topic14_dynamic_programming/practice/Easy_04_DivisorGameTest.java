@@ -8,7 +8,6 @@ public class Easy_04_DivisorGameTest {
 
     @Test
     public void testDivisorGame() {
-        // TODO: Implement your test cases for divisorGame here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

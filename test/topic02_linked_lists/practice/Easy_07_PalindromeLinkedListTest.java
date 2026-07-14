@@ -8,7 +8,6 @@ public class Easy_07_PalindromeLinkedListTest {
 
     @Test
     public void testIsPalindrome() {
-        // TODO: Implement your test cases for isPalindrome here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

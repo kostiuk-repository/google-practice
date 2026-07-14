@@ -8,7 +8,6 @@ public class Medium_05_LongestSubstringKDistinctTest {
 
     @Test
     public void testLengthOfLongestSubstringKDistinct() {
-        // TODO: Implement your test cases for lengthOfLongestSubstringKDistinct here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

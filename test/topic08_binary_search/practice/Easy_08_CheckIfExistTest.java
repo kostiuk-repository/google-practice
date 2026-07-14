@@ -8,7 +8,6 @@ public class Easy_08_CheckIfExistTest {
 
     @Test
     public void testCheckIfExist() {
-        // TODO: Implement your test cases for checkIfExist here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

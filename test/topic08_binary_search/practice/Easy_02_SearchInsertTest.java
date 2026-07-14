@@ -8,7 +8,6 @@ public class Easy_02_SearchInsertTest {
 
     @Test
     public void testSearchInsert() {
-        // TODO: Implement your test cases for searchInsert here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

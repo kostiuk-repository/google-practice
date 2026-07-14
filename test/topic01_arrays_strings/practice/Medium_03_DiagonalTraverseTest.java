@@ -8,7 +8,6 @@ public class Medium_03_DiagonalTraverseTest {
 
     @Test
     public void testFindDiagonalOrder() {
-        // TODO: Implement your test cases for findDiagonalOrder here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

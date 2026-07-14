@@ -8,7 +8,6 @@ public class Easy_07_BalancedTreeTest {
 
     @Test
     public void testIsBalanced() {
-        // TODO: Implement your test cases for isBalanced here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

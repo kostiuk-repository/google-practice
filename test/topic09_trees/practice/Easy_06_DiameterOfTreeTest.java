@@ -8,7 +8,6 @@ public class Easy_06_DiameterOfTreeTest {
 
     @Test
     public void testDiameterOfBinaryTree() {
-        // TODO: Implement your test cases for diameterOfBinaryTree here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

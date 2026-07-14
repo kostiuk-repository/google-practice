@@ -8,7 +8,6 @@ public class Medium_01_NetworkDelayTimeTest {
 
     @Test
     public void testNetworkDelayTime() {
-        // TODO: Implement your test cases for networkDelayTime here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

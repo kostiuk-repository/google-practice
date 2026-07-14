@@ -8,7 +8,6 @@ public class Medium_05_CountPrimesTest {
 
     @Test
     public void testCountPrimes() {
-        // TODO: Implement your test cases for countPrimes here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

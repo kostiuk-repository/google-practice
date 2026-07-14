@@ -8,7 +8,6 @@ public class Easy_09_SubarraySumDivisibleByKTest {
 
     @Test
     public void testSubarraysDivByK() {
-        // TODO: Implement your test cases for subarraysDivByK here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

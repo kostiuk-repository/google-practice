@@ -8,7 +8,6 @@ public class Easy_06_CousinsInBinaryTreeTest {
 
     @Test
     public void testIsCousins() {
-        // TODO: Implement your test cases for isCousins here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Medium_05_KthSmallestBSTTest {
 
     @Test
     public void testKthSmallest() {
-        // TODO: Implement your test cases for kthSmallest here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

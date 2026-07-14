@@ -8,7 +8,6 @@ public class Easy_05_NthTribonacciNumberTest {
 
     @Test
     public void testTribonacci() {
-        // TODO: Implement your test cases for tribonacci here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

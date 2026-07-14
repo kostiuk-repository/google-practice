@@ -8,7 +8,6 @@ public class Easy_09_SumOfAllSubsetXORTotalsTest {
 
     @Test
     public void testSubsetXORSum() {
-        // TODO: Implement your test cases for subsetXORSum here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

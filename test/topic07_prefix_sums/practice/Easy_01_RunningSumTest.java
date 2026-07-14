@@ -8,7 +8,6 @@ public class Easy_01_RunningSumTest {
 
     @Test
     public void testRunningSum() {
-        // TODO: Implement your test cases for runningSum here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

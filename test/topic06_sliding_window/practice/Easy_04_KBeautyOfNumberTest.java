@@ -8,7 +8,6 @@ public class Easy_04_KBeautyOfNumberTest {
 
     @Test
     public void testDivisorSubstrings() {
-        // TODO: Implement your test cases for divisorSubstrings here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

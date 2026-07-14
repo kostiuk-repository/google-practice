@@ -8,7 +8,6 @@ public class Easy_03_EvenNumberOfDigitsTest {
 
     @Test
     public void testFindNumbers() {
-        // TODO: Implement your test cases for findNumbers here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Medium_04_LetterCombinationsTest {
 
     @Test
     public void testLetterCombinations() {
-        // TODO: Implement your test cases for letterCombinations here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

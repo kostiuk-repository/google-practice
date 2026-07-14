@@ -8,7 +8,6 @@ public class Easy_02_FindJudgeTest {
 
     @Test
     public void testFindJudge() {
-        // TODO: Implement your test cases for findJudge here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

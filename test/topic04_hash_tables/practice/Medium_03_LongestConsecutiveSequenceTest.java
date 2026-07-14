@@ -8,7 +8,6 @@ public class Medium_03_LongestConsecutiveSequenceTest {
 
     @Test
     public void testLongestConsecutive() {
-        // TODO: Implement your test cases for longestConsecutive here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

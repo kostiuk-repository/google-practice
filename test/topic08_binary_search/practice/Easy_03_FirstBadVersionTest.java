@@ -8,7 +8,6 @@ public class Easy_03_FirstBadVersionTest {
 
     @Test
     public void testFirstBadVersion() {
-        // TODO: Implement your test cases for firstBadVersion here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

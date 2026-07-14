@@ -8,7 +8,6 @@ public class Medium_02_SubsetsBitmaskTest {
 
     @Test
     public void testSubsets() {
-        // TODO: Implement your test cases for subsets here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

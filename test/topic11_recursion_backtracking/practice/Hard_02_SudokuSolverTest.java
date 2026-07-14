@@ -8,7 +8,6 @@ public class Hard_02_SudokuSolverTest {
 
     @Test
     public void testSolveSudoku() {
-        // TODO: Implement your test cases for solveSudoku here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

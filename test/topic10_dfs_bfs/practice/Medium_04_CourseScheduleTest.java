@@ -8,7 +8,6 @@ public class Medium_04_CourseScheduleTest {
 
     @Test
     public void testCanFinish() {
-        // TODO: Implement your test cases for canFinish here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

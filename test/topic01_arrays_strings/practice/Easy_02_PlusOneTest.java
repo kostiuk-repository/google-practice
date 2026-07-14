@@ -8,7 +8,6 @@ public class Easy_02_PlusOneTest {
 
     @Test
     public void testPlusOne() {
-        // TODO: Implement your test cases for plusOne here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

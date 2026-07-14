@@ -8,7 +8,6 @@ public class Medium_04_MinSizeSubarraySumTest {
 
     @Test
     public void testMinSubArrayLen() {
-        // TODO: Implement your test cases for minSubArrayLen here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

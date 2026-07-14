@@ -8,7 +8,6 @@ public class Easy_05_DeleteNodeTest {
 
     @Test
     public void testDeleteNode() {
-        // TODO: Implement your test cases for deleteNode here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

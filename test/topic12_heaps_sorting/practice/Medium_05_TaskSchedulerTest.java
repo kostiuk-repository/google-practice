@@ -8,7 +8,6 @@ public class Medium_05_TaskSchedulerTest {
 
     @Test
     public void testLeastInterval() {
-        // TODO: Implement your test cases for leastInterval here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

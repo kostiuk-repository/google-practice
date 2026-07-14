@@ -8,7 +8,6 @@ public class Hard_01_SmallestRangeTest {
 
     @Test
     public void testFindSmallestRange() {
-        // TODO: Implement your test cases for findSmallestRange here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

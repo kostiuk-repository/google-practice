@@ -8,7 +8,6 @@ public class Easy_02_DefuseBombTest {
 
     @Test
     public void testDecrypt() {
-        // TODO: Implement your test cases for decrypt here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

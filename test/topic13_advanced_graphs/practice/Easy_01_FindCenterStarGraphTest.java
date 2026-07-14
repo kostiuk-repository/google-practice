@@ -8,7 +8,6 @@ public class Easy_01_FindCenterStarGraphTest {
 
     @Test
     public void testFindCenter() {
-        // TODO: Implement your test cases for findCenter here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -2,6 +2,10 @@ package topic15_advanced_data_structures.practice;
 
 public class Medium_04_DesignAddSearchWords {
 
+    public void addWord(String word) {
+        // TODO: Add the word to your trie here.
+    }
+
         /**
      * Problem: Design Add and Search Words Data Structure
      *

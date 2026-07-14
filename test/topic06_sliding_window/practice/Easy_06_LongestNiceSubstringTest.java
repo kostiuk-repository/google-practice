@@ -8,7 +8,6 @@ public class Easy_06_LongestNiceSubstringTest {
 
     @Test
     public void testLongestNiceSubstring() {
-        // TODO: Implement your test cases for longestNiceSubstring here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

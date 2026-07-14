@@ -8,7 +8,6 @@ public class Easy_09_BinaryTreePathsTest {
 
     @Test
     public void testBinaryTreePaths() {
-        // TODO: Implement your test cases for binaryTreePaths here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

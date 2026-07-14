@@ -8,7 +8,6 @@ public class Easy_06_RangeSumBSTTest {
 
     @Test
     public void testRangeSumBST() {
-        // TODO: Implement your test cases for rangeSumBST here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

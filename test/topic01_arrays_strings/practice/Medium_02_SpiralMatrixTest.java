@@ -8,7 +8,6 @@ public class Medium_02_SpiralMatrixTest {
 
     @Test
     public void testSpiralOrder() {
-        // TODO: Implement your test cases for spiralOrder here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

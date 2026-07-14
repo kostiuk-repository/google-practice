@@ -8,7 +8,6 @@ public class Easy_02_ClimbingStairsTest {
 
     @Test
     public void testClimbStairs() {
-        // TODO: Implement your test cases for climbStairs here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

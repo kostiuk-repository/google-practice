@@ -8,7 +8,6 @@ public class Hard_01_PathMinEffortTest {
 
     @Test
     public void testMinimumEffortPath() {
-        // TODO: Implement your test cases for minimumEffortPath here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

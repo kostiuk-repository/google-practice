@@ -8,7 +8,6 @@ public class Easy_06_DeleteGreatestValueTest {
 
     @Test
     public void testDeleteGreatestValue() {
-        // TODO: Implement your test cases for deleteGreatestValue here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

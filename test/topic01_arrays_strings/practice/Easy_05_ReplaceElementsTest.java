@@ -8,7 +8,6 @@ public class Easy_05_ReplaceElementsTest {
 
     @Test
     public void testReplaceElements() {
-        // TODO: Implement your test cases for replaceElements here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

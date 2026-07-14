@@ -8,7 +8,6 @@ public class Medium_05_CoinChangeTest {
 
     @Test
     public void testCoinChange() {
-        // TODO: Implement your test cases for coinChange here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

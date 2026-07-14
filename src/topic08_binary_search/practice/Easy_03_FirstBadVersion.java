@@ -2,6 +2,21 @@ package topic08_binary_search.practice;
 
 public class Easy_03_FirstBadVersion {
 
+    private final int firstBad;
+
+    public Easy_03_FirstBadVersion() {
+        this(1);
+    }
+
+    /** Test-friendly replacement for the platform-provided first-bad-version state. */
+    public Easy_03_FirstBadVersion(int firstBad) {
+        this.firstBad = firstBad;
+    }
+
+    protected boolean isBadVersion(int version) {
+        return version >= firstBad;
+    }
+
         /**
      * Problem: First Bad Version
      *

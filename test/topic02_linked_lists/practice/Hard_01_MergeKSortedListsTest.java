@@ -8,7 +8,6 @@ public class Hard_01_MergeKSortedListsTest {
 
     @Test
     public void testMergeKLists() {
-        // TODO: Implement your test cases for mergeKLists here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

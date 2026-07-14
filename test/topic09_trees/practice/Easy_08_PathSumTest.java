@@ -8,7 +8,6 @@ public class Easy_08_PathSumTest {
 
     @Test
     public void testHasPathSum() {
-        // TODO: Implement your test cases for hasPathSum here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

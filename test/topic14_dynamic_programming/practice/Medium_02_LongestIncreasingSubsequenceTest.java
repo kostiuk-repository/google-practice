@@ -8,7 +8,6 @@ public class Medium_02_LongestIncreasingSubsequenceTest {
 
     @Test
     public void testLengthOfLIS() {
-        // TODO: Implement your test cases for lengthOfLIS here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

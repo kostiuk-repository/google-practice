@@ -8,7 +8,6 @@ public class Medium_03_ContiguousArrayTest {
 
     @Test
     public void testFindMaxLength() {
-        // TODO: Implement your test cases for findMaxLength here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

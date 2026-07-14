@@ -8,7 +8,6 @@ public class Medium_05_OnlineStockSpanTest {
 
     @Test
     public void testNext() {
-        // TODO: Implement your test cases for next here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

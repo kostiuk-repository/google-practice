@@ -8,7 +8,6 @@ public class Medium_03_FindPeakElementTest {
 
     @Test
     public void testFindPeakElement() {
-        // TODO: Implement your test cases for findPeakElement here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

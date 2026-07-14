@@ -8,7 +8,6 @@ public class Hard_02_SubarraysKDifferentTest {
 
     @Test
     public void testSubarraysWithKDistinct() {
-        // TODO: Implement your test cases for subarraysWithKDistinct here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Medium_02_LowestCommonAncestorBTTest {
 
     @Test
     public void testLowestCommonAncestor() {
-        // TODO: Implement your test cases for lowestCommonAncestor here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

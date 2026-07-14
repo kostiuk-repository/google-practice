@@ -8,7 +8,6 @@ public class Medium_02_MaxConsecutiveOnesIIITest {
 
     @Test
     public void testLongestOnes() {
-        // TODO: Implement your test cases for longestOnes here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

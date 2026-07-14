@@ -8,7 +8,6 @@ public class Hard_03_IPOTest {
 
     @Test
     public void testFindMaximizedCapital() {
-        // TODO: Implement your test cases for findMaximizedCapital here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

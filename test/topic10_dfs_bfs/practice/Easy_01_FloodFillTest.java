@@ -8,7 +8,6 @@ public class Easy_01_FloodFillTest {
 
     @Test
     public void testFloodFill() {
-        // TODO: Implement your test cases for floodFill here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

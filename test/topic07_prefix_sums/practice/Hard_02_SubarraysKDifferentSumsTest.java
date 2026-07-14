@@ -8,7 +8,6 @@ public class Hard_02_SubarraysKDifferentSumsTest {
 
     @Test
     public void testSubarraysWithKDifferentSums() {
-        // TODO: Implement your test cases for subarraysWithKDifferentSums here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

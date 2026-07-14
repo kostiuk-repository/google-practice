@@ -8,7 +8,6 @@ public class Easy_02_CountingBitsIntroTest {
 
     @Test
     public void testCountBits() {
-        // TODO: Implement your test cases for countBits here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

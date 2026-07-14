@@ -8,7 +8,6 @@ public class Hard_03_CorporateFlightBookingsTest {
 
     @Test
     public void testCorpFlightBookings() {
-        // TODO: Implement your test cases for corpFlightBookings here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

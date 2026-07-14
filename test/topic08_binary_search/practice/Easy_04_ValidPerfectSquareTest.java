@@ -8,7 +8,6 @@ public class Easy_04_ValidPerfectSquareTest {
 
     @Test
     public void testIsPerfectSquare() {
-        // TODO: Implement your test cases for isPerfectSquare here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

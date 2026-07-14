@@ -8,7 +8,6 @@ public class Easy_07_PowerOfThreeTest {
 
     @Test
     public void testIsPowerOfThree() {
-        // TODO: Implement your test cases for isPowerOfThree here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

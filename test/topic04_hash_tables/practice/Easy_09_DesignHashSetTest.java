@@ -8,19 +8,16 @@ public class Easy_09_DesignHashSetTest {
 
     @Test
     public void testAdd() {
-        // TODO: Implement your test cases for add here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testRemove() {
-        // TODO: Implement your test cases for remove here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testContains() {
-        // TODO: Implement your test cases for contains here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

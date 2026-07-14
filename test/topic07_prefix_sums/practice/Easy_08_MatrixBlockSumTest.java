@@ -8,7 +8,6 @@ public class Easy_08_MatrixBlockSumTest {
 
     @Test
     public void testMatrixBlockSum() {
-        // TODO: Implement your test cases for matrixBlockSum here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

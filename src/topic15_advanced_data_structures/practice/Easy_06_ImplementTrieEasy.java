@@ -43,6 +43,16 @@ public class Easy_06_ImplementTrieEasy {
         
     }
 
+    public boolean search(String word) {
+        // TODO: Implement your solution here.
+        return false;
+    }
+
+    public boolean startsWith(String prefix) {
+        // TODO: Implement your solution here.
+        return false;
+    }
+
     /* 
      * =========================================================================
      * MENTEE QUESTION REGION

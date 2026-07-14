@@ -8,7 +8,6 @@ public class Easy_01_KthLargestTest {
 
     @Test
     public void testAdd() {
-        // TODO: Implement your test cases for add here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

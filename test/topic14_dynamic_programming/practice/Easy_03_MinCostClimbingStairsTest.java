@@ -8,7 +8,6 @@ public class Easy_03_MinCostClimbingStairsTest {
 
     @Test
     public void testMinCostClimbingStairs() {
-        // TODO: Implement your test cases for minCostClimbingStairs here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Easy_09_CountUnreachablePairsTest {
 
     @Test
     public void testCountPairs() {
-        // TODO: Implement your test cases for countPairs here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

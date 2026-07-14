@@ -8,7 +8,6 @@ public class Hard_01_NQueensTest {
 
     @Test
     public void testSolveNQueens() {
-        // TODO: Implement your test cases for solveNQueens here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

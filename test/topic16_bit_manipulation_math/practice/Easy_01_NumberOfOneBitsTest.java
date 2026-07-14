@@ -8,7 +8,6 @@ public class Easy_01_NumberOfOneBitsTest {
 
     @Test
     public void testHammingWeight() {
-        // TODO: Implement your test cases for hammingWeight here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

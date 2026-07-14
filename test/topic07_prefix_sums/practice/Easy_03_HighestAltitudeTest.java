@@ -8,7 +8,6 @@ public class Easy_03_HighestAltitudeTest {
 
     @Test
     public void testLargestAltitude() {
-        // TODO: Implement your test cases for largestAltitude here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

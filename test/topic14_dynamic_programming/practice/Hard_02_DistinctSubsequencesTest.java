@@ -8,7 +8,6 @@ public class Hard_02_DistinctSubsequencesTest {
 
     @Test
     public void testNumDistinct() {
-        // TODO: Implement your test cases for numDistinct here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

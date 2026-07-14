@@ -8,7 +8,6 @@ public class Medium_01_ThreeSumTest {
 
     @Test
     public void testThreeSum() {
-        // TODO: Implement your test cases for threeSum here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

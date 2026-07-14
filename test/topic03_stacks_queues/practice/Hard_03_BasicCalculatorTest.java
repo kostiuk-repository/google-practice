@@ -8,7 +8,6 @@ public class Hard_03_BasicCalculatorTest {
 
     @Test
     public void testCalculate() {
-        // TODO: Implement your test cases for calculate here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

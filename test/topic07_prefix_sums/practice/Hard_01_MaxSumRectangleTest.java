@@ -8,7 +8,6 @@ public class Hard_01_MaxSumRectangleTest {
 
     @Test
     public void testMaxSumSubmatrix() {
-        // TODO: Implement your test cases for maxSumSubmatrix here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

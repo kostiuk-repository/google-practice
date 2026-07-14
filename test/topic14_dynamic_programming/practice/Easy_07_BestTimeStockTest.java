@@ -8,7 +8,6 @@ public class Easy_07_BestTimeStockTest {
 
     @Test
     public void testMaxProfit() {
-        // TODO: Implement your test cases for maxProfit here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

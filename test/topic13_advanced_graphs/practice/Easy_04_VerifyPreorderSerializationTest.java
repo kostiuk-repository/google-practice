@@ -8,7 +8,6 @@ public class Easy_04_VerifyPreorderSerializationTest {
 
     @Test
     public void testIsValidSerialization() {
-        // TODO: Implement your test cases for isValidSerialization here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

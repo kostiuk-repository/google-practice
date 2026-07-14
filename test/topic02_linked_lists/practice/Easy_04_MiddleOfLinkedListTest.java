@@ -8,7 +8,6 @@ public class Easy_04_MiddleOfLinkedListTest {
 
     @Test
     public void testMiddleNode() {
-        // TODO: Implement your test cases for middleNode here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

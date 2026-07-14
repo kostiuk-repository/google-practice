@@ -8,7 +8,6 @@ public class Medium_03_FruitIntoBasketsTest {
 
     @Test
     public void testTotalFruit() {
-        // TODO: Implement your test cases for totalFruit here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

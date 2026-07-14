@@ -8,7 +8,6 @@ public class Medium_03_BuildTreeFromPreInTest {
 
     @Test
     public void testBuildTree() {
-        // TODO: Implement your test cases for buildTree here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

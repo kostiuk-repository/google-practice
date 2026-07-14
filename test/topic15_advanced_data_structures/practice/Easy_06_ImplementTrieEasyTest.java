@@ -8,7 +8,6 @@ public class Easy_06_ImplementTrieEasyTest {
 
     @Test
     public void testInsert() {
-        // TODO: Implement your test cases for insert here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

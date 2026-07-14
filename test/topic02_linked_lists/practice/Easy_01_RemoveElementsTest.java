@@ -8,7 +8,6 @@ public class Easy_01_RemoveElementsTest {
 
     @Test
     public void testRemoveElements() {
-        // TODO: Implement your test cases for removeElements here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

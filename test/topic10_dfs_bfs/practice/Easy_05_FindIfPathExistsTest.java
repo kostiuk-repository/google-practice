@@ -8,7 +8,6 @@ public class Easy_05_FindIfPathExistsTest {
 
     @Test
     public void testValidPath() {
-        // TODO: Implement your test cases for validPath here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

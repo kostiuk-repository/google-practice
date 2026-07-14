@@ -8,7 +8,6 @@ public class Medium_05_MinCostConnectPointsTest {
 
     @Test
     public void testMinCostConnectPoints() {
-        // TODO: Implement your test cases for minCostConnectPoints here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

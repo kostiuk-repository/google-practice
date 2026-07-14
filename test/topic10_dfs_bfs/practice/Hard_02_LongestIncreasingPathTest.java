@@ -8,7 +8,6 @@ public class Hard_02_LongestIncreasingPathTest {
 
     @Test
     public void testLongestIncreasingPath() {
-        // TODO: Implement your test cases for longestIncreasingPath here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

@@ -8,7 +8,6 @@ public class Medium_05_SurroundedRegionsTest {
 
     @Test
     public void testSolve() {
-        // TODO: Implement your test cases for solve here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

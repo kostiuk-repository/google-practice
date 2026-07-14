@@ -8,7 +8,6 @@ public class Hard_01_WordLadderTest {
 
     @Test
     public void testLadderLength() {
-        // TODO: Implement your test cases for ladderLength here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

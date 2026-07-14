@@ -2,6 +2,12 @@ package topic15_advanced_data_structures.practice;
 
 public class Easy_01_RangeSumQuery {
 
+    public Easy_01_RangeSumQuery() {}
+
+    public Easy_01_RangeSumQuery(int[] nums) {
+        // TODO: Initialize your prefix-sum data structure here.
+    }
+
         /**
      * Problem: Range Sum Query - Immutable
      *

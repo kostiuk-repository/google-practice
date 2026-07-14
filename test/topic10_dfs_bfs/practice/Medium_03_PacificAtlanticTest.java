@@ -8,7 +8,6 @@ public class Medium_03_PacificAtlanticTest {
 
     @Test
     public void testPacificAtlantic() {
-        // TODO: Implement your test cases for pacificAtlantic here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

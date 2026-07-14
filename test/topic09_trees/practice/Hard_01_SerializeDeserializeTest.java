@@ -8,13 +8,11 @@ public class Hard_01_SerializeDeserializeTest {
 
     @Test
     public void testSerialize() {
-        // TODO: Implement your test cases for serialize here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 
     @Test
     public void testDeserialize() {
-        // TODO: Implement your test cases for deserialize here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

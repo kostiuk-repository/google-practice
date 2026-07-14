@@ -2,6 +2,12 @@ package topic15_advanced_data_structures.practice;
 
 public class Easy_05_RangeSumMutableEasy {
 
+    public Easy_05_RangeSumMutableEasy() {}
+
+    public Easy_05_RangeSumMutableEasy(int[] nums) {
+        // TODO: Initialize your mutable range-sum data structure here.
+    }
+
         /**
      * Problem: Range Sum Query - Mutable
      *
@@ -41,6 +47,11 @@ public class Easy_05_RangeSumMutableEasy {
     public void update(int index, int val) {
         // TODO: Implement your solution here.
         
+    }
+
+    public int sumRange(int left, int right) {
+        // TODO: Implement your solution here.
+        return 0;
     }
 
     /* 

@@ -8,7 +8,6 @@ public class Easy_09_SieveOfEratosthenesEasyTest {
 
     @Test
     public void testCountPrimes() {
-        // TODO: Implement your test cases for countPrimes here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

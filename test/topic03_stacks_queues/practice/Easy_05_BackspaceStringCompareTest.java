@@ -8,7 +8,6 @@ public class Easy_05_BackspaceStringCompareTest {
 
     @Test
     public void testBackspaceCompare() {
-        // TODO: Implement your test cases for backspaceCompare here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

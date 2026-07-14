@@ -8,7 +8,6 @@ public class Hard_01_MaxPointsOnLineTest {
 
     @Test
     public void testMaxPoints() {
-        // TODO: Implement your test cases for maxPoints here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

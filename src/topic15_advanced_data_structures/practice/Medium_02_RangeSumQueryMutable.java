@@ -2,6 +2,16 @@ package topic15_advanced_data_structures.practice;
 
 public class Medium_02_RangeSumQueryMutable {
 
+    public Medium_02_RangeSumQueryMutable() {}
+
+    public Medium_02_RangeSumQueryMutable(int[] nums) {
+        // TODO: Initialize your mutable range-sum data structure here.
+    }
+
+    public void update(int index, int val) {
+        // TODO: Implement your solution here.
+    }
+
         /**
      * Problem: Range Sum Query - Mutable
      *

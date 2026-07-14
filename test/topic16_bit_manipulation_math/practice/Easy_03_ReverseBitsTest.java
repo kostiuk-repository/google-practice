@@ -8,7 +8,6 @@ public class Easy_03_ReverseBitsTest {
 
     @Test
     public void testReverseBits() {
-        // TODO: Implement your test cases for reverseBits here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

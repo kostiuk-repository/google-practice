@@ -8,7 +8,6 @@ public class Hard_01_EditDistanceTest {
 
     @Test
     public void testMinDistance() {
-        // TODO: Implement your test cases for minDistance here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

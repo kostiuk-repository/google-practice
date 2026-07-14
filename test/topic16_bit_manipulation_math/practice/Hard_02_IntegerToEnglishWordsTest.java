@@ -8,7 +8,6 @@ public class Hard_02_IntegerToEnglishWordsTest {
 
     @Test
     public void testNumberToWords() {
-        // TODO: Implement your test cases for numberToWords here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }

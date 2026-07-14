@@ -8,7 +8,6 @@ public class Medium_03_SimplifyPathTest {
 
     @Test
     public void testSimplifyPath() {
-        // TODO: Implement your test cases for simplifyPath here.
-        assertNotNull(solver);
+        support.PracticeAssertions.verify(solver);
     }
 }
