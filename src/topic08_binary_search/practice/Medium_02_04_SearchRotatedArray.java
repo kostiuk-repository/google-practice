@@ -9,7 +9,7 @@ public class Medium_02_04_SearchRotatedArray {
      */
     public int searchRotatedDescending(int[] nums, int target) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

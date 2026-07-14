@@ -11,7 +11,7 @@ public class Easy_09_05_TakeGiftsFromRichest {
      */
     public long pickGiftsWithThreshold(int[] gifts, int k, int t) {
         // TODO: Implement your solution here.
-        return 0L;
+        return 0;
     }
 
     /* 

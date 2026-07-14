@@ -11,7 +11,7 @@ public class Easy_08_05_PascalTriangle {
      */
     public List<List<Integer>> generatePascalMod(int numRows, int mod) {
         // TODO: Implement your solution here.
-        return new java.util.ArrayList<>();
+        return null;
     }
 
     /* 

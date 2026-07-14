@@ -34,7 +34,7 @@ public class Easy_05_LeftRightSumDifference {
      */
     public int[] leftRightDifference(int[] nums) {
         // TODO: Implement your solution here.
-        return null;
+        return new int[0];
     }
 
     /* 

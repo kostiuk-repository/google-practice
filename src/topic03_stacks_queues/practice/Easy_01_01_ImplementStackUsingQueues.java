@@ -22,6 +22,6 @@ public class Easy_01_01_ImplementStackUsingQueues {
      */
     public Queue<Integer> rotateQueueForPush(Queue<Integer> queue, int x) {
         // TODO: Implement your solution here.
-        return queue;
+        return null;
     }
 }

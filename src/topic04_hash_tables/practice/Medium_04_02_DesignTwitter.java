@@ -19,7 +19,7 @@ public class Medium_04_02_DesignTwitter {
         
         public List<Integer> getTweets(int userId) {
             // TODO: Return tweets posted by this user from most recent to least recent
-            return new ArrayList<>();
+            return null;
         }
     }
 

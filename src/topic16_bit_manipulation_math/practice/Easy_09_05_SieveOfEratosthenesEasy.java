@@ -12,7 +12,7 @@ public class Easy_09_05_SieveOfEratosthenesEasy {
      */
     public long sumPrimes(int n) {
         // TODO: Implement your solution here.
-        return 0L;
+        return 0;
     }
 
     /* 

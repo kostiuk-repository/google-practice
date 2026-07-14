@@ -24,11 +24,11 @@ public class Medium_04_05_DesignCircularQueue {
         }
         
         public int Front() {
-            return -1;
+            return 0;
         }
         
         public boolean isEmpty() {
-            return true;
+            return false;
         }
     }
 

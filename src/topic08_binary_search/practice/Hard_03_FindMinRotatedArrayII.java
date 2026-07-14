@@ -38,7 +38,7 @@ public class Hard_03_FindMinRotatedArrayII {
      */
     public int findMin(int[] nums) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

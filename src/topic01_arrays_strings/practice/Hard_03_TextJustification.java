@@ -31,7 +31,7 @@ public class Hard_03_TextJustification {
      */
     public List<String> fullJustify(String[] words, int maxWidth) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

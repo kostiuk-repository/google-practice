@@ -28,6 +28,6 @@ public class Hard_03_04_TextJustification {
      */
     public List<String> centerJustify(String[] words, int maxWidth) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

@@ -17,6 +17,6 @@ public class Easy_01_04_BinarySearch {
      */
     public int searchRecursive(int[] nums, int target) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

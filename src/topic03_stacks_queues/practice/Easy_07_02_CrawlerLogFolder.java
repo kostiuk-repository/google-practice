@@ -10,7 +10,7 @@ public class Easy_07_02_CrawlerLogFolder {
      */
     public String getCanonicalPath(String[] logs) {
         // TODO: Implement your solution here.
-        return "/";
+        return null;
     }
 
     /* 

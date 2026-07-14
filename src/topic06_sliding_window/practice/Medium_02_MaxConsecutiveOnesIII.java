@@ -28,7 +28,7 @@ public class Medium_02_MaxConsecutiveOnesIII {
      */
     public int longestOnes(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

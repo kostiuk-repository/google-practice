@@ -9,7 +9,7 @@ public class Medium_04_03_KokoEatingBananas {
      */
     public int minEatingSpeedWithLimit(int[] piles, int h, int maxK) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

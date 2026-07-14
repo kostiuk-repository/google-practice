@@ -11,7 +11,7 @@ public class Medium_02_03_TopKFrequentElements {
      */
     public List<String> topKFrequentWords(String[] words, int k) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

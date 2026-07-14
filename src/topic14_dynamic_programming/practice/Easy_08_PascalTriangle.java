@@ -25,7 +25,7 @@ public class Easy_08_PascalTriangle {
      */
     public List<List<Integer>> generate(int numRows) {
         // TODO: Implement your solution here.
-        return new java.util.ArrayList<>();
+        return null;
     }
 
     /* 

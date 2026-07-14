@@ -30,7 +30,7 @@ public class Easy_05_MaxVowels {
      */
     public int maxVowels(String s, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

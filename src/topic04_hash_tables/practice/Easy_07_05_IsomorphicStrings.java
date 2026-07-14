@@ -22,6 +22,6 @@ public class Easy_07_05_IsomorphicStrings {
      */
     public List<List<String>> groupByIsomorphism(List<String> words) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

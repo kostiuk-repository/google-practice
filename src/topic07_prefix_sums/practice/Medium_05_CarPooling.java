@@ -33,7 +33,7 @@ public class Medium_05_CarPooling {
      */
     public boolean carPooling(int[][] trips, int capacity) {
         // TODO: Implement your solution here.
-        return null;
+        return false;
     }
 
     /* 

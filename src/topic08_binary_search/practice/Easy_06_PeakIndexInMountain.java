@@ -29,7 +29,7 @@ public class Easy_06_PeakIndexInMountain {
      */
     public int peakIndexInMountainArray(int[] arr) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

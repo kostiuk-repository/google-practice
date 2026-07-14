@@ -31,7 +31,7 @@ public class Medium_01_CharacterReplacement {
      */
     public int characterReplacement(String s, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

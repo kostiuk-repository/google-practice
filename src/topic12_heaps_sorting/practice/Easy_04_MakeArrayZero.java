@@ -35,7 +35,7 @@ public class Easy_04_MakeArrayZero {
      */
     public int minimumOperations(int[] nums) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

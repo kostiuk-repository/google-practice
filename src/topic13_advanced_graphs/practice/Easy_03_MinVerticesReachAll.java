@@ -35,7 +35,7 @@ public class Easy_03_MinVerticesReachAll {
      */
     public List<Integer> findSmallestSetOfVertices(int n, List<List<Integer>> edges) {
         // TODO: Implement your solution here.
-        return 0;
+        return null;
     }
 
     /* 

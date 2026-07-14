@@ -13,7 +13,7 @@ public class Hard_03_03_MinimumWindowSubstring {
      */
     public String minWindowWithOrder(String s, String t) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

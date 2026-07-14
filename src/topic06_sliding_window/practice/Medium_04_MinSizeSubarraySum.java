@@ -30,7 +30,7 @@ public class Medium_04_MinSizeSubarraySum {
      */
     public int minSubArrayLen(int target, int[] nums) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

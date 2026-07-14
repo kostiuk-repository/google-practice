@@ -9,7 +9,7 @@ public class Medium_03_04_FindPeakElement {
      */
     public int findPeakWithBoundary(int[] nums, int leftBound, int rightBound) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

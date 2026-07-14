@@ -11,7 +11,7 @@ public class Medium_05_05_TaskScheduler {
      */
     public List<String> getTaskSequence(char[] tasks, int n) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

@@ -13,7 +13,7 @@ public class Easy_02_03_ReverseString {
      */
     public String reverseWords(String s) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

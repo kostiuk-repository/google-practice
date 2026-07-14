@@ -9,7 +9,7 @@ public class Medium_01_01_FindFirstLast {
      */
     public int findFirstOccurrence(int[] nums, int target) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

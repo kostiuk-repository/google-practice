@@ -43,7 +43,7 @@ public class Easy_02_FindMiddleIndex {
      */
     public int findMiddleIndex(int[] nums) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

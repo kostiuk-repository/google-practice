@@ -11,7 +11,7 @@ public class Hard_01_05_EditDistance {
      */
     public String getEditScript(String word1, String word2) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

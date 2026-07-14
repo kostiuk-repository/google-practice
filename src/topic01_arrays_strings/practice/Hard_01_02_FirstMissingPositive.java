@@ -24,6 +24,6 @@ public class Hard_01_02_FirstMissingPositive {
      */
     public int firstDuplicatePositive(int[] nums) {
         // TODO: Implement your solution here in O(N) time and O(1) space.
-        return -1;
+        return 0;
     }
 }

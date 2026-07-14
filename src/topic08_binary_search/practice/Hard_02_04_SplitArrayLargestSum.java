@@ -9,7 +9,7 @@ public class Hard_02_04_SplitArrayLargestSum {
      */
     public int splitArrayExactlyK(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

@@ -26,6 +26,6 @@ public class Medium_03_01_DiagonalTraverse {
      */
     public List<List<Integer>> groupByDiagonals(int[][] mat) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

@@ -42,7 +42,7 @@ public class Easy_07_BipartiteCheck {
      */
     public boolean isBipartite(int[][] graph) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return false;
     }
 
     /* 

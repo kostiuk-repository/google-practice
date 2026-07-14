@@ -19,7 +19,7 @@ public class Easy_06_FirstUniqueChar {
      */
     public int firstUniqChar(String s) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

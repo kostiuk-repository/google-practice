@@ -43,7 +43,7 @@ public class Easy_02_LastStoneWeight {
      */
     public int lastStoneWeight(int[] stones) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

@@ -12,7 +12,7 @@ public class Easy_08_02_AddBinary {
      */
     public char[] addBinaryDigits(char a, char b, char carry) {
         // TODO: Implement your solution here.
-        return new char[0];
+        return null;
     }
 
     /* 

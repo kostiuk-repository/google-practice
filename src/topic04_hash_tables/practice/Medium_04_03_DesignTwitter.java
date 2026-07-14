@@ -23,7 +23,7 @@ public class Medium_04_03_DesignTwitter {
      */
     public List<Integer> mergeTweets(List<Tweet> list1, List<Tweet> list2) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

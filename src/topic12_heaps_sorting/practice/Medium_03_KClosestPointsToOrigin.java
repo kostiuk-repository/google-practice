@@ -37,7 +37,7 @@ public class Medium_03_KClosestPointsToOrigin {
      */
     public int[][] kClosest(int[][] points, int k) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return new int[0][0];
     }
 
     /* 

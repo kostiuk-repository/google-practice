@@ -10,7 +10,7 @@ public class Medium_03_02_SimplifyPath {
      */
     public String simplifyWindowsPath(String path) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

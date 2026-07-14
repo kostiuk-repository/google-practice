@@ -41,7 +41,7 @@ public class Medium_05_FindMinRotatedArray {
      */
     public int findMin(int[] nums) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

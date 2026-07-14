@@ -45,7 +45,7 @@ public class Hard_03_CorporateFlightBookings {
      */
     public int[] corpFlightBookings(int[][] bookings, int n) {
         // TODO: Implement your solution here.
-        return null;
+        return new int[0];
     }
 
     /* 

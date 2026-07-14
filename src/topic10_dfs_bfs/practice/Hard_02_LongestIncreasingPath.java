@@ -32,7 +32,7 @@ public class Hard_02_LongestIncreasingPath {
      */
     public int longestIncreasingPath(int[][] matrix) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

@@ -19,6 +19,6 @@ public class Easy_05_05_MaxVowels {
      */
     public String minVowelSubstring(String s, int k) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

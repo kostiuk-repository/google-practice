@@ -23,6 +23,6 @@ public class Easy_01_03_InorderTraversal {
      */
     public List<Integer> inorderTraversalIterative(TreeNode root) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

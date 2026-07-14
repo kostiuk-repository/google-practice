@@ -19,6 +19,6 @@ public class Medium_01_04_GroupAnagrams {
      */
     public List<String> largestAnagramGroup(String[] strs) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

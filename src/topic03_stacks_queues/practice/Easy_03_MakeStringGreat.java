@@ -25,7 +25,7 @@ public class Easy_03_MakeStringGreat {
      */
     public String makeGood(String s) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

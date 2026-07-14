@@ -32,7 +32,7 @@ public class Easy_10_03_DesignHashMap {
 
         public int get(int key) {
             // TODO: Implement
-            return -1;
+            return 0;
         }
 
         public void remove(int key) {
@@ -46,7 +46,7 @@ public class Easy_10_03_DesignHashMap {
 
         public List<Integer> keySet() {
             // TODO: Implement
-            return new ArrayList<>();
+            return null;
         }
     }
 }

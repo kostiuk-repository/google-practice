@@ -30,7 +30,7 @@ public class Medium_02_SubarraySumDivisibleByK {
      */
     public int subarraysDivByK(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

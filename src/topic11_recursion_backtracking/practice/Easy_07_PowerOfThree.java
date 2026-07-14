@@ -31,7 +31,7 @@ public class Easy_07_PowerOfThree {
      */
     public boolean isPowerOfThree(int n) {
         // TODO: Implement your solution here.
-        return 0;
+        return false;
     }
 
     /* 

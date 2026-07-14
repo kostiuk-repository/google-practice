@@ -35,6 +35,6 @@ public class Hard_02_03_Read4 extends Reader4Stub03 {
      */
     public String readLine() {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

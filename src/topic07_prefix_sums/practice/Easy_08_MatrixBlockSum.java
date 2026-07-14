@@ -27,7 +27,7 @@ public class Easy_08_MatrixBlockSum {
      */
     public int[][] matrixBlockSum(int[][] mat, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return new int[0][0];
     }
 
     /* 

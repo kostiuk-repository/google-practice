@@ -18,7 +18,7 @@ public class Medium_02_SpiralMatrix {
      */
     public List<Integer> spiralOrder(int[][] matrix) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

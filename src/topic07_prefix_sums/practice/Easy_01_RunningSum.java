@@ -28,7 +28,7 @@ public class Easy_01_RunningSum {
      */
     public int[] runningSum(int[] nums) {
         // TODO: Implement your solution here.
-        return null;
+        return new int[0];
     }
 
     /* 

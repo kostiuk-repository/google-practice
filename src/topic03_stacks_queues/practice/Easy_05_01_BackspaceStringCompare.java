@@ -17,6 +17,6 @@ public class Easy_05_01_BackspaceStringCompare {
      */
     public String buildFinalString(String s) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

@@ -29,7 +29,7 @@ public class Easy_10_01_DesignHashMap {
 
         public int get(int key) {
             // TODO: Implement
-            return -1;
+            return 0;
         }
     }
 }

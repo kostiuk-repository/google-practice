@@ -22,6 +22,6 @@ public class Easy_06_04_FirstUniqueChar {
      */
     public String firstUniqueWord(String s) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

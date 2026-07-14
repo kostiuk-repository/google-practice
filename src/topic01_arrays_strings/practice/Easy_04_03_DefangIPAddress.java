@@ -18,6 +18,6 @@ public class Easy_04_03_DefangIPAddress {
      */
     public String censorVowels(String s) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

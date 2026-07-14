@@ -21,13 +21,13 @@ public class Easy_10_FizzBuzz {
     public List<String> fizzBuzz(int[] nums) {
         // Note: Using standard parameter n for fizzBuzz.
         // Let's implement it for input n.
-        return new ArrayList<>();
+        return null;
     }
     
     // Standard signature:
     public List<String> fizzBuzz(int n) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

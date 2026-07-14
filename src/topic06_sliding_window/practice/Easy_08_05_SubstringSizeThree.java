@@ -12,7 +12,7 @@ public class Easy_08_05_SubstringSizeThree {
      */
     public String longestGoodSubstring(String s) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

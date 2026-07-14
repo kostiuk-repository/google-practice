@@ -12,7 +12,7 @@ public class Easy_09_04_CountUnreachablePairs {
      */
     public long countPairsAdjacency(int n, List<List<Integer>> adj) {
         // TODO: Implement your solution here.
-        return 0L;
+        return 0;
     }
 
     /* 

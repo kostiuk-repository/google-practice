@@ -30,7 +30,7 @@ public class Hard_02_SubarraysKDifferent {
      */
     public int subarraysWithKDistinct(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

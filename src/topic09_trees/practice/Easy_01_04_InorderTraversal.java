@@ -21,6 +21,6 @@ public class Easy_01_04_InorderTraversal {
      */
     public int kthInorderElement(TreeNode root, int k) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

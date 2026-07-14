@@ -35,7 +35,7 @@ public class Easy_06_ProvincesIntro {
      */
     public int findCircleNum(int[][] isConnected) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

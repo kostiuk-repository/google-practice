@@ -17,7 +17,7 @@ public class Medium_05_02_InsertDeleteGetRandom {
      */
     public List<Integer> swapAndPop(List<Integer> list, int idx) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

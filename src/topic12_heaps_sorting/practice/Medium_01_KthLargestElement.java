@@ -28,7 +28,7 @@ public class Medium_01_KthLargestElement {
      */
     public int findKthLargest(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

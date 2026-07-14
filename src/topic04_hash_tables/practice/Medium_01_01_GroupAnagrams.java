@@ -17,6 +17,6 @@ public class Medium_01_01_GroupAnagrams {
      */
     public String canonicalKey(String s) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

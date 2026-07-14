@@ -48,7 +48,7 @@ public class Easy_01_FloodFill {
      */
     public int[][] floodFill(int[][] image, int sr, int sc, int color) {
         // TODO: Implement your solution here.
-        return null;
+        return new int[0][0];
     }
 
     /* 

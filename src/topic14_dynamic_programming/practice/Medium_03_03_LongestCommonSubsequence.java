@@ -11,7 +11,7 @@ public class Medium_03_03_LongestCommonSubsequence {
      */
     public String getLCS(String text1, String text2) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

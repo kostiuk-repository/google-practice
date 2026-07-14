@@ -12,7 +12,7 @@ public class Easy_09_02_SieveOfEratosthenesEasy {
      */
     public boolean[] sievePrimes(int n) {
         // TODO: Implement your solution here.
-        return new boolean[0];
+        return null;
     }
 
     /* 

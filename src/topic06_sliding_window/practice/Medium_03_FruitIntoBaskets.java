@@ -42,7 +42,7 @@ public class Medium_03_FruitIntoBaskets {
      */
     public int totalFruit(int[] fruits) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

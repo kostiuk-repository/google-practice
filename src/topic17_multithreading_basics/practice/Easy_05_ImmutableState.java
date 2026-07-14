@@ -2,11 +2,12 @@ package topic17_multithreading_basics.practice;
 
 public class Easy_05_ImmutableState {
 
-    /**
-     * Problem: ImmutableState
-     *
-     * Design an immutable state container class that can be safely shared across threads without locks.
-     */
+    public Easy_05_ImmutableState() {}
+
+    public Easy_05_ImmutableState(int value, java.util.List<String> tags) {
+        // TODO: Implement constructor here.
+    }
+
     public int getValue() {
         // TODO: Implement your solution here.
         throw new UnsupportedOperationException("Not implemented yet");
@@ -17,7 +18,7 @@ public class Easy_05_ImmutableState {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public ImmutableState updateValue(int newValue) {
+    public Easy_05_ImmutableState updateValue(int newValue) {
         // TODO: Implement your solution here.
         throw new UnsupportedOperationException("Not implemented yet");
     }

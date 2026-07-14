@@ -17,6 +17,6 @@ public class Easy_01_03_BinarySearch {
      */
     public int searchChar(char[] letters, char target) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

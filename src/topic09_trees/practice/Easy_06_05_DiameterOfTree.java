@@ -25,6 +25,6 @@ public class Easy_06_05_DiameterOfTree {
      */
     public List<Integer> longestPathValues(TreeNode root) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

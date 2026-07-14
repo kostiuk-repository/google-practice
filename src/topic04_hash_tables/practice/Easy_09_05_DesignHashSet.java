@@ -42,7 +42,7 @@ public class Easy_09_05_DesignHashSet {
 
         public MyHashSet intersect(MyHashSet other) {
             // TODO: Implement
-            return new MyHashSet();
+            return null;
         }
     }
 }

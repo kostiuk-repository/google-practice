@@ -25,6 +25,6 @@ public class Easy_05_02_HappyNumber {
      */
     public List<Integer> findCycle(int n) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

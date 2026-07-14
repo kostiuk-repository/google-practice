@@ -35,7 +35,7 @@ public class Easy_09_CountUnreachablePairs {
      */
     public long countPairs(int n, int[][] edges) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

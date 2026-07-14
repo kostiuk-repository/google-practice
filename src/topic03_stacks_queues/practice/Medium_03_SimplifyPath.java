@@ -31,7 +31,7 @@ public class Medium_03_SimplifyPath {
      */
     public String simplifyPath(String path) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

@@ -9,7 +9,7 @@ public class Medium_03_03_FindPeakElement {
      */
     public int findFirstPeak(int[] nums) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

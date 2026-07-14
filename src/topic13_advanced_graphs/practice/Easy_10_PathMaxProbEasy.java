@@ -39,7 +39,7 @@ public class Easy_10_PathMaxProbEasy {
      */
     public double maxProbability(int n, int[][] edges, double[] succProb, int start, int end) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0.0;
     }
 
     /* 

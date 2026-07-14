@@ -33,7 +33,7 @@ public class Easy_08_SubstringSizeThree {
      */
     public int countGoodSubstrings(String s) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

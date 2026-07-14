@@ -23,6 +23,6 @@ public class Easy_10_01_FizzBuzz {
      */
     public List<Integer> fizzBuzzCodes(int n) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

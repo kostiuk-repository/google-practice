@@ -21,6 +21,6 @@ public class Easy_02_04_FindMiddleIndex {
      */
     public List<Integer> findMiddleIndices(List<int[]> arrays) {
         // TODO: Implement your solution here.
-        return new java.util.ArrayList<>();
+        return null;
     }
 }

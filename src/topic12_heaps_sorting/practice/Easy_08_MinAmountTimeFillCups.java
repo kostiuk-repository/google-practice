@@ -50,7 +50,7 @@ public class Easy_08_MinAmountTimeFillCups {
      */
     public int fillCups(int[] amount) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

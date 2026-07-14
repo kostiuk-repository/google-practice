@@ -17,7 +17,7 @@ public class Easy_08_CommonAncestors {
      */
     public boolean hasCommonAncestor(int[][] parentChildPairs, int node1, int node2) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return false;
     }
 
     /* 

@@ -23,6 +23,6 @@ public class Easy_06_02_FirstUniqueChar {
      */
     public int lastUniqCharIndex(String s) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

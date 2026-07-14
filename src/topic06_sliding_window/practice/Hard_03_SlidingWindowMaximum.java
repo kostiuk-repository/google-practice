@@ -36,7 +36,7 @@ public class Hard_03_SlidingWindowMaximum {
      */
     public int[] maxSlidingWindow(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return new int[0];
     }
 
     /* 

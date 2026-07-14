@@ -28,6 +28,6 @@ public class Medium_02_01_SpiralMatrix {
      */
     public List<Integer> spiralOrderCounterClockwise(int[][] matrix) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

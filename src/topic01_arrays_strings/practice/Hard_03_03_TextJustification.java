@@ -27,6 +27,6 @@ public class Hard_03_03_TextJustification {
      */
     public String justifyLine(List<String> words, int maxWidth) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

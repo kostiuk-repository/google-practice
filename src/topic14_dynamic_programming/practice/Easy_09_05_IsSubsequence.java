@@ -11,7 +11,7 @@ public class Easy_09_05_IsSubsequence {
      */
     public boolean[] isSubsequenceBatch(String[] sources, String t) {
         // TODO: Implement your solution here.
-        return new boolean[0];
+        return null;
     }
 
     /* 

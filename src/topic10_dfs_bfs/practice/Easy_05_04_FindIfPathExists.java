@@ -20,6 +20,6 @@ public class Easy_05_04_FindIfPathExists {
      */
     public boolean[] validPathQueries(int n, int[][] edges, int[][] queries) {
         // TODO: Implement your solution here.
-        return new boolean[0];
+        return null;
     }
 }

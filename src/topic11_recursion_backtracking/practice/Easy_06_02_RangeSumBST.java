@@ -12,7 +12,7 @@ public class Easy_06_02_RangeSumBST {
      */
     public long rangeProductBST(TreeNode root, int low, int high) {
         // TODO: Implement your solution here.
-        return 0L;
+        return 0;
     }
 
     /* 

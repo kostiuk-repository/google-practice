@@ -37,7 +37,7 @@ public class Medium_02_SearchRotatedArray {
      */
     public int search(int[] nums, int target) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

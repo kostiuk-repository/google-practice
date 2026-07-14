@@ -34,7 +34,7 @@ public class Medium_03_WordSearch {
      */
     public boolean exist(char[][] board, String word) {
         // TODO: Implement your solution here.
-        return null;
+        return false;
     }
 
     /* 

@@ -10,7 +10,7 @@ public class Easy_10_01_CalculatePower {
      */
     public long powMod(long base, long exp, long m) {
         // TODO: Implement your solution here.
-        return 0L;
+        return 0;
     }
 
     /* 

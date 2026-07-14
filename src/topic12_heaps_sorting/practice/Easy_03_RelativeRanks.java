@@ -39,7 +39,7 @@ public class Easy_03_RelativeRanks {
      */
     public String[] findRelativeRanks(int[] score) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return new String[0];
     }
 
     /* 

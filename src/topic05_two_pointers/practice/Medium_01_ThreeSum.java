@@ -20,7 +20,7 @@ public class Medium_01_ThreeSum {
      */
     public List<List<Integer>> threeSum(int[] nums) {
         // TODO: Implement your solution here using Sorting and Two Pointers.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

@@ -13,7 +13,7 @@ public class Easy_10_05_ValidPalindromeII {
      */
     public String makePalindromeByOneDeletion(String s) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

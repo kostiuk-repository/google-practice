@@ -21,6 +21,6 @@ public class Easy_05_03_HappyNumber {
      */
     public int stepsToReachOne(int n) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

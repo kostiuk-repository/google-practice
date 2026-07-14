@@ -32,7 +32,7 @@ public class Easy_10_DesignHashMap {
         
         public int get(int key) {
             // TODO: Implement
-            return -1;
+            return 0;
         }
         
         public void remove(int key) {

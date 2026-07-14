@@ -13,7 +13,7 @@ public class Medium_05_03_CompareVersionNumbers {
      */
     public String getRevisionAt(String version, int index) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

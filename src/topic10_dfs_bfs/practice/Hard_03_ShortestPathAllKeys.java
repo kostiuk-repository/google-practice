@@ -52,7 +52,7 @@ public class Hard_03_ShortestPathAllKeys {
      */
     public int shortestPathAllKeys(String[] grid) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

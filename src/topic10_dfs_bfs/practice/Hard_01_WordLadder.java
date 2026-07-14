@@ -40,7 +40,7 @@ public class Hard_01_WordLadder {
      */
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

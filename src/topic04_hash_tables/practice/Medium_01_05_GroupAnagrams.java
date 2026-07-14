@@ -22,6 +22,6 @@ public class Medium_01_05_GroupAnagrams {
      */
     public List<List<String>> groupAnagramsNormalized(String[] strs) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

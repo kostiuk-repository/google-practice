@@ -43,22 +43,22 @@ public class Medium_04_DesignCircularQueue {
         
         public int Front() {
             // TODO: Implement
-            return -1;
+            return 0;
         }
         
         public int Rear() {
             // TODO: Implement
-            return -1;
+            return 0;
         }
         
         public boolean isEmpty() {
             // TODO: Implement
-            return true;
+            return false;
         }
         
         public boolean isFull() {
             // TODO: Implement
-            return true;
+            return false;
         }
     }
 

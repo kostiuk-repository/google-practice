@@ -20,6 +20,6 @@ public class Easy_01_05_BinarySearch {
      */
     public int searchPaddedArray(int[] nums, int target) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

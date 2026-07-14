@@ -29,6 +29,6 @@ public class Hard_03_01_TextJustification {
      */
     public List<String> leftJustify(String[] words, int maxWidth) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

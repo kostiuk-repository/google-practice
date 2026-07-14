@@ -40,7 +40,7 @@ public class Medium_04_CourseSchedule {
      */
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         // TODO: Implement your solution here.
-        return null;
+        return false;
     }
 
     /* 

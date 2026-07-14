@@ -17,7 +17,7 @@ public class Hard_01_05_MergeKSortedLists {
      */
     public List<Integer> mergeKListsAsArrays(List<List<Integer>> lists) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

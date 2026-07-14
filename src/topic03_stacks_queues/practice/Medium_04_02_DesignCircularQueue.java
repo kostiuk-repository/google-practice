@@ -32,7 +32,7 @@ public class Medium_04_02_DesignCircularQueue {
         }
         
         public boolean isEmpty() {
-            return true;
+            return false;
         }
     }
 

@@ -14,7 +14,7 @@ public class Hard_01_02_MaxPointsOnLine {
      */
     public String getSlopeFraction(int[] p1, int[] p2) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

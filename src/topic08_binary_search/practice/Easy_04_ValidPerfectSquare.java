@@ -27,7 +27,7 @@ public class Easy_04_ValidPerfectSquare {
      */
     public boolean isPerfectSquare(int num) {
         // TODO: Implement your solution here.
-        return 0;
+        return false;
     }
 
     /* 

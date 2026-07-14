@@ -23,6 +23,6 @@ public class Hard_01_03_FirstMissingPositive {
      */
     public List<Integer> allMissingPositives(int[] nums) {
         // TODO: Implement your solution here in O(N) time and O(1) extra space.
-        return new ArrayList<>();
+        return null;
     }
 }

@@ -27,7 +27,7 @@ public class Medium_03_PowXN {
      */
     public double myPow(double x, int n) {
         // TODO: Implement your solution here.
-        return 0;
+        return 0.0;
     }
 
     /* 

@@ -24,7 +24,7 @@ public class Hard_03_02_LRUCache {
         
         public int getNodeValue(int key) {
             // TODO: Return value of the node if exists, else -1
-            return -1;
+            return 0;
         }
         
         public void updateNodeValue(int key, int value) {

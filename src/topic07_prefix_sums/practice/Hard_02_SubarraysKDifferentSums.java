@@ -16,7 +16,7 @@ public class Hard_02_SubarraysKDifferentSums {
      */
     public int subarraysWithKDifferentSums(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

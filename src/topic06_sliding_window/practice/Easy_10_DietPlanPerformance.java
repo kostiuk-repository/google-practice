@@ -9,7 +9,7 @@ public class Easy_10_DietPlanPerformance {
      */
     public int dietPlanPerformance(int[] calories, int k, int lower, int upper) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

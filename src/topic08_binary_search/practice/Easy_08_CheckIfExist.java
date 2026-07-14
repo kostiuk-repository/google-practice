@@ -27,7 +27,7 @@ public class Easy_08_CheckIfExist {
      */
     public boolean checkIfExist(int[] arr) {
         // TODO: Implement your solution here.
-        return null;
+        return false;
     }
 
     /* 

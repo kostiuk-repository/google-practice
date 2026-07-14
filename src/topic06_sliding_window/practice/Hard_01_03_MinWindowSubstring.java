@@ -13,7 +13,7 @@ public class Hard_01_03_MinWindowSubstring {
      */
     public String minWindowWithDistinctT(String s, String t) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

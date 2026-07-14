@@ -14,7 +14,7 @@ public class Easy_04_DefangIPAddress {
      */
     public String defangIPaddr(String address) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

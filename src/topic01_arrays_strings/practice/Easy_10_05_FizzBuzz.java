@@ -29,6 +29,6 @@ public class Easy_10_05_FizzBuzz {
         // list or ordered map of (divisor, word) pairs iterated in order) so that adding
         // a fifth rule later would only require appending one more entry, not editing
         // conditional branches.
-        return new ArrayList<>();
+        return null;
     }
 }

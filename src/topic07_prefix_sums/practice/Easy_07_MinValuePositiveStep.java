@@ -40,7 +40,7 @@ public class Easy_07_MinValuePositiveStep {
      */
     public int minStartValue(int[] nums) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

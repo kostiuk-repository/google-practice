@@ -9,7 +9,7 @@ public class Easy_06_05_PeakIndexInMountain {
      */
     public int findElementInMountainArray(int[] arr, int target) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

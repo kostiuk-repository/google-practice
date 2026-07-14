@@ -19,6 +19,6 @@ public class Easy_02_02_FindMiddleIndex {
      */
     public int findMiddleIndexFromPrefix(int[] nums) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

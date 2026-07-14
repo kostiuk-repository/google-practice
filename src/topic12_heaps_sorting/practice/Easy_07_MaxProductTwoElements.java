@@ -26,7 +26,7 @@ public class Easy_07_MaxProductTwoElements {
      */
     public int maxProduct(int[] nums) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

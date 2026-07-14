@@ -10,7 +10,7 @@ public class Easy_02_04_MonotonicArray {
      */
     public int firstViolation(int[] nums) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

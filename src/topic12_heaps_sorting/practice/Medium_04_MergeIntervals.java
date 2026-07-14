@@ -33,7 +33,7 @@ public class Medium_04_MergeIntervals {
      */
     public int[][] merge(int[][] intervals) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return new int[0][0];
     }
 
     /* 

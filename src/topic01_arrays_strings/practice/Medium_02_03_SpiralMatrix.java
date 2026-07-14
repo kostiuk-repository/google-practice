@@ -29,6 +29,6 @@ public class Medium_02_03_SpiralMatrix {
      */
     public List<Integer> outerRing(int[][] matrix) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

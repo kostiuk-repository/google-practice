@@ -35,7 +35,7 @@ public class Medium_03_NumberOfProvinces {
      */
     public int findCircleNum(int[][] isConnected) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

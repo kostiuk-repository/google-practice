@@ -36,7 +36,7 @@ public class Medium_04_KokoEatingBananas {
      */
     public int minEatingSpeed(int[] piles, int h) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

@@ -11,7 +11,7 @@ public class Hard_03_01_IPO {
      */
     public List<Integer> getAffordableProjects(int w, int[] capital) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

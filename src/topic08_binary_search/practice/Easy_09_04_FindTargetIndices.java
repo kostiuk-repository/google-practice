@@ -13,7 +13,7 @@ public class Easy_09_04_FindTargetIndices {
      */
     public List<Integer> targetIndicesCountSort(int[] nums, int target) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

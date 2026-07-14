@@ -18,6 +18,6 @@ public class Easy_06_03_LengthOfLastWord {
      */
     public String lastWordText(String s) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

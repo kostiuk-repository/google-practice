@@ -40,7 +40,7 @@ public class Easy_10_CheckIfSubarraySumExist {
      */
     public boolean checkSubarraySum(int[] nums, int target) {
         // TODO: Implement your solution here.
-        return null;
+        return false;
     }
 
     /* 

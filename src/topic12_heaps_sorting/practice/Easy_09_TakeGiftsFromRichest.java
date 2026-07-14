@@ -46,7 +46,7 @@ public class Easy_09_TakeGiftsFromRichest {
      */
     public long pickGifts(int[] gifts, int k) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

@@ -24,8 +24,8 @@ public class Medium_04_05_DesignTwitter {
         }
         
         public List<Integer> getNewsFeed(int userId) {
-            // TODO: Implement (return top 10 most recent tweet IDs)
-            return new ArrayList<>();
+            // TODO: Implement (return null;
+            return null;
         }
     }
 

@@ -23,6 +23,6 @@ public class Easy_06_01_RemoveAdjacentDuplicates {
      */
     public String removeDuplicatesK(String s, int k) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

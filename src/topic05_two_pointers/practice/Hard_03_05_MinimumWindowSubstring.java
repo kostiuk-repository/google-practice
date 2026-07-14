@@ -13,7 +13,7 @@ public class Hard_03_05_MinimumWindowSubstring {
      */
     public String minWindowWithKExceptions(String s, String t, int k) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

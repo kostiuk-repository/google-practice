@@ -50,7 +50,7 @@ public class Hard_03_IPO {
      */
     public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

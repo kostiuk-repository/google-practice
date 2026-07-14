@@ -17,6 +17,6 @@ public class Easy_04_04_DefangIPAddress {
      */
     public String expandDashRanges(String s) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

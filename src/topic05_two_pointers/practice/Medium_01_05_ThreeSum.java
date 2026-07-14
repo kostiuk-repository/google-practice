@@ -17,7 +17,7 @@ public class Medium_01_05_ThreeSum {
      */
     public List<List<Integer>> fourSum(int[] nums, int target) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

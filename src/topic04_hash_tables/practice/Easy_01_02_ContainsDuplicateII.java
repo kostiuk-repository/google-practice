@@ -22,6 +22,6 @@ public class Easy_01_02_ContainsDuplicateII {
      */
     public int minDistanceBetweenDuplicates(int[] nums) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

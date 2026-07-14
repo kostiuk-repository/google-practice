@@ -19,7 +19,7 @@ public class Easy_08_LargestNumberTwice {
      */
     public int dominantIndex(int[] nums) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

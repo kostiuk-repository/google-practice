@@ -13,7 +13,7 @@ public class Medium_03_02_PacificAtlantic {
      */
     public boolean[][] getReachableCells(int[][] heights, List<int[]> borderCells) {
         // TODO: Implement your solution here.
-        return new boolean[0][0];
+        return null;
     }
 
     /* 

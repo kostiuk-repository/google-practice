@@ -35,3 +35,7 @@ bin/
 
 # Compiled class files
 *.class
+
+# Gradle files
+.gradle/
+build/

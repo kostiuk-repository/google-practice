@@ -22,6 +22,6 @@ public class Easy_01_05_InorderTraversal {
      */
     public List<Integer> leafValuesInOrder(TreeNode root) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

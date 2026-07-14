@@ -23,7 +23,7 @@ public class Medium_04_04_DesignTwitter {
      */
     public List<Integer> mergeKTweets(List<List<Tweet>> streams) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

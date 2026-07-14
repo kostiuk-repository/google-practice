@@ -30,7 +30,7 @@ public class Medium_03_ContiguousArray {
      */
     public int findMaxLength(int[] nums) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

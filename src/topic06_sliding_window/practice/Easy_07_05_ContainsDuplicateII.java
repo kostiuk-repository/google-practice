@@ -12,7 +12,7 @@ public class Easy_07_05_ContainsDuplicateII {
      */
     public int maxDistanceDuplicate(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

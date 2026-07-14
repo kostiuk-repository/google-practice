@@ -17,6 +17,6 @@ public class Easy_01_02_MaxAverageSubarray {
      */
     public double minAverageSubarray(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return 0;
+        return 0.0;
     }
 }

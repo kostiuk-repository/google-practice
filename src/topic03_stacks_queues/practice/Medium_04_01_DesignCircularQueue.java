@@ -32,19 +32,19 @@ public class Medium_04_01_DesignCircularQueue {
         }
         
         public int getFront() {
-            return -1;
+            return 0;
         }
         
         public int getRear() {
-            return -1;
+            return 0;
         }
         
         public boolean isEmpty() {
-            return true;
+            return false;
         }
         
         public boolean isFull() {
-            return true;
+            return false;
         }
     }
 

@@ -41,7 +41,7 @@ public class Easy_05_FindIfPathExists {
      */
     public boolean validPath(int n, int[][] edges, int source, int destination) {
         // TODO: Implement your solution here.
-        return null;
+        return false;
     }
 
     /* 

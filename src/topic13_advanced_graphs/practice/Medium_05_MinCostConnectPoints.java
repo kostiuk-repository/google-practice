@@ -37,7 +37,7 @@ public class Medium_05_MinCostConnectPoints {
      */
     public int minCostConnectPoints(int[][] points) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

@@ -19,6 +19,6 @@ public class Easy_06_01_FirstUniqueChar {
      */
     public char firstUniqueChar(String s) {
         // TODO: Implement your solution here.
-        return '\0';
+        return 0;
     }
 }

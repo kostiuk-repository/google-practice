@@ -48,7 +48,7 @@ public class Hard_03_SwimInRisingWater {
      */
     public int swimInWater(int[][] grid) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

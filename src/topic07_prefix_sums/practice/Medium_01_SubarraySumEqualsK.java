@@ -27,7 +27,7 @@ public class Medium_01_SubarraySumEqualsK {
      */
     public int subarraySum(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

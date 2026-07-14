@@ -32,7 +32,7 @@ public class Medium_03_FindPeakElement {
      */
     public int findPeakElement(int[] nums) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

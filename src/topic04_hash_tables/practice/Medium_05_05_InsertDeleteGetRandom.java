@@ -20,8 +20,8 @@ public class Medium_05_05_InsertDeleteGetRandom {
         }
         
         public int popRandom() {
-            // TODO: Implement (remove and return a random element, or return -1 if empty)
-            return -1;
+            // TODO: Implement (remove and return 0;
+            return 0;
         }
     }
 

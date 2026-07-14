@@ -29,7 +29,7 @@ public class Easy_02_SearchInsert {
      */
     public int searchInsert(int[] nums, int target) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

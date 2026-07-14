@@ -12,7 +12,7 @@ public class Medium_05_LongestSubstringKDistinct {
      */
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

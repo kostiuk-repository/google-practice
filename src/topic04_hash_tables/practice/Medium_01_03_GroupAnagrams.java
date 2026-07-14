@@ -22,6 +22,6 @@ public class Medium_01_03_GroupAnagrams {
      */
     public List<List<String>> groupAnagramsByFrequencyKey(String[] strs) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

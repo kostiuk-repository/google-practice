@@ -23,7 +23,7 @@ public class Easy_04_ReverseStringRecursive {
      */
     public void reverseString(char[] s) {
         // TODO: Implement your solution here.
-        return null;
+        return;
     }
 
     /* 

@@ -20,6 +20,6 @@ public class Easy_04_05_MiddleOfLinkedList {
      */
     public ListNode[] splitInHalf(ListNode head) {
         // TODO: Implement your solution here.
-        return new ListNode[0];
+        return null;
     }
 }

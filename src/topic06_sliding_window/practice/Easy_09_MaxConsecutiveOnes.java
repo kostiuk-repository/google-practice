@@ -22,7 +22,7 @@ public class Easy_09_MaxConsecutiveOnes {
      */
     public int findMaxConsecutiveOnes(int[] nums) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

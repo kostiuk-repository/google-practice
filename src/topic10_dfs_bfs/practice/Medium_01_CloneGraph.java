@@ -56,7 +56,7 @@ public class Medium_01_CloneGraph {
      */
     public Node cloneGraph(Node node) {
         // TODO: Implement your solution here.
-        return;
+        return null;
     }
 
     /* 

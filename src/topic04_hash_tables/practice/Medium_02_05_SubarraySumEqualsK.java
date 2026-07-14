@@ -16,7 +16,7 @@ public class Medium_02_05_SubarraySumEqualsK {
      */
     public int minSubArrayLen(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

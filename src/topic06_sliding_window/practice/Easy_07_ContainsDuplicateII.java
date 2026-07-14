@@ -26,7 +26,7 @@ public class Easy_07_ContainsDuplicateII {
      */
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return false;
     }
 
     /* 

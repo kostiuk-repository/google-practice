@@ -34,7 +34,7 @@ public class Hard_02_SplitArrayLargestSum {
      */
     public int splitArray(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

@@ -52,7 +52,7 @@ public class Easy_09_SumOfAllSubsetXORTotals {
      */
     public int subsetXORSum(int[] nums) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

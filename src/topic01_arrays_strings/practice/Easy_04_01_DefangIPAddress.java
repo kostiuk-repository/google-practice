@@ -17,6 +17,6 @@ public class Easy_04_01_DefangIPAddress {
      */
     public String defangDomain(String domain) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

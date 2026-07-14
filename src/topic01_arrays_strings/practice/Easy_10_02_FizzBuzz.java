@@ -28,6 +28,6 @@ public class Easy_10_02_FizzBuzz {
         // TODO: Implement your solution here. Use an extensible list of (divisor, word)
         // pairs iterated in order rather than a big if-else chain, so adding a new rule
         // later is a one-line change.
-        return new ArrayList<>();
+        return null;
     }
 }

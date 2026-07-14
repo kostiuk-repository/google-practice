@@ -20,7 +20,7 @@ public class Medium_01_GroupAnagrams {
      */
     public List<List<String>> groupAnagrams(String[] strs) {
         // TODO: Implement your solution here using HashMap.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

@@ -10,7 +10,7 @@ public class Medium_03_03_SimplifyPath {
      */
     public String resolvePath(String cwd, String relative) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

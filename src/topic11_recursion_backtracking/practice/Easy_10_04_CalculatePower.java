@@ -10,7 +10,7 @@ public class Easy_10_04_CalculatePower {
      */
     public int[][] matrixPow(int[][] matrix, int n) {
         // TODO: Implement your solution here.
-        return null;
+        return new int[0][0];
     }
 
     /* 

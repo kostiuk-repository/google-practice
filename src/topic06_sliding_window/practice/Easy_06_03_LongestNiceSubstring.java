@@ -12,7 +12,7 @@ public class Easy_06_03_LongestNiceSubstring {
      */
     public String firstNiceSubstringOfLength(String s, int k) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

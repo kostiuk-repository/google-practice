@@ -27,7 +27,7 @@ public class Easy_10_CalculatePower {
      */
     public double myPow(double x, int n) {
         // TODO: Implement your solution here.
-        return 0;
+        return 0.0;
     }
 
     /* 

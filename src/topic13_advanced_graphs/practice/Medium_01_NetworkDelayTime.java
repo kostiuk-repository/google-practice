@@ -40,7 +40,7 @@ public class Medium_01_NetworkDelayTime {
      */
     public int networkDelayTime(int[][] times, int n, int k) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

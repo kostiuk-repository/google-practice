@@ -18,7 +18,7 @@ public class Easy_06_02_RemoveAdjacentDuplicates {
      */
     public String removeDuplicatesCaseInsensitive(String s) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

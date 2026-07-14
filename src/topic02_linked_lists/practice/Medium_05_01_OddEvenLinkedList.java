@@ -15,7 +15,7 @@ public class Medium_05_01_OddEvenLinkedList {
      */
     public ListNode[] splitOddEven(ListNode head) {
         // TODO: Implement your solution here.
-        return new ListNode[2];
+        return null;
     }
 
     /* 

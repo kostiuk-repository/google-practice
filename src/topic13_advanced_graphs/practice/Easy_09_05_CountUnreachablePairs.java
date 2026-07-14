@@ -12,7 +12,7 @@ public class Easy_09_05_CountUnreachablePairs {
      */
     public long countPairsWithWeights(int n, int[][] edges, int[] weights) {
         // TODO: Implement your solution here.
-        return 0L;
+        return 0;
     }
 
     /* 

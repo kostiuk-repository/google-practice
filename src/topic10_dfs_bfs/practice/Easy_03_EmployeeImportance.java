@@ -44,7 +44,7 @@ public class Easy_03_EmployeeImportance {
      */
     public int getImportance(List<Employee> employees, int id) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

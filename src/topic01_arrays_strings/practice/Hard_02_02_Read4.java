@@ -34,6 +34,6 @@ public class Hard_02_02_Read4 extends Reader4Stub02 {
      */
     public char peek() {
         // TODO: Implement your solution here.
-        return '\0';
+        return 0;
     }
 }

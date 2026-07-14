@@ -29,7 +29,7 @@ public class Hard_01_MedianTwoSortedArrays {
      */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         // TODO: Implement your solution here.
-        return null;
+        return 0.0;
     }
 
     /* 

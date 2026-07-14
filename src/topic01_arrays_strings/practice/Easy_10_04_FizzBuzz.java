@@ -22,6 +22,6 @@ public class Easy_10_04_FizzBuzz {
      */
     public List<String> fizzBuzzRange(int start, int end) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

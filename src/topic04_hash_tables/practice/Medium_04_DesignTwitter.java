@@ -33,7 +33,7 @@ public class Medium_04_DesignTwitter {
         
         public List<Integer> getNewsFeed(int userId) {
             // TODO: Implement
-            return new ArrayList<>();
+            return null;
         }
         
         public void follow(int followerId, int followeeId) {

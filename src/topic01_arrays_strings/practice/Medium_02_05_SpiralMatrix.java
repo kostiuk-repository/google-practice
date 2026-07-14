@@ -26,6 +26,6 @@ public class Medium_02_05_SpiralMatrix {
      */
     public List<Integer> spiralFirstK(int[][] matrix, int k) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

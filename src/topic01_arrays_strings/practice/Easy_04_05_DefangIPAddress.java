@@ -17,6 +17,6 @@ public class Easy_04_05_DefangIPAddress {
      */
     public String fullDefangUrl(String url) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

@@ -41,7 +41,7 @@ public class Easy_02_FindJudge {
      */
     public int findJudge(int n, int[][] trust) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

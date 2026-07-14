@@ -10,7 +10,7 @@ public class Medium_03_04_SimplifyPath {
      */
     public String simplifyPathWithUndo(String path) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

@@ -12,7 +12,7 @@ public class Easy_03_01_FirstBadVersion {
      */
     public int firstBadVersion1(int n) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

@@ -17,6 +17,6 @@ public class Easy_04_02_DefangIPAddress {
      */
     public String escapeAmpersands(String s) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

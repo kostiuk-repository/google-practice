@@ -21,6 +21,6 @@ public class Easy_06_01_DiameterOfTree {
      */
     public int height(TreeNode root) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

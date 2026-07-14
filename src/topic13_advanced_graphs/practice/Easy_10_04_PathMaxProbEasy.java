@@ -12,7 +12,7 @@ public class Easy_10_04_PathMaxProbEasy {
      */
     public double[] findAllMaxProbabilities(int n, int[][] edges, double[] succProb, int start) {
         // TODO: Implement your solution here.
-        return new double[0];
+        return null;
     }
 
     /* 

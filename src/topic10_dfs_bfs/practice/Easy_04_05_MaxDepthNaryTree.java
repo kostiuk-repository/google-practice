@@ -25,6 +25,6 @@ public class Easy_04_05_MaxDepthNaryTree {
      */
     public List<Integer> deepestLevelValues(TreeNode root) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

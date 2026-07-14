@@ -22,8 +22,8 @@ public class Medium_04_01_DesignTwitter {
         }
         
         public List<Integer> getFollowees(int followerId) {
-            // TODO: Implement and return sorted in ascending order
-            return new ArrayList<>();
+            // TODO: Implement and return null;
+            return null;
         }
     }
 

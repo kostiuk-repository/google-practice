@@ -32,7 +32,7 @@ public class Easy_06_05_FirstUniqueChar {
 
         public char firstUnique() {
             // TODO: Implement
-            return '\0';
+            return 0;
         }
     }
 }

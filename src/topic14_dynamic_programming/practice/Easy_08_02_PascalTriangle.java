@@ -11,7 +11,7 @@ public class Easy_08_02_PascalTriangle {
      */
     public List<List<Integer>> generateBase(int numRows) {
         // TODO: Implement your solution here.
-        return new java.util.ArrayList<>();
+        return null;
     }
 
     /* 

@@ -37,7 +37,7 @@ public class Easy_02_IslandPerimeter {
      */
     public int islandPerimeter(int[][] grid) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

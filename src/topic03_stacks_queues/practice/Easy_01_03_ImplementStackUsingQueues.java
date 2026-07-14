@@ -44,7 +44,7 @@ public class Easy_01_03_ImplementStackUsingQueues {
 
         public boolean empty() {
             // TODO: Implement
-            return true;
+            return false;
         }
     }
 }

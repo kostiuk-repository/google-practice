@@ -21,6 +21,6 @@ public class Easy_04_05_KBeautyOfNumber {
      */
     public int smallestKForBeautyThreshold(int num, int threshold) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

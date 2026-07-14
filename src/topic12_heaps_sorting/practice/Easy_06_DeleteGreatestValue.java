@@ -43,7 +43,7 @@ public class Easy_06_DeleteGreatestValue {
      */
     public int deleteGreatestValue(int[][] grid) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

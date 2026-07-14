@@ -35,6 +35,6 @@ public class Hard_03_05_TextJustification {
      */
     public List<String> justifyMinTwoSpaces(String[] words, int maxWidth) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

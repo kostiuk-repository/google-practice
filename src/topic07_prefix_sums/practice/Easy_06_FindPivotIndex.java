@@ -49,7 +49,7 @@ public class Easy_06_FindPivotIndex {
      */
     public int pivotIndex(int[] nums) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

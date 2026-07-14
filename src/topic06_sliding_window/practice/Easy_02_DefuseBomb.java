@@ -42,7 +42,7 @@ public class Easy_02_DefuseBomb {
      */
     public int[] decrypt(int[] code, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return new int[0];
     }
 
     /* 

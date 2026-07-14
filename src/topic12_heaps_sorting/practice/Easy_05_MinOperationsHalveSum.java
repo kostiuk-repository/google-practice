@@ -52,7 +52,7 @@ public class Easy_05_MinOperationsHalveSum {
      */
     public int halveArray(int[] nums) {
         // TODO: Implement your solution here.
-        return new int[0];
+        return 0;
     }
 
     /* 

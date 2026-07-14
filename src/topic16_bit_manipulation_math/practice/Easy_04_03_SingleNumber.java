@@ -12,7 +12,7 @@ public class Easy_04_03_SingleNumber {
      */
     public int singleNumberIndex(int[] nums) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

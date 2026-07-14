@@ -39,7 +39,7 @@ public class Easy_03_MinDifference {
      */
     public int minimumDifference(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

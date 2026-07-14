@@ -29,7 +29,7 @@ public class Hard_01_MaxSumRectangle {
      */
     public int maxSumSubmatrix(int[][] matrix, int k) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

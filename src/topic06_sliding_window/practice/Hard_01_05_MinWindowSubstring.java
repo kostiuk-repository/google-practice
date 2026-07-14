@@ -13,7 +13,7 @@ public class Hard_01_05_MinWindowSubstring {
      */
     public String minWindowContainingSubsequence(String s, String t) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

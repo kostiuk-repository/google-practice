@@ -21,6 +21,6 @@ public class Easy_08_02_LargestNumberTwice {
      */
     public int smallestAtMostHalfOfMax(int[] nums) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

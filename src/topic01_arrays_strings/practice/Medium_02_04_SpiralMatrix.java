@@ -28,6 +28,6 @@ public class Medium_02_04_SpiralMatrix {
      */
     public List<Integer> spiralFromBottomRight(int[][] matrix) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

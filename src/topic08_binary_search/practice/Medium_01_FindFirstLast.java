@@ -30,7 +30,7 @@ public class Medium_01_FindFirstLast {
      */
     public int[] searchRange(int[] nums, int target) {
         // TODO: Implement your solution here.
-        return null;
+        return new int[0];
     }
 
     /* 

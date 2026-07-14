@@ -72,7 +72,7 @@ public class Easy_02_ImplementQueueUsingStacks {
         
         public boolean empty() {
             // TODO: Implement
-            return true;
+            return false;
         }
     }
 

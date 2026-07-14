@@ -12,7 +12,7 @@ public class Easy_09_02_CountUnreachablePairs {
      */
     public long countPairsBFS(int n, int[][] edges) {
         // TODO: Implement your solution here.
-        return 0L;
+        return 0;
     }
 
     /* 

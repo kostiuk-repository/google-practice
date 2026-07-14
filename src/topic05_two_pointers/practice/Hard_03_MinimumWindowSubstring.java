@@ -20,7 +20,7 @@ public class Hard_03_MinimumWindowSubstring {
      */
     public String minWindow(String s, String t) {
         // TODO: Implement your solution here using Sliding Window / Two Pointers.
-        return "";
+        return null;
     }
 
     /* 

@@ -19,6 +19,6 @@ public class Easy_04_04_KBeautyOfNumber {
      */
     public int largestDivisorWindow(int num, int k) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

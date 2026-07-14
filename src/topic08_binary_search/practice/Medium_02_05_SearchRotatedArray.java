@@ -9,7 +9,7 @@ public class Medium_02_05_SearchRotatedArray {
      */
     public int searchInShiftedArray(int[] nums, int target, int shift) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

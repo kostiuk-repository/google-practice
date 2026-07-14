@@ -19,7 +19,7 @@ public class Hard_03_05_LRUCache {
         
         public int get(int key) {
             // TODO: Implement
-            return -1;
+            return 0;
         }
         
         public void put(int key, int value) {

@@ -36,7 +36,7 @@ public class Easy_06_CousinsInBinaryTree {
      */
     public boolean isCousins(TreeNode root, int x, int y) {
         // TODO: Implement your solution here.
-        return 0;
+        return false;
     }
 
     /* 

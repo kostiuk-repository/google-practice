@@ -26,7 +26,7 @@ public class Easy_07_CountNegatives {
      */
     public int countNegatives(int[][] grid) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

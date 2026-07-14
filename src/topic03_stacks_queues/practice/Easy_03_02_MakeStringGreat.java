@@ -27,6 +27,6 @@ public class Easy_03_02_MakeStringGreat {
      */
     public String makeGoodDigits(String digits) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 }

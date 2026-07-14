@@ -20,6 +20,6 @@ public class Easy_02_05_FindMiddleIndex {
      */
     public int closestBalancedIndex(int[] nums) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

@@ -28,7 +28,7 @@ public class Medium_04_03_DesignCircularQueue {
         }
         
         public boolean isEmpty() {
-            return true;
+            return false;
         }
     }
 

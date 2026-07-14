@@ -21,6 +21,6 @@ public class Easy_01_02_InorderTraversal {
      */
     public List<Integer> postorderTraversal(TreeNode root) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

@@ -28,7 +28,7 @@ public class Easy_03_HighestAltitude {
      */
     public int largestAltitude(int[] gain) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

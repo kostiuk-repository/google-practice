@@ -12,7 +12,7 @@ public class Easy_04_02_SingleNumber {
      */
     public char singleChar(char[] chars) {
         // TODO: Implement your solution here.
-        return '\0';
+        return 0;
     }
 
     /* 

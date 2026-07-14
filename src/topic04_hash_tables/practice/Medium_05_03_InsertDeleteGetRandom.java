@@ -22,8 +22,8 @@ public class Medium_05_03_InsertDeleteGetRandom {
         }
         
         public int getIndex(int val) {
-            // TODO: Implement (return -1 if not found)
-            return -1;
+            // TODO: Implement (return 0;
+            return 0;
         }
     }
 

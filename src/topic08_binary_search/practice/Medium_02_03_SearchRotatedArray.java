@@ -9,7 +9,7 @@ public class Medium_02_03_SearchRotatedArray {
      */
     public int searchWithDuplicates(int[] nums, int target) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

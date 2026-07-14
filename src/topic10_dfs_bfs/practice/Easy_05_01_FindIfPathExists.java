@@ -21,6 +21,6 @@ public class Easy_05_01_FindIfPathExists {
      */
     public List<List<Integer>> buildAdjacencyList(int n, int[][] edges) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 }

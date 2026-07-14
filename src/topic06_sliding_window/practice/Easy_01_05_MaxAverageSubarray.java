@@ -20,6 +20,6 @@ public class Easy_01_05_MaxAverageSubarray {
      */
     public double maxAverageSubarrayCircular(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return 0;
+        return 0.0;
     }
 }

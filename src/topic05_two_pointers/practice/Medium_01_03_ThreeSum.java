@@ -17,7 +17,7 @@ public class Medium_01_03_ThreeSum {
      */
     public List<List<Integer>> threeSumZeroDuplicatesAllowed(int[] nums) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

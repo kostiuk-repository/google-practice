@@ -17,7 +17,7 @@ public class Medium_03_02_LongestConsecutiveSequence {
      */
     public List<Integer> findSequenceStarts(int[] nums) {
         // TODO: Implement your solution here.
-        return new ArrayList<>();
+        return null;
     }
 
     /* 

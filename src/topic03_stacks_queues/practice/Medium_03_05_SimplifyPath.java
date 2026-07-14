@@ -10,7 +10,7 @@ public class Medium_03_05_SimplifyPath {
      */
     public String longestCommonAncestor(String path1, String path2) {
         // TODO: Implement your solution here.
-        return "";
+        return null;
     }
 
     /* 

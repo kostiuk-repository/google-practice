@@ -40,7 +40,7 @@ public class Medium_02_RottingOranges {
      */
     public int orangesRotting(int[][] grid) {
         // TODO: Implement your solution here.
-        return null;
+        return 0;
     }
 
     /* 

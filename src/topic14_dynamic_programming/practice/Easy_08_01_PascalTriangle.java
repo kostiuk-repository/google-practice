@@ -11,7 +11,7 @@ public class Easy_08_01_PascalTriangle {
      */
     public List<Integer> getRow(int rowIndex) {
         // TODO: Implement your solution here.
-        return new java.util.ArrayList<>();
+        return null;
     }
 
     /* 

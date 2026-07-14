@@ -12,7 +12,7 @@ public class Easy_07_05_BalancedTree {
      */
     public int balancedMaxDepth(TreeNode root) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 
     /* 

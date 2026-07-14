@@ -23,6 +23,6 @@ public class Easy_04_05_SubtreeOfAnother {
      */
     public int shallowestMatchingDepth(TreeNode root, TreeNode subRoot) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

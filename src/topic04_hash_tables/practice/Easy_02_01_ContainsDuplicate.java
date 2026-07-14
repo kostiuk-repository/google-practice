@@ -19,6 +19,6 @@ public class Easy_02_01_ContainsDuplicate {
      */
     public int findDuplicate(int[] nums) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }

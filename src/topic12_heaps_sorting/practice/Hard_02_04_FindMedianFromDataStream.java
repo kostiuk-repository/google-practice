@@ -11,7 +11,7 @@ public class Hard_02_04_FindMedianFromDataStream {
      */
     public double[] medianSlidingWindow(int[] nums, int k) {
         // TODO: Implement your solution here.
-        return new double[0];
+        return null;
     }
 
     /* 

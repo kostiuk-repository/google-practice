@@ -18,6 +18,6 @@ public class Easy_02_03_FindMiddleIndex {
      */
     public int findRatioMiddleIndex(int[] nums, int ratio) {
         // TODO: Implement your solution here.
-        return -1;
+        return 0;
     }
 }
