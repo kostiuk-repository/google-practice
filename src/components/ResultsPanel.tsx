@@ -52,7 +52,7 @@ export function ResultsPanel({ status, result, error, isConcurrency, onRun, onOp
           {busy ? <LoaderCircle className="spin" size={16} /> : <Play size={16} fill="currentColor" />}
           Run tests
         </button>
-        <button className="icon-button runner-settings" onClick={onOpenSettings} aria-label="Piston settings"><Settings2 size={16} /></button>
+        <button className="icon-button runner-settings" onClick={onOpenSettings} aria-label="Execution provider settings"><Settings2 size={16} /></button>
       </div>
 
       <div className={`execution-status status-${status}`}>

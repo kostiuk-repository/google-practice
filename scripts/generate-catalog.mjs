@@ -95,17 +95,26 @@ for (const [index, topicEntry] of topicDirs.entries()) {
 
     const iterations = [{
       id: 'starter',
-      label: 'Starter · Canonical task',
+      kind: 'task',
+      order: 0,
+      label: `Main task · ${humanize(rawTitle)}`,
       fileName: item.name,
+      sourcePath: `src/${slug}/practice/${item.name}`,
       source: await read(path.join(practiceDir, item.name)),
     }];
     for (const variant of variants) {
       const version = Number(variant.match[1]);
+      const variantSource = await read(path.join(practiceDir, variant.name));
+      const drillTitle = variantSource.match(/Drill\s+\d+\/\d+[^—\r\n]*—\s*([^\r\n*]+)/)?.[1]?.trim()
+        ?? `Practice drill ${version}`;
       iterations.push({
         id: `v${version}`,
-        label: `v${version} · Practice iteration ${version}`,
+        kind: 'drill',
+        order: version,
+        label: `Drill ${String(version).padStart(2, '0')} · ${drillTitle}`,
         fileName: variant.name,
-        source: await read(path.join(practiceDir, variant.name)),
+        sourcePath: `src/${slug}/practice/${variant.name}`,
+        source: variantSource,
       });
     }
 

@@ -11,7 +11,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b --pretty false",
-    "verify:runner": "npm run generate:content && node scripts/verify-runner.mjs"
+    "verify:runner": "npm run generate:content && node scripts/verify-runner.mjs",
+    "verify:wandbox": "npm run generate:content && node scripts/verify-runner.mjs --wandbox"
   },
   "dependencies": {
     "@codemirror/autocomplete": "^6.20.0",

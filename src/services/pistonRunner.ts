@@ -23,6 +23,17 @@ interface PistonResponse {
   message?: string;
 }
 
+interface WandboxResponse {
+  status?: string;
+  signal?: string;
+  compiler_output?: string;
+  compiler_error?: string;
+  compiler_message?: string;
+  program_output?: string;
+  program_error?: string;
+  program_message?: string;
+}
+
 const TEST_ANNOTATION = `package org.junit.jupiter.api;
 import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
@@ -75,16 +86,16 @@ public final class Assertions {
   }
 }`;
 
-function testMain(testClassName: string, iterationId: string) {
+function testMain(testClassName: string, iterationId: string, entryClassName: string) {
   const drillNumber = iterationId === 'starter'
     ? ''
     : iterationId.slice(1).padStart(2, '0');
   return `import java.lang.reflect.*;
 import org.junit.jupiter.api.Test;
 
-public class Main {
+public class ${entryClassName} {
   public static void main(String[] args) throws Exception {
-    Class<?> testClass = Class.forName("${testClassName}");
+    Class<?> testClass = ${testClassName}.class;
     int passed = 0, failed = 0;
     int selected = 0;
     for (Method method : testClass.getDeclaredMethods()) {
@@ -123,10 +134,10 @@ public class Main {
 }`;
 }
 
-function compileMain(qualifiedClassName: string) {
-  return `public class Main {
+function compileMain(qualifiedClassName: string, entryClassName: string) {
+  return `public class ${entryClassName} {
   public static void main(String[] args) throws Exception {
-    Class<?> solution = Class.forName("${qualifiedClassName}");
+    Class<?> solution = ${qualifiedClassName}.class;
     System.out.println("✓ Compilation successful");
     System.out.println("Loaded solution: " + solution.getName());
   }
@@ -139,6 +150,7 @@ export function buildExecutionFiles(
   iterationId: string,
   source: string,
   harness: HarnessContent,
+  entryClassName = 'Main',
 ): SourceFile[] {
   const selectedIteration = task.iterations.find((iteration) => iteration.id === iterationId)
     ?? task.iterations[0];
@@ -146,8 +158,10 @@ export function buildExecutionFiles(
   const qualifiedSolution = `${task.packageName}.${selectedClassName}`;
   const testClass = `${task.packageName}.${task.baseName}Test`;
   const files: SourceFile[] = [{
-    name: 'Main.java',
-    content: mode === 'tests' ? testMain(testClass, iterationId) : compileMain(qualifiedSolution),
+    name: `${entryClassName}.java`,
+    content: mode === 'tests'
+      ? testMain(testClass, iterationId, entryClassName)
+      : compileMain(qualifiedSolution, entryClassName),
   }, ...harness.sharedSources];
 
   if (mode === 'tests') {
@@ -196,6 +210,73 @@ function friendlyHttpError(status: number, body: string) {
   return `Piston API повернув HTTP ${status}${body ? `: ${body.slice(0, 240)}` : ''}`;
 }
 
+function wandboxFilePath(file: SourceFile) {
+  const packageName = file.content.match(/^\s*package\s+([\w.]+)\s*;/m)?.[1];
+  return packageName
+    ? `${packageName.replaceAll('.', '/')}/${file.name}`
+    : file.name;
+}
+
+async function runWandbox(
+  mode: RunMode,
+  task: PracticeTask,
+  iterationId: string,
+  source: string,
+  harness: HarnessContent,
+  settings: RunnerSettings,
+): Promise<ExecutionResult> {
+  const files = buildExecutionFiles(mode, task, iterationId, source, harness, 'prog');
+  const [primary, ...additional] = files;
+  const started = performance.now();
+  const response = await fetch(settings.endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      compiler: settings.runtimeVersion || 'openjdk-jdk-21+35',
+      code: primary.content,
+      codes: additional.map((file) => ({ file: wandboxFilePath(file), code: file.content })),
+      stdin: '',
+    }),
+    signal: AbortSignal.timeout(settings.compileTimeoutMs + settings.runTimeoutMs + 5_000),
+  });
+  const responseText = await response.text();
+  if (!response.ok) {
+    const suffix = responseText ? `: ${responseText.slice(0, 240)}` : '';
+    throw new Error(`Wandbox API повернув HTTP ${response.status}${suffix}`);
+  }
+
+  let payload: WandboxResponse;
+  try {
+    payload = JSON.parse(responseText) as WandboxResponse;
+  } catch {
+    throw new Error('Wandbox повернув невалідну JSON-відповідь.');
+  }
+
+  const compileOutput = [payload.compiler_output, payload.compiler_error, payload.compiler_message]
+    .filter(Boolean).join('\n').trim();
+  const stdout = payload.program_output ?? '';
+  const stderr = payload.program_error ?? '';
+  const rawOutput = [compileOutput, stdout, stderr, payload.program_message]
+    .filter(Boolean).join('\n').trim();
+  const exitCode = Number(payload.status ?? 1);
+  const tests = parseTests(stdout);
+  const executionSucceeded = payload.status === '0';
+
+  return {
+    ok: executionSucceeded && tests.every((test) => test.passed),
+    language: 'java',
+    version: settings.runtimeVersion || 'openjdk-jdk-21+35',
+    compileOutput,
+    stdout,
+    stderr,
+    exitCode: Number.isFinite(exitCode) ? exitCode : null,
+    signal: payload.signal || null,
+    durationMs: Math.round(performance.now() - started),
+    tests,
+    rawOutput,
+  };
+}
+
 export async function runJava(
   mode: RunMode,
   task: PracticeTask,
@@ -206,6 +287,10 @@ export async function runJava(
 ): Promise<ExecutionResult> {
   if (!task.testSource && mode === 'tests') {
     throw new Error('Для цієї задачі test source не знайдено в каталозі.');
+  }
+
+  if (settings.provider === 'wandbox') {
+    return runWandbox(mode, task, iterationId, source, harness, settings);
   }
 
   const headers: Record<string, string> = { 'Content-Type': 'application/json' };

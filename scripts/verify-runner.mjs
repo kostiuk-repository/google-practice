@@ -39,7 +39,7 @@ try {
     },
   }).outputText;
   await writeFile(runnerBundle, runnerJavaScript);
-  const { buildExecutionFiles } = await import(pathToFileURL(runnerBundle));
+  const { buildExecutionFiles, runJava } = await import(pathToFileURL(runnerBundle));
 
   const samples = [topics[0].tasks[0], topics[16].tasks[0]];
   for (const task of samples) {
@@ -51,6 +51,34 @@ try {
     await Promise.all(files.map((file) => writeFile(path.join(sampleRoot, file.name), file.content)));
     const javaFiles = files.map((file) => path.join(sampleRoot, file.name));
     await exec('javac', ['--release', '21', '-d', classesRoot, ...javaFiles], { maxBuffer: 4_000_000 });
+  }
+
+  if (process.argv.includes('--wandbox')) {
+    const task = topics[0].tasks[0];
+    const solvedSource = task.iterations[0].source.replace(
+      /\s*\/\/ TODO: Implement your solution here\.\s*return 0;/,
+      `
+        int altitude = 0;
+        int highest = 0;
+        for (int change : gain) {
+            altitude += change;
+            highest = Math.max(highest, altitude);
+        }
+        return highest;`,
+    );
+    const result = await runJava('tests', task, 'starter', solvedSource, harness, {
+      provider: 'wandbox',
+      endpoint: 'https://wandbox.org/api/compile.json',
+      runtimeVersion: 'openjdk-jdk-21+35',
+      authHeaderName: '',
+      authHeaderValue: '',
+      compileTimeoutMs: 20_000,
+      runTimeoutMs: 10_000,
+    });
+    if (!result.ok || result.tests.length < 3) {
+      throw new Error(`Wandbox bundle failed:\n${result.rawOutput}`);
+    }
+    console.log(`Wandbox executed ${result.tests.length} Java 21 assertions successfully.`);
   }
 
   console.log(`Verified ${topics.length} topics, ${tasks.length} tasks, and ${samples.length} compilable Java test bundles.`);

@@ -151,7 +151,9 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
 .task-row { gap: 7px; color: var(--text-muted); padding: 6px 7px; border-left: 1px solid var(--border); font-size: 10.5px; }
 .task-row:hover { color: var(--text); background: var(--surface-2); }
 .task-row.is-active { color: var(--primary); background: var(--primary-bg); border-left-color: var(--primary); }
-.task-row span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.task-row-title { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.task-drill-count { flex: none; display: inline-flex; align-items: center; gap: 3px; padding: 2px 4px; color: var(--warning); background: var(--warning-bg); border: 1px solid color-mix(in srgb, var(--warning) 28%, transparent); border-radius: 3px; font: 700 8px/1 "JetBrains Mono", Consolas, monospace; }
+.task-row.is-active .task-drill-count { color: var(--primary); background: var(--primary-bg); border-color: var(--primary-border); }
 .left-doc-wrap { flex: 1; min-height: 0; display: flex; flex-direction: column; }
 .doc-source-toggle { flex: none; display: flex; gap: 4px; padding: 7px 9px; background: var(--surface-0); border-bottom: 1px solid var(--border-soft); }
 .doc-source-toggle button { border: 1px solid var(--border); background: var(--surface-1); color: var(--text-muted); font-size: 9px; padding: 5px 8px; cursor: pointer; }
@@ -214,6 +216,22 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
 .iteration-picker > span { color: var(--text-faint); font-size: 8px; font-weight: 800; letter-spacing: .08em; }
 .iteration-picker select { max-width: 190px; height: 27px; color: var(--text); background: var(--surface-2); border: 1px solid var(--border); font-size: 9px; padding: 0 24px 0 7px; outline: 0; }
 .editor-toolbar .toolbar-button { margin-left: 5px; }
+.drill-strip { flex: none; min-height: 68px; padding: 8px 10px; display: grid; grid-template-columns: minmax(165px, 1fr) auto; align-items: center; gap: 7px 10px; background: color-mix(in srgb, var(--primary-bg) 54%, var(--surface-1)); border-bottom: 1px solid var(--primary-border); }
+.drill-strip.is-drill { background: color-mix(in srgb, var(--warning-bg) 64%, var(--surface-1)); border-bottom-color: color-mix(in srgb, var(--warning) 36%, var(--border)); }
+.drill-strip-copy { min-width: 0; display: flex; align-items: center; gap: 8px; }
+.drill-strip-icon { width: 28px; height: 28px; flex: none; display: grid; place-items: center; color: var(--primary); border: 1px solid var(--primary-border); background: var(--primary-bg); border-radius: 4px; }
+.is-drill .drill-strip-icon { color: var(--warning); border-color: color-mix(in srgb, var(--warning) 38%, var(--border)); background: var(--warning-bg); }
+.drill-strip-copy > div { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.drill-strip-copy strong { color: var(--text); font-size: 10px; }
+.drill-strip-copy div > span { color: var(--text-muted); font-size: 8.5px; line-height: 1.25; }
+.drill-switcher { display: flex; align-items: center; gap: 3px; }
+.drill-switcher button { height: 27px; min-width: 30px; padding: 0 6px; border: 1px solid var(--border); background: var(--surface-0); color: var(--text-faint); font: 750 8px/1 "JetBrains Mono", Consolas, monospace; cursor: pointer; }
+.drill-switcher button:hover { color: var(--text); border-color: var(--primary-border); }
+.drill-switcher button.is-active { color: #06202b; background: var(--primary); border-color: var(--primary); }
+.is-drill .drill-switcher button.is-active { color: #241703; background: var(--warning); border-color: var(--warning); }
+.drill-path { grid-column: 1 / -1; min-width: 0; height: 28px; padding: 0 7px; display: flex; align-items: center; gap: 6px; border: 1px solid var(--border); background: var(--surface-0); color: var(--text-faint); cursor: pointer; }
+.drill-path:hover { color: var(--primary); border-color: var(--primary-border); }
+.drill-path code { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 8px/1 "JetBrains Mono", Consolas, monospace; text-align: left; }
 .editor-host { flex: 1; min-height: 0; overflow: hidden; background: #0d1117; }
 .editor-host .cm-editor { height: 100%; font: 12px/1.62 "JetBrains Mono", "Cascadia Code", Consolas, monospace; }
 .editor-host .cm-scroller { overflow: auto; }
@@ -290,8 +308,8 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
 .settings-notice strong { color: var(--text); }
 .field-label { margin: 12px 14px; display: flex; flex-direction: column; gap: 5px; }
 .field-label > span { color: var(--text-faint); font-size: 9px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-.field-label input { width: 100%; height: 34px; padding: 0 9px; color: var(--text); background: var(--surface-1); border: 1px solid var(--border); outline: 0; font: 10px/1 "JetBrains Mono", Consolas, monospace; }
-.field-label input:focus { border-color: var(--primary); }
+.field-label input, .field-label select { width: 100%; height: 34px; padding: 0 9px; color: var(--text); background: var(--surface-1); border: 1px solid var(--border); outline: 0; font: 10px/1 "JetBrains Mono", Consolas, monospace; }
+.field-label input:focus, .field-label select:focus { border-color: var(--primary); }
 .field-grid { display: grid; grid-template-columns: 1fr 1fr; }
 .settings-modal > footer { min-height: 58px; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); background: var(--surface-1); }
 .settings-modal > footer a { color: var(--primary); display: flex; align-items: center; gap: 6px; font-size: 9px; text-decoration: none; }
@@ -337,6 +355,9 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
   .iteration-picker select { max-width: 130px; }
   .editor-toolbar .toolbar-button { width: 28px; padding: 0; justify-content: center; font-size: 0; }
   .file-tab { max-width: 42%; padding: 0 7px; }
+  .drill-strip { grid-template-columns: 1fr auto; gap: 7px; }
+  .drill-strip-copy div > span { display: none; }
+  .drill-path { grid-column: 1 / -1; }
   .shortcut-hint { display: none; }
   .field-grid { grid-template-columns: 1fr; }
   .settings-modal > footer { align-items: flex-start; gap: 10px; flex-direction: column; }

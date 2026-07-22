@@ -146,7 +146,7 @@ export default function App() {
       }
     } catch (error: unknown) {
       const message = error instanceof DOMException && error.name === 'TimeoutError'
-        ? 'Execution request timed out before Piston returned a result.'
+        ? 'Execution request timed out before the selected provider returned a result.'
         : error instanceof Error ? error.message : 'Remote execution failed.';
       setRunError(message);
       setStatus('error');

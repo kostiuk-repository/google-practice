@@ -14,8 +14,11 @@ export interface TopicMeta {
 
 export interface Iteration {
   id: string;
+  kind: 'task' | 'drill';
+  order: number;
   label: string;
   fileName: string;
+  sourcePath: string;
   source: string;
 }
 

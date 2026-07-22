@@ -49,10 +49,15 @@ export const preferenceStorage = {
   setTheme(theme: 'dark' | 'light') {
     localStorage.setItem(key('theme'), theme);
   },
-  getRunnerSettings: (): RunnerSettings => ({
-    ...DEFAULT_RUNNER_SETTINGS,
-    ...readJson<Partial<RunnerSettings>>(key('runner'), {}),
-  }),
+  getRunnerSettings: (): RunnerSettings => {
+    const stored = readJson<Partial<RunnerSettings>>(key('runner'), {});
+    const legacyProvider = !stored.provider && stored.endpoint?.includes('piston') ? 'piston' : undefined;
+    return {
+      ...DEFAULT_RUNNER_SETTINGS,
+      ...stored,
+      provider: stored.provider ?? legacyProvider ?? DEFAULT_RUNNER_SETTINGS.provider,
+    };
+  },
   setRunnerSettings(settings: RunnerSettings) {
     writeJson(key('runner'), settings);
   },

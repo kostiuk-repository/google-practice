@@ -5,6 +5,7 @@ import {
   ChevronDown,
   ChevronRight,
   Circle,
+  Dumbbell,
   FileText,
   List,
 } from 'lucide-react';
@@ -95,7 +96,10 @@ export function TopicNavigator({
                           onClick={() => onSelectTask(task.id)}
                         >
                           {completed.has(task.id) ? <CheckCircle2 size={13} className="complete-icon" /> : <Circle size={13} />}
-                          <span>{String(task.order).padStart(2, '0')}. {task.title}</span>
+                          <span className="task-row-title">{String(task.order).padStart(2, '0')}. {task.title}</span>
+                          <span className="task-drill-count" title={`${task.iterations.length - 1} додаткових drill-задач`}>
+                            <Dumbbell size={10} /> {task.iterations.length - 1}
+                          </span>
                         </button>
                       ))}
                     </div>

@@ -2,7 +2,7 @@
 
 ## Інтерактивна web-платформа
 
-У репозиторії є zero-backend тренажер для всіх 20 тем і 320 задач: документація з Mermaid/KaTeX, CodeMirror Java editor, ітерації рішень, запуск тестів через Piston-compatible API та локальне збереження прогресу.
+У репозиторії є zero-backend тренажер для всіх 20 тем: 320 основних задач і 1 600 додаткових дрілів, документація з Mermaid/KaTeX, CodeMirror Java editor, Java 21 runner та локальне збереження прогресу.
 
 ```powershell
 npm install
@@ -10,6 +10,20 @@ npm run dev
 ```
 
 Production-збірка для GitHub Pages: `npm run build`. Деталі архітектури, execution runner-а й deployment: [`docs/platform-architecture.md`](docs/platform-architecture.md).
+
+### Де шукати дріли
+
+Кожна основна задача має рівно 5 коротших дрілів на ту саму техніку. Вони лежать поруч з основним Java-файлом у `src/topicNN_.../practice/`:
+
+```text
+Easy_01_HighestAltitude.java      основна задача
+Easy_01_01_HighestAltitude.java  drill 1
+Easy_01_02_HighestAltitude.java  drill 2
+...
+Easy_01_05_HighestAltitude.java  drill 5
+```
+
+У web-платформі кількість дрілів показана біля кожної задачі. Над редактором є перемикачі **TASK / D1 / D2 / D3 / D4 / D5** і точний repository path активного файлу, який можна скопіювати одним кліком.
 
 ## Навчальний посібник
 
