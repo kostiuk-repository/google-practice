@@ -31,15 +31,39 @@ try {
   }
 
   const runnerBundle = path.join(temporaryRoot, 'runner.mjs');
+  const contractBundle = path.join(temporaryRoot, 'drillContracts.mjs');
   const runnerTypeScript = await readFile(path.join(root, 'src/services/pistonRunner.ts'), 'utf8');
+  const contractTypeScript = await readFile(path.join(root, 'src/services/drillContracts.ts'), 'utf8');
+  const compilerOptions = {
+    module: ts.ModuleKind.ESNext,
+    target: ts.ScriptTarget.ES2022,
+  };
   const runnerJavaScript = ts.transpileModule(runnerTypeScript, {
     compilerOptions: {
       module: ts.ModuleKind.ESNext,
       target: ts.ScriptTarget.ES2022,
     },
-  }).outputText;
-  await writeFile(runnerBundle, runnerJavaScript);
+  }).outputText.replace("'./drillContracts'", "'./drillContracts.mjs'");
+  const contractJavaScript = ts.transpileModule(contractTypeScript, { compilerOptions }).outputText;
+  await Promise.all([
+    writeFile(runnerBundle, runnerJavaScript),
+    writeFile(contractBundle, contractJavaScript),
+  ]);
   const { buildExecutionFiles, runJava } = await import(pathToFileURL(runnerBundle));
+  const { buildDrillExampleContract } = await import(pathToFileURL(contractBundle));
+
+  const coverage = { explicit: 0, generatedExample: 0, compileOnly: 0 };
+  for (const task of tasks) {
+    for (const iteration of task.iterations.filter((candidate) => candidate.kind === 'drill')) {
+      const explicitPattern = new RegExp(`testDrill${String(iteration.order).padStart(2, '0')}(?!\\d)`);
+      if (explicitPattern.test(task.testSource)) coverage.explicit++;
+      else if (buildDrillExampleContract(task, iteration)) coverage.generatedExample++;
+      else coverage.compileOnly++;
+    }
+  }
+  if (Object.values(coverage).reduce((sum, count) => sum + count, 0) !== 1_600) {
+    throw new Error(`Drill coverage audit did not account for all 1,600 drills: ${JSON.stringify(coverage)}`);
+  }
 
   const samples = [topics[0].tasks[0], topics[16].tasks[0]];
   for (const task of samples) {
@@ -51,6 +75,35 @@ try {
     await Promise.all(files.map((file) => writeFile(path.join(sampleRoot, file.name), file.content)));
     const javaFiles = files.map((file) => path.join(sampleRoot, file.name));
     await exec('javac', ['--release', '21', '-d', classesRoot, ...javaFiles], { maxBuffer: 4_000_000 });
+  }
+
+  const drillTask = topics[0].tasks.find((task) => task.baseName === 'Easy_02_PlusOne');
+  const drillIteration = drillTask.iterations.find((iteration) => iteration.id === 'v1');
+  const solvedDrill = drillIteration.source.replace(
+    /\s*\/\/ TODO: Implement your solution here\.\s*return new int\[0\];/,
+    `
+        int carry = 1;
+        int[] result = digits.clone();
+        for (int i = result.length - 1; i >= 0 && carry > 0; i--) {
+            int next = result[i] + carry;
+            result[i] = next % 10;
+            carry = next / 10;
+        }
+        if (carry == 0) return result;
+        int[] expanded = new int[result.length + 1];
+        expanded[0] = carry;
+        System.arraycopy(result, 0, expanded, 1, result.length);
+        return expanded;`,
+  );
+  const contractRoot = path.join(temporaryRoot, 'generated-contract');
+  const contractClasses = path.join(contractRoot, 'classes');
+  await mkdir(contractClasses, { recursive: true });
+  const contractFiles = buildExecutionFiles('tests', drillTask, drillIteration.id, solvedDrill, harness);
+  await Promise.all(contractFiles.map((file) => writeFile(path.join(contractRoot, file.name), file.content)));
+  await exec('javac', ['--release', '21', '-d', contractClasses, ...contractFiles.map((file) => path.join(contractRoot, file.name))], { maxBuffer: 4_000_000 });
+  const contractRun = await exec('java', ['-cp', contractClasses, 'Main'], { maxBuffer: 4_000_000 });
+  if (!contractRun.stdout.includes('@@TEST|PASS|testDrill01_ExampleContract')) {
+    throw new Error(`Generated drill contract did not pass:\n${contractRun.stdout}\n${contractRun.stderr}`);
   }
 
   if (process.argv.includes('--wandbox')) {
@@ -81,7 +134,8 @@ try {
     console.log(`Wandbox executed ${result.tests.length} Java 21 assertions successfully.`);
   }
 
-  console.log(`Verified ${topics.length} topics, ${tasks.length} tasks, and ${samples.length} compilable Java test bundles.`);
+  console.log(`Verified ${topics.length} topics, ${tasks.length} tasks, ${samples.length} Java bundles, and one generated drill contract.`);
+  console.log(`Drill verification coverage: ${coverage.explicit} explicit, ${coverage.generatedExample} generated example contracts, ${coverage.compileOnly} compile-only.`);
 } finally {
   await rm(temporaryRoot, { recursive: true, force: true });
 }

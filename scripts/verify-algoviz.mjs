@@ -3,7 +3,10 @@ import path from 'node:path';
 
 const root = process.cwd();
 const guideRoot = path.join(root, 'docs', 'learning-guide');
-const supportedTypes = new Set(['array', 'two-pointers', 'sliding-window', 'binary-search']);
+const supportedTypes = new Set([
+  'array', 'two-pointers', 'sliding-window', 'binary-search', 'sorting', 'stack', 'queue',
+  'linked-list', 'tree', 'graph', 'heap', 'dp-table', 'recursion-tree', 'thread-timeline',
+]);
 const files = (await readdir(guideRoot)).filter((name) => name.endsWith('.md'));
 let blockCount = 0;
 
@@ -35,6 +38,11 @@ for (const file of files) {
       assert(indexes.every(isIndex) && groups.flat().every(isIndex), `${prefix}: index is outside values.`);
       assert(!step.range || (step.range.length === 2 && step.range.every(isIndex) && step.range[0] <= step.range[1]), `${prefix}: range is invalid.`);
       assert(!step.values || step.values.length === definition.values.length, `${prefix}: step values length changed.`);
+      if (step.prediction) {
+        assert(typeof step.prediction.prompt === 'string', `${prefix}: prediction prompt is required.`);
+        assert(Array.isArray(step.prediction.options) && step.prediction.options.length >= 2, `${prefix}: prediction needs at least two options.`);
+        assert(Number.isInteger(step.prediction.answer) && step.prediction.answer >= 0 && step.prediction.answer < step.prediction.options.length, `${prefix}: prediction answer is invalid.`);
+      }
     });
     blockCount++;
   }

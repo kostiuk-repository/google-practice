@@ -6,12 +6,18 @@
 
 Process має власний address space та ресурси. Threads одного process спільно використовують heap і відкриті ресурси, але кожен має власний call stack та поточну instruction.
 
-```text
-Process JVM
-├─ Heap: shared objects
-├─ Thread A stack: local variables, calls
-├─ Thread B stack: local variables, calls
-└─ Thread C stack: local variables, calls
+```algoviz
+{
+  "type": "thread-timeline",
+  "title": "Життєвий цикл трьох потоків",
+  "values": ["Thread A", "Thread B", "Thread C"],
+  "steps": [
+    {"label": "Після створення потоки перебувають у стані NEW", "states": {"Thread A":"NEW","Thread B":"NEW","Thread C":"NEW"}, "prediction": {"prompt": "Що переводить Thread A з NEW до RUNNABLE?", "options": ["run() напряму", "start()", "sleep()", "join()"], "answer": 1}},
+    {"label": "start() робить Thread A доступним scheduler-у", "states": {"Thread A":"RUNNABLE","Thread B":"NEW","Thread C":"NEW"}},
+    {"label": "Thread B очікує monitor, яким володіє Thread A", "states": {"Thread A":"RUNNABLE","Thread B":"BLOCKED","Thread C":"WAITING"}},
+    {"label": "Після завершення run() Thread A переходить у TERMINATED", "states": {"Thread A":"TERMINATED","Thread B":"RUNNABLE","Thread C":"WAITING"}}
+  ]
+}
 ```
 
 **Concurrency** означає, що кілька tasks перебувають у progress в одному проміжку часу; CPU може швидко перемикатися між ними. **Parallelism** — фактичне одночасне виконання на різних cores. Програма може бути concurrent на одному core без parallel execution.

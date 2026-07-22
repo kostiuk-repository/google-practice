@@ -228,11 +228,59 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
 .algoviz-pointer { transition: opacity .2s ease; }
 .algoviz-pointer path, .algoviz-pointer rect { fill: currentColor; }
 .algoviz-pointer text { fill: #071117; font-size: 8px; font-weight: 900; text-anchor: middle; }
+.structure-edges line { stroke: var(--border); stroke-width: 2; }
+.structure-edges marker path, #algoviz-arrow path, #list-arrow path { fill: var(--text-faint); }
+.structure-node circle { fill: var(--surface-2); stroke: var(--border); stroke-width: 2; transition: fill .3s ease, stroke .3s ease; }
+.structure-node > text:not(.node-index) { fill: var(--text); font-size: 11px; font-weight: 800; text-anchor: middle; dominant-baseline: middle; }
+.structure-node .node-index { fill: var(--text-faint); font-size: 7px; text-anchor: middle; }
+.structure-node.is-active circle { fill: var(--primary-bg); stroke: var(--primary); filter: drop-shadow(0 3px 7px color-mix(in srgb, var(--primary) 28%, transparent)); }
+.structure-node.is-active > text:not(.node-index) { fill: var(--primary); }
+.structure-node.is-visited circle { fill: var(--success-bg); stroke: var(--success); }
+.list-node rect { fill: var(--surface-2); stroke: var(--border); stroke-width: 1.5; }
+.list-node > line:not(.list-link) { stroke: var(--border); }
+.list-node text { fill: var(--text); font-size: 11px; font-weight: 800; text-anchor: middle; }
+.list-node circle { fill: var(--text-faint); }
+.list-node .list-link { stroke: var(--text-faint); stroke-width: 1.5; }
+.list-node.is-active rect { fill: var(--primary-bg); stroke: var(--primary); stroke-width: 2; }
+.list-node.is-active text { fill: var(--primary); }
+.list-node.is-visited rect { fill: var(--success-bg); stroke: var(--success); }
+.list-pointer path { fill: var(--warning); }
+.list-pointer text { fill: var(--warning); font-size: 8px; font-weight: 900; text-anchor: middle; }
+.list-null { fill: var(--text-faint); font-size: 9px; font-style: italic; }
+.dp-cell rect, .stack-cell rect { fill: var(--surface-2); stroke: var(--border); stroke-width: 1.5; }
+.dp-cell > text:not(.dp-index), .stack-cell text { fill: var(--text); font-size: 10px; font-weight: 800; text-anchor: middle; }
+.dp-cell .dp-index { fill: var(--text-faint); font-size: 6px; }
+.dp-cell.is-active rect, .stack-cell.is-active rect { fill: var(--primary-bg); stroke: var(--primary); stroke-width: 2; }
+.dp-cell.is-active > text:not(.dp-index), .stack-cell.is-active text { fill: var(--primary); }
+.dp-cell.is-visited rect, .stack-cell.is-visited rect { fill: var(--success-bg); stroke: var(--success); }
+.stack-label { fill: var(--warning); font-size: 8px; font-weight: 900; text-anchor: middle; letter-spacing: .1em; }
+.stack-base { fill: none; stroke: var(--text-faint); stroke-width: 2; }
+.thread-row line { stroke: var(--border); stroke-width: 2; }
+.thread-row rect { fill: var(--surface-2); stroke: var(--border); }
+.thread-row .thread-name { fill: var(--text); font-size: 9px; font-weight: 800; }
+.thread-row .thread-state { fill: var(--text-muted); font-size: 8px; font-weight: 900; text-anchor: middle; }
+.thread-row.state-runnable rect { fill: var(--success-bg); stroke: var(--success); }
+.thread-row.state-runnable .thread-state { fill: var(--success); }
+.thread-row.state-blocked rect, .thread-row.state-waiting rect { fill: var(--warning-bg); stroke: var(--warning); }
+.thread-row.state-blocked .thread-state, .thread-row.state-waiting .thread-state { fill: var(--warning); }
+.thread-row.state-terminated rect { opacity: .55; }
 .algoviz-narration { min-height: 62px; margin: 0 10px 9px; padding: 9px 10px; display: flex; flex-direction: column; justify-content: center; gap: 5px; border: 1px solid var(--border-soft); border-radius: 5px; background: var(--surface-0); }
 .algoviz-narration > div { display: flex; align-items: baseline; gap: 8px; }
 .algoviz-narration span { flex: none; color: var(--primary); font: 800 7.5px/1 "JetBrains Mono", Consolas, monospace; letter-spacing: .06em; }
 .algoviz-narration strong { color: var(--text); font-size: 10px; line-height: 1.35; }
 .algoviz-narration p { margin: 0; color: var(--text-muted); font-size: 9px; line-height: 1.45; }
+.algoviz-prediction { margin: 0 10px 9px; padding: 9px; border: 1px solid color-mix(in srgb, var(--warning) 45%, var(--border)); border-radius: 5px; background: linear-gradient(120deg, var(--warning-bg), var(--surface-0)); }
+.algoviz-prediction header { display: flex; flex-direction: column; gap: 5px; }
+.algoviz-prediction header span { color: var(--warning); font: 800 7px/1 "JetBrains Mono", Consolas, monospace; letter-spacing: .1em; }
+.algoviz-prediction header strong { color: var(--text); font-size: 9.5px; line-height: 1.4; }
+.prediction-options { margin-top: 8px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
+.prediction-options button { min-height: 31px; padding: 5px 7px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface-1); color: var(--text-muted); font-size: 8.5px; cursor: pointer; }
+.prediction-options button:hover:not(:disabled) { color: var(--warning); border-color: var(--warning); }
+.prediction-options button.is-correct { color: var(--success); border-color: var(--success); background: var(--success-bg); }
+.prediction-options button.is-wrong { color: var(--danger); border-color: var(--danger); background: var(--danger-bg); }
+.prediction-feedback { margin: 8px 0 0; padding: 6px 7px; border-left: 2px solid currentColor; font-size: 8.5px; line-height: 1.45; }
+.prediction-feedback.is-correct { color: var(--success); background: var(--success-bg); }
+.prediction-feedback.is-wrong { color: var(--danger); background: var(--danger-bg); }
 .algoviz-controls { min-height: 43px; padding: 7px 10px; display: flex; align-items: center; gap: 5px; border-top: 1px solid var(--border); background: var(--surface-0); }
 .algoviz-controls button { height: 28px; min-width: 28px; padding: 0 7px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface-2); color: var(--text-muted); cursor: pointer; }
 .algoviz-controls button:hover:not(:disabled) { color: var(--primary); border-color: var(--primary-border); }
@@ -323,15 +371,56 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
 .success-text { color: var(--success); }
 .error-text { color: var(--danger); }
 .test-list { padding: 9px; display: flex; flex-direction: column; gap: 6px; }
-.test-card { min-height: 48px; padding: 8px; display: flex; align-items: flex-start; gap: 8px; border: 1px solid var(--border); background: var(--surface-1); }
+.test-card { min-height: 48px; padding: 8px; display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--border); background: var(--surface-1); }
 .test-card.is-pass { border-left: 2px solid var(--success); }
-.test-card.is-pass > svg { color: var(--success); }
+.test-card.is-pass .test-card-main > svg { color: var(--success); }
 .test-card.is-fail { border-left: 2px solid var(--danger); background: var(--danger-bg); }
-.test-card.is-fail > svg { color: var(--danger); }
-.test-card > div { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.test-card.is-fail .test-card-main > svg { color: var(--danger); }
+.test-card-main { width: 100%; min-width: 0; display: flex; align-items: flex-start; gap: 8px; }
+.test-card-main > div { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .test-card strong { font: 10px/1.4 "JetBrains Mono", Consolas, monospace; overflow: hidden; text-overflow: ellipsis; }
 .test-card span { color: var(--danger); font-size: 9px; margin-top: 3px; word-break: break-word; }
-.test-card > code { color: var(--text-faint); font-size: 8px; white-space: nowrap; }
+.test-card-main > code { color: var(--text-faint); font-size: 8px; white-space: nowrap; }
+.failure-insight { padding: 8px; display: flex; flex-direction: column; gap: 5px; border: 1px solid color-mix(in srgb, var(--danger) 35%, var(--border)); background: color-mix(in srgb, var(--surface-0) 82%, var(--danger-bg)); }
+.failure-insight > span { color: var(--danger); font: 800 7px/1 "JetBrains Mono", Consolas, monospace; letter-spacing: .09em; }
+.failure-insight > strong { color: var(--text); font-family: Inter, sans-serif; }
+.failure-insight p, .failure-insight blockquote { margin: 0; color: var(--text-muted); font-size: 9px; line-height: 1.45; }
+.failure-insight blockquote { padding: 6px 8px; border-left: 2px solid var(--warning); background: var(--warning-bg); color: var(--text); }
+.expected-actual { display: flex; gap: 5px; }
+.expected-actual code { padding: 3px 5px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text-muted); font-size: 8px; }
+.learning-coach { min-height: 100%; padding: 9px; display: flex; flex-direction: column; gap: 9px; background: var(--surface-0); }
+.coach-hero { padding: 11px; position: relative; overflow: hidden; border: 1px solid var(--primary-border); background: linear-gradient(135deg, var(--primary-bg), var(--surface-1)); }
+.coach-hero::after { content: ""; position: absolute; width: 100px; height: 100px; right: -35px; top: -45px; border-radius: 50%; border: 16px solid color-mix(in srgb, var(--primary) 9%, transparent); }
+.coach-hero > span { display: flex; align-items: center; gap: 6px; color: var(--primary); font: 800 7px/1 "JetBrains Mono", Consolas, monospace; letter-spacing: .1em; }
+.coach-hero h3 { max-width: 88%; margin: 8px 0 4px; color: var(--text); font-size: 13px; line-height: 1.3; }
+.coach-hero p { margin: 0 0 8px; color: var(--text-muted); font-size: 9px; }
+.coach-hero code { color: var(--success); font-size: 8px; }
+.coach-grid { display: grid; grid-template-columns: 1fr; gap: 7px; }
+.coach-card { padding: 9px; border: 1px solid var(--border); background: var(--surface-1); }
+.coach-card h4 { margin: 0 0 7px; display: flex; align-items: center; gap: 6px; color: var(--text); font-size: 9px; }
+.coach-card ul { margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; list-style: none; }
+.coach-card li { display: flex; align-items: flex-start; gap: 5px; color: var(--text-muted); font-size: 8.5px; line-height: 1.35; }
+.coach-signals li svg { flex: none; color: var(--success); margin-top: 1px; }
+.coach-avoid h4, .coach-avoid li::before { color: var(--warning); }
+.coach-avoid li::before { content: "×"; font-weight: 900; }
+.coach-hints { border: 1px solid var(--border); background: var(--surface-1); }
+.coach-hints > header { min-height: 34px; padding: 0 9px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
+.coach-hints > header div { display: flex; align-items: center; gap: 6px; color: var(--warning); }
+.coach-hints > header span { font: 800 7px/1 "JetBrains Mono", Consolas, monospace; letter-spacing: .08em; }
+.coach-hints > header code { color: var(--text-faint); font-size: 8px; }
+.coach-hint { margin: 7px; padding: 7px; display: flex; align-items: flex-start; gap: 7px; background: var(--surface-0); border-left: 2px solid var(--warning); }
+.coach-hint > span { width: 18px; height: 18px; flex: none; display: grid; place-items: center; border-radius: 50%; background: var(--warning-bg); color: var(--warning); font: 800 8px/1 "JetBrains Mono", Consolas, monospace; }
+.coach-hint p, .coach-hint-empty { margin: 0; color: var(--text-muted); font-size: 8.5px; line-height: 1.45; }
+.coach-hint-empty { padding: 8px 9px 0; }
+.reveal-hint { margin: 7px; min-height: 30px; width: calc(100% - 14px); display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid color-mix(in srgb, var(--warning) 45%, var(--border)); background: var(--warning-bg); color: var(--warning); font-size: 8px; font-weight: 800; cursor: pointer; }
+.coach-confidence { padding: 9px; border: 1px solid var(--border); background: var(--surface-1); }
+.coach-confidence > div:first-child { display: flex; align-items: flex-start; gap: 6px; color: var(--text-muted); font-size: 8.5px; line-height: 1.4; }
+.coach-confidence > div:first-child svg { flex: none; color: var(--primary); }
+.coach-confidence > div:last-child { margin-top: 8px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.coach-confidence button { min-height: 30px; padding: 4px; border: 1px solid var(--border); background: var(--surface-0); color: var(--text-faint); font-size: 7.5px; cursor: pointer; }
+.coach-confidence button.is-active { color: #06202b; border-color: var(--primary); background: var(--primary); font-weight: 800; }
+.coach-stats { padding: 7px 9px; display: flex; gap: 16px; border-top: 1px solid var(--border); color: var(--text-faint); font-size: 8px; }
+.coach-stats strong { margin-left: 4px; color: var(--text); }
 .empty-state { min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--text-faint); }
 .empty-state strong { color: var(--text-muted); font-size: 11px; margin: 9px 0 3px; }
 .empty-state span { font-size: 9px; }
@@ -361,6 +450,14 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
 .settings-notice { margin: 14px; padding: 10px; display: flex; align-items: flex-start; gap: 9px; color: var(--warning); background: var(--warning-bg); border-left: 2px solid var(--warning); }
 .settings-notice p { margin: 0; color: var(--text-muted); font-size: 10px; line-height: 1.5; }
 .settings-notice strong { color: var(--text); }
+.progress-transfer { margin: 14px; padding: 11px; display: grid; grid-template-columns: 1fr auto; gap: 9px 14px; border: 1px solid var(--primary-border); background: var(--primary-bg); }
+.progress-transfer > div:first-child { min-width: 0; }
+.progress-transfer span { display: block; color: var(--primary); font: 800 7px/1 "JetBrains Mono", Consolas, monospace; letter-spacing: .1em; }
+.progress-transfer strong { display: block; margin-top: 5px; color: var(--text); font-size: 10px; }
+.progress-transfer p { margin: 4px 0 0; color: var(--text-muted); font-size: 8.5px; line-height: 1.4; }
+.progress-transfer > div:nth-child(2) { display: flex; align-items: center; gap: 6px; }
+.progress-transfer button { height: 31px; padding: 0 8px; display: flex; align-items: center; gap: 5px; border: 1px solid var(--primary-border); background: var(--surface-0); color: var(--primary); font-size: 8px; cursor: pointer; }
+.progress-transfer output { grid-column: 1 / -1; color: var(--success); font-size: 8px; }
 .field-label { margin: 12px 14px; display: flex; flex-direction: column; gap: 5px; }
 .field-label > span { color: var(--text-faint); font-size: 9px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
 .field-label input, .field-label select { width: 100%; height: 34px; padding: 0 9px; color: var(--text); background: var(--surface-1); border: 1px solid var(--border); outline: 0; font: 10px/1 "JetBrains Mono", Consolas, monospace; }
@@ -415,8 +512,11 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
   .drill-path { grid-column: 1 / -1; }
   .shortcut-hint { display: none; }
   .field-grid { grid-template-columns: 1fr; }
+  .progress-transfer { grid-template-columns: 1fr; }
+  .progress-transfer > div:nth-child(2) { flex-wrap: wrap; }
   .settings-modal > footer { align-items: flex-start; gap: 10px; flex-direction: column; }
   .algoviz-modal { padding: 48px 8px 8px; }
   .algoviz-narration > div { align-items: flex-start; flex-direction: column; gap: 4px; }
   .algoviz-speed > span { display: none; }
+  .prediction-options { grid-template-columns: 1fr; }
 }

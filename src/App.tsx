@@ -8,8 +8,9 @@ import { TopicNavigator } from './components/TopicNavigator';
 import { WorkspaceLayout } from './components/WorkspaceLayout';
 import { loadCatalog, loadHarness, loadTopic } from './services/catalog';
 import { runJava } from './services/pistonRunner';
-import { codeStorage, preferenceStorage, progressStorage } from './services/storage';
+import { codeStorage, learningStorage, preferenceStorage, progressStorage } from './services/storage';
 import type { CatalogManifest, PracticeTask, TopicContent } from './types/catalog';
+import { EMPTY_LEARNING_RECORD, type LearningRecord } from './types/learning';
 import {
   DEFAULT_RUNNER_SETTINGS,
   type ExecutionResult,
@@ -38,6 +39,7 @@ export default function App() {
   const [status, setStatus] = useState<ExecutionStatus>('idle');
   const [result, setResult] = useState<ExecutionResult | null>(null);
   const [runError, setRunError] = useState('');
+  const [learningRecord, setLearningRecord] = useState<LearningRecord>(EMPTY_LEARNING_RECORD);
   const [appError, setAppError] = useState('');
   const topicCache = useRef(new Map<string, TopicContent>());
 
@@ -91,6 +93,7 @@ export default function App() {
     setResult(null);
     setRunError('');
     setStatus('idle');
+    setLearningRecord(learningStorage.get(task.id, iteration.id));
   }, [task?.id, iteration?.id]);
 
   useEffect(() => {
@@ -130,6 +133,13 @@ export default function App() {
     setRunError('');
     setResult(null);
     setStatus('preparing');
+    if (mode === 'tests') {
+      setLearningRecord((previous) => {
+        const next = { ...previous, attempts: previous.attempts + 1, lastAttemptAt: new Date().toISOString() };
+        learningStorage.set(task.id, iteration.id, next);
+        return next;
+      });
+    }
     try {
       const harness = await loadHarness();
       setStatus('running');
@@ -137,9 +147,14 @@ export default function App() {
       setResult(nextResult);
       setStatus(nextResult.ok ? 'success' : 'error');
       if (mode === 'tests' && nextResult.ok && nextResult.tests.length > 0) {
+        setLearningRecord((previous) => {
+          const next = { ...previous, passed: true };
+          learningStorage.set(task.id, iteration.id, next);
+          return next;
+        });
         setCompleted((previous) => {
           const next = new Set(previous);
-          next.add(task.id);
+          if (iteration.kind === 'task') next.add(task.id);
           progressStorage.setCompleted(next);
           return next;
         });
@@ -158,6 +173,15 @@ export default function App() {
     if (!window.confirm('Видалити локальні зміни цієї ітерації та відновити код із репозиторію?')) return;
     codeStorage.reset(task.id, iteration.id);
     setCode(iteration.source);
+  };
+
+  const updateLearningRecord = (patch: Partial<LearningRecord>) => {
+    if (!task || !iteration) return;
+    setLearningRecord((previous) => {
+      const next = { ...previous, ...patch };
+      learningStorage.set(task.id, iteration.id, next);
+      return next;
+    });
   };
 
   if (appError) {
@@ -211,6 +235,12 @@ export default function App() {
             result={result}
             error={runError}
             isConcurrency={topic.track === 'Concurrency'}
+            topicId={topic.id}
+            taskTitle={task.title}
+            taskDoc={task.doc}
+            learningRecord={learningRecord}
+            onRevealHint={(count) => updateLearningRecord({ hintsRevealed: count })}
+            onConfidenceChange={(confidence) => updateLearningRecord({ confidence })}
             onRun={(mode) => void execute(mode)}
             onOpenSettings={() => setSettingsOpen(true)}
           />

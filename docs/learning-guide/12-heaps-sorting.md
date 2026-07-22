@@ -18,14 +18,31 @@
 
 Min-heap має властивість `parent <= children`. Він часто зберігається в масиві:
 
-```text
-tree:             2
-                /   \
-               5     3
-              / \   /
-             9   7  8
+```algoviz
+{
+  "type": "heap",
+  "title": "Min-heap як binary tree",
+  "values": [2, 5, 3, 9, 7, 8],
+  "steps": [
+    {"label": "Root 2 — найменший елемент heap", "active": [0], "prediction": {"prompt": "Де лежать діти індексу 1?", "options": ["2 і 3", "3 і 4", "4 і 5", "0 і 2"], "answer": 1}},
+    {"label": "Для i=1 діти мають індекси 3 і 4", "active": [1,3,4], "visited": [0]},
+    {"label": "Кожен parent не більший за своїх children", "active": [0,1,2], "visited": [3,4,5]}
+  ]
+}
+```
 
-array: [2,5,3,9,7,8]
+```algoviz
+{
+  "type": "sorting",
+  "title": "Один прохід bubble sort",
+  "values": [5, 2, 4, 1],
+  "steps": [
+    {"label": "Порівнюємо 5 і 2 — вони стоять у неправильному порядку", "compare": [0,1], "prediction": {"prompt": "Який стан буде після swap?", "options": ["[5,2,4,1]", "[2,5,4,1]", "[5,4,2,1]", "[1,2,4,5]"], "answer": 1}},
+    {"label": "Після swap більший елемент 5 рухається вправо", "values": [2,5,4,1], "compare": [1,2]},
+    {"label": "Ще один swap переносить 5 далі", "values": [2,4,5,1], "compare": [2,3]},
+    {"label": "Після проходу 5 гарантовано стоїть у sorted suffix", "values": [2,4,1,5], "active": [3], "visited": [0,1,2]}
+  ]
+}
 ```
 
 Для індексу `i`:

@@ -10,7 +10,21 @@ import {
   X,
 } from 'lucide-react';
 
-type VisualizerKind = 'array' | 'two-pointers' | 'sliding-window' | 'binary-search';
+type VisualizerKind =
+  | 'array'
+  | 'two-pointers'
+  | 'sliding-window'
+  | 'binary-search'
+  | 'sorting'
+  | 'stack'
+  | 'queue'
+  | 'linked-list'
+  | 'tree'
+  | 'graph'
+  | 'heap'
+  | 'dp-table'
+  | 'recursion-tree'
+  | 'thread-timeline';
 type CellValue = string | number;
 
 interface VisualizerStep {
@@ -23,6 +37,13 @@ interface VisualizerStep {
   compare?: number[];
   range?: [number, number];
   values?: CellValue[];
+  prediction?: {
+    prompt: string;
+    options: string[];
+    answer: number;
+    explanation?: string;
+  };
+  states?: Record<string, string>;
 }
 
 interface VisualizerDefinition {
@@ -30,6 +51,9 @@ interface VisualizerDefinition {
   title?: string;
   values: CellValue[];
   steps: VisualizerStep[];
+  edges?: Array<[number, number]>;
+  positions?: Array<[number, number]>;
+  columns?: number;
 }
 
 interface AlgorithmVisualizerProps {
@@ -38,7 +62,10 @@ interface AlgorithmVisualizerProps {
 }
 
 const POINTER_COLORS = ['#38bdf8', '#f59e0b', '#a78bfa', '#34d399'];
-const SUPPORTED_TYPES = new Set<VisualizerKind>(['array', 'two-pointers', 'sliding-window', 'binary-search']);
+const SUPPORTED_TYPES = new Set<VisualizerKind>([
+  'array', 'two-pointers', 'sliding-window', 'binary-search', 'sorting', 'stack', 'queue',
+  'linked-list', 'tree', 'graph', 'heap', 'dp-table', 'recursion-tree', 'thread-timeline',
+]);
 
 function isIndex(value: unknown, length: number): value is number {
   return Number.isInteger(value) && Number(value) >= 0 && Number(value) < length;
@@ -48,7 +75,7 @@ function parseDefinition(source: string): VisualizerDefinition {
   const raw = JSON.parse(source) as Partial<VisualizerDefinition>;
   if (!raw || typeof raw !== 'object') throw new Error('Visualization must be a JSON object.');
   if (!raw.type || !SUPPORTED_TYPES.has(raw.type)) {
-    throw new Error('Supported types: array, two-pointers, sliding-window, binary-search.');
+    throw new Error(`Unsupported visualization type: ${raw.type ?? 'missing'}.`);
   }
   if (!Array.isArray(raw.values) || raw.values.length === 0) {
     throw new Error('Field "values" must be a non-empty array.');
@@ -77,10 +104,38 @@ function parseDefinition(source: string): VisualizerDefinition {
     if (step.values && step.values.length !== length) {
       throw new Error(`Step ${index + 1} must keep the same number of values.`);
     }
+    if (step.prediction && (
+      typeof step.prediction.prompt !== 'string'
+      || !Array.isArray(step.prediction.options)
+      || step.prediction.options.length < 2
+      || !Number.isInteger(step.prediction.answer)
+      || step.prediction.answer < 0
+      || step.prediction.answer >= step.prediction.options.length
+    )) {
+      throw new Error(`Step ${index + 1} contains an invalid prediction question.`);
+    }
     return step;
   });
 
-  return { type: raw.type, title: raw.title, values: raw.values, steps };
+  if (raw.edges && (!Array.isArray(raw.edges) || raw.edges.some((edge) => !Array.isArray(edge) || edge.length !== 2 || edge.some((value) => !isIndex(value, length))))) {
+    throw new Error('Every edge must contain two valid value indices.');
+  }
+  if (raw.positions && (!Array.isArray(raw.positions) || raw.positions.length !== length || raw.positions.some((position) => !Array.isArray(position) || position.length !== 2))) {
+    throw new Error('"positions" must contain one [x,y] pair per value.');
+  }
+  if (raw.columns !== undefined && (!Number.isInteger(raw.columns) || raw.columns < 1 || raw.columns > length)) {
+    throw new Error('"columns" must be a positive integer no larger than values.length.');
+  }
+
+  return {
+    type: raw.type,
+    title: raw.title,
+    values: raw.values,
+    steps,
+    edges: raw.edges,
+    positions: raw.positions,
+    columns: raw.columns,
+  };
 }
 
 function pointerMap(step: VisualizerStep) {
@@ -108,11 +163,112 @@ function useMotionPreference() {
   return reduced;
 }
 
+function structurePositions(definition: VisualizerDefinition, width: number, height: number) {
+  if (definition.positions) {
+    return definition.positions.map(([x, y]) => ({ x: x * width, y: y * height }));
+  }
+  if (definition.type === 'graph') {
+    const radius = Math.min(width, height) * .34;
+    return definition.values.map((_, index) => {
+      const angle = -Math.PI / 2 + (Math.PI * 2 * index) / definition.values.length;
+      return { x: width / 2 + Math.cos(angle) * radius, y: height / 2 + Math.sin(angle) * radius };
+    });
+  }
+  return definition.values.map((_, index) => {
+    const level = Math.floor(Math.log2(index + 1));
+    const first = 2 ** level - 1;
+    const position = index - first;
+    const count = 2 ** level;
+    return { x: ((position + 1) * width) / (count + 1), y: 34 + level * 64 };
+  });
+}
+
+function StructureScene({ definition, step }: { definition: VisualizerDefinition; step: VisualizerStep }) {
+  const width = 520;
+  const height = Math.max(210, 70 + Math.ceil(Math.log2(definition.values.length + 1)) * 64);
+  const positions = structurePositions(definition, width, height);
+  const active = new Set([...(step.active ?? []), ...(step.compare ?? [])]);
+  const visited = new Set(step.visited ?? []);
+  const edges = definition.edges ?? definition.values.flatMap((_, index) => {
+    const children: Array<[number, number]> = [];
+    if (index * 2 + 1 < definition.values.length) children.push([index, index * 2 + 1]);
+    if (index * 2 + 2 < definition.values.length) children.push([index, index * 2 + 2]);
+    return children;
+  });
+  return (
+    <div className="algoviz-scroll">
+      <svg className="algoviz-svg algoviz-structure" viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="img" aria-label={`${definition.type}: ${step.label}`}>
+        <defs><marker id="algoviz-arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" /></marker></defs>
+        <g className="structure-edges">{edges.map(([from, to], index) => <line key={`${from}-${to}-${index}`} x1={positions[from].x} y1={positions[from].y} x2={positions[to].x} y2={positions[to].y} markerEnd={definition.type === 'linked-list' ? 'url(#algoviz-arrow)' : undefined} />)}</g>
+        {definition.values.map((value, index) => {
+          const state = active.has(index) ? 'active' : visited.has(index) ? 'visited' : 'idle';
+          return <g key={index} className={`structure-node is-${state}`} transform={`translate(${positions[index].x},${positions[index].y})`}><circle r={22} /><text>{value}</text><text className="node-index" y={34}>{index}</text></g>;
+        })}
+      </svg>
+    </div>
+  );
+}
+
+function LinkedListScene({ definition, step }: { definition: VisualizerDefinition; step: VisualizerStep }) {
+  const width = Math.max(420, definition.values.length * 92 + 40);
+  const active = new Set([...(step.active ?? []), ...(step.compare ?? []), ...Object.values(pointerMap(step))]);
+  const visited = new Set(step.visited ?? []);
+  return (
+    <div className="algoviz-scroll">
+      <svg className="algoviz-svg algoviz-list" viewBox={`0 0 ${width} 180`} width={width} height={180} role="img" aria-label={`Linked list: ${step.label}`}>
+        <defs><marker id="list-arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" /></marker></defs>
+        {definition.values.map((value, index) => {
+          const nodeX = 42 + index * 92;
+          const state = active.has(index) ? 'active' : visited.has(index) ? 'visited' : 'idle';
+          return <g key={index} className={`list-node is-${state}`} transform={`translate(${nodeX},52)`}><rect width={60} height={48} rx={7} /><line x1={42} y1={0} x2={42} y2={48} /><text x={21} y={29}>{value}</text><circle cx={49} cy={24} r={3} />{index < definition.values.length - 1 && <line className="list-link" x1={52} y1={24} x2={86} y2={24} markerEnd="url(#list-arrow)" />}</g>;
+        })}
+        {Object.entries(pointerMap(step)).map(([name, index], pointerIndex) => <g key={name} className="list-pointer" transform={`translate(${72 + index * 92},${116 + pointerIndex * 22})`}><path d="M0,-13 L-5,-4 L5,-4 Z" /><text y={10}>{name}</text></g>)}
+        <text className="list-null" x={definition.values.length * 92 + 3} y={81}>null</text>
+      </svg>
+    </div>
+  );
+}
+
+function DpTableScene({ definition, step }: { definition: VisualizerDefinition; step: VisualizerStep }) {
+  const columns = definition.columns ?? Math.ceil(Math.sqrt(definition.values.length));
+  const rows = Math.ceil(definition.values.length / columns);
+  const width = Math.max(360, columns * 64 + 40);
+  const height = rows * 50 + 38;
+  const active = new Set([...(step.active ?? []), ...(step.compare ?? [])]);
+  const visited = new Set(step.visited ?? []);
+  return <div className="algoviz-scroll"><svg className="algoviz-svg algoviz-dp" viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="img" aria-label={`DP table: ${step.label}`}>{definition.values.map((value, index) => {
+    const x = 20 + (index % columns) * 64;
+    const y = 18 + Math.floor(index / columns) * 50;
+    const state = active.has(index) ? 'active' : visited.has(index) ? 'visited' : 'idle';
+    return <g key={index} className={`dp-cell is-${state}`} transform={`translate(${x},${y})`}><rect width={56} height={40} rx={4} /><text x={28} y={25}>{value}</text><text className="dp-index" x={4} y={10}>{Math.floor(index / columns)},{index % columns}</text></g>;
+  })}</svg></div>;
+}
+
+function ThreadTimelineScene({ definition, step }: { definition: VisualizerDefinition; step: VisualizerStep }) {
+  const width = 520;
+  const height = definition.values.length * 52 + 28;
+  return <div className="algoviz-scroll"><svg className="algoviz-svg algoviz-threads" viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="img" aria-label={`Thread states: ${step.label}`}>{definition.values.map((thread, index) => {
+    const state = step.states?.[String(thread)] ?? 'NEW';
+    return <g key={index} className={`thread-row state-${state.toLowerCase()}`} transform={`translate(18,${14 + index * 52})`}><text className="thread-name" y={24}>{thread}</text><line x1={110} x2={490} y1={20} y2={20} /><rect x={125} y={4} width={118} height={32} rx={16} /><text className="thread-state" x={184} y={24}>{state}</text></g>;
+  })}</svg></div>;
+}
+
+function StackScene({ definition, step }: { definition: VisualizerDefinition; step: VisualizerStep }) {
+  const active = new Set([...(step.active ?? []), ...(step.compare ?? [])]);
+  const height = Math.max(210, definition.values.length * 43 + 48);
+  return <div className="algoviz-scroll"><svg className="algoviz-svg algoviz-stack" viewBox={`0 0 360 ${height}`} width={360} height={height} role="img" aria-label={`Stack: ${step.label}`}><text className="stack-label" x={180} y={20}>TOP</text>{definition.values.map((value, index) => {
+    const y = height - 44 - index * 43;
+    const state = active.has(index) ? 'active' : (step.visited ?? []).includes(index) ? 'visited' : 'idle';
+    return <g key={index} className={`stack-cell is-${state}`} transform={`translate(120,${y})`}><rect width={120} height={36} rx={4} /><text x={60} y={23}>{value}</text></g>;
+  })}<path className="stack-base" d={`M105 ${height - 5} H255`} /></svg></div>;
+}
+
 function VisualizerCanvas({ definition, expanded }: { definition: VisualizerDefinition; expanded: boolean }) {
   const [stepIndex, setStepIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(1);
   const [progress, setProgress] = useState(1);
+  const [answers, setAnswers] = useState<Record<number, number>>({});
   const previousStepRef = useRef(0);
   const reducedMotion = useMotionPreference();
   const titleId = useId();
@@ -151,13 +307,17 @@ function VisualizerCanvas({ definition, expanded }: { definition: VisualizerDefi
 
   useEffect(() => {
     if (!playing) return;
+    if (step.prediction && answers[stepIndex] === undefined) {
+      setPlaying(false);
+      return;
+    }
     if (stepIndex >= definition.steps.length - 1) {
       setPlaying(false);
       return;
     }
     const timeout = window.setTimeout(() => setStepIndex((current) => current + 1), 1_250 / speed);
     return () => window.clearTimeout(timeout);
-  }, [playing, stepIndex, speed, definition.steps.length]);
+  }, [playing, stepIndex, speed, definition.steps.length, step.prediction, answers]);
 
   const goTo = (next: number) => {
     previousStepRef.current = stepIndex;
@@ -165,6 +325,7 @@ function VisualizerCanvas({ definition, expanded }: { definition: VisualizerDefi
   };
   const reset = () => {
     setPlaying(false);
+    setAnswers({});
     goTo(0);
   };
 
@@ -182,11 +343,19 @@ function VisualizerCanvas({ definition, expanded }: { definition: VisualizerDefi
   const previousRangeEnd = previousRange ? (x(previousRange[1]) ?? 0) + x.bandwidth() : targetRangeEnd;
   const rangeX = interpolateNumber(previousRangeX, targetRangeX)(progress);
   const rangeEnd = interpolateNumber(previousRangeEnd, targetRangeEnd)(progress);
+  const predictionAnswer = answers[stepIndex];
+  const canAdvance = !step.prediction || predictionAnswer !== undefined;
 
   return (
     <div className="algoviz-body">
       <div className="algoviz-stage" role="group" aria-label="Animated algorithm state">
-        <div className="algoviz-scroll">
+        {definition.type === 'linked-list' ? <LinkedListScene definition={definition} step={step} />
+          : definition.type === 'stack' ? <StackScene definition={definition} step={step} />
+          : definition.type === 'dp-table' ? <DpTableScene definition={definition} step={step} />
+          : definition.type === 'thread-timeline' ? <ThreadTimelineScene definition={definition} step={step} />
+          : ['tree', 'graph', 'heap', 'recursion-tree'].includes(definition.type)
+            ? <StructureScene definition={definition} step={step} />
+            : <div className="algoviz-scroll">
           <svg
             className="algoviz-svg"
             viewBox={`0 0 ${width} ${height}`}
@@ -236,7 +405,7 @@ function VisualizerCanvas({ definition, expanded }: { definition: VisualizerDefi
               );
             })}
           </svg>
-        </div>
+        </div>}
       </div>
 
       <div className="algoviz-narration" aria-live="polite">
@@ -244,16 +413,39 @@ function VisualizerCanvas({ definition, expanded }: { definition: VisualizerDefi
         {step.note && <p>{step.note}</p>}
       </div>
 
+      {step.prediction && (
+        <section className="algoviz-prediction">
+          <header><span>PREDICT BEFORE REVEAL</span><strong>{step.prediction.prompt}</strong></header>
+          <div className="prediction-options">
+            {step.prediction.options.map((option, index) => {
+              const answered = predictionAnswer !== undefined;
+              const correct = index === step.prediction!.answer;
+              const selected = predictionAnswer === index;
+              const className = answered && correct ? 'is-correct' : answered && selected ? 'is-wrong' : '';
+              return <button key={option} className={className} disabled={answered} onClick={() => setAnswers((current) => ({ ...current, [stepIndex]: index }))}>{option}</button>;
+            })}
+          </div>
+          {predictionAnswer !== undefined && (
+            <p className={predictionAnswer === step.prediction.answer ? 'prediction-feedback is-correct' : 'prediction-feedback is-wrong'}>
+              {predictionAnswer === step.prediction.answer ? 'Правильно. ' : 'Не зовсім. '}
+              {step.prediction.explanation ?? 'Тепер відкрийте наступний крок і порівняйте зміну стану зі своїм прогнозом.'}
+            </p>
+          )}
+        </section>
+      )}
+
       <div className="algoviz-controls">
         <button onClick={reset} title="Повернутися до першого кроку" aria-label="Reset visualization"><RotateCcw size={14} /></button>
         <button onClick={() => goTo(stepIndex - 1)} disabled={stepIndex === 0} title="Попередній крок" aria-label="Previous step"><ChevronLeft size={16} /></button>
         <button className="algoviz-play" onClick={() => {
           if (stepIndex === definition.steps.length - 1) goTo(0);
           setPlaying((value) => !value);
-        }} aria-label={playing ? 'Pause animation' : 'Play animation'}>
+        }} disabled={!canAdvance && stepIndex < definition.steps.length - 1}
+        title={!canAdvance ? 'Спочатку зробіть прогноз' : undefined}
+        aria-label={playing ? 'Pause animation' : 'Play animation'}>
           {playing ? <Pause size={14} /> : <Play size={14} />}{playing ? 'Pause' : 'Play'}
         </button>
-        <button onClick={() => goTo(stepIndex + 1)} disabled={stepIndex === definition.steps.length - 1} title="Наступний крок" aria-label="Next step"><ChevronRight size={16} /></button>
+        <button onClick={() => goTo(stepIndex + 1)} disabled={stepIndex === definition.steps.length - 1 || !canAdvance} title={canAdvance ? 'Наступний крок' : 'Спочатку зробіть прогноз'} aria-label="Next step"><ChevronRight size={16} /></button>
         <label className="algoviz-speed">
           <span>Speed</span>
           <select value={speed} onChange={(event) => setSpeed(Number(event.target.value))}>

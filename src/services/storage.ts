@@ -1,4 +1,5 @@
 import { DEFAULT_RUNNER_SETTINGS, type RunnerSettings } from '../types/runner';
+import { EMPTY_LEARNING_RECORD, type LearningRecord } from '../types/learning';
 
 const PREFIX = 'java-lab:v1';
 const key = (suffix: string) => `${PREFIX}:${suffix}`;
@@ -40,6 +41,48 @@ export const progressStorage = {
   getCompleted: () => new Set(readJson<string[]>(key('completed'), [])),
   setCompleted(completed: Set<string>) {
     writeJson(key('completed'), [...completed]);
+  },
+};
+
+export const learningStorage = {
+  get(taskId: string, iterationId: string): LearningRecord {
+    return {
+      ...EMPTY_LEARNING_RECORD,
+      ...readJson<Partial<LearningRecord>>(key(`learning:${taskId}:${iterationId}`), {}),
+    };
+  },
+  set(taskId: string, iterationId: string, record: LearningRecord) {
+    writeJson(key(`learning:${taskId}:${iterationId}`), record);
+  },
+};
+
+export interface WorkspaceSnapshot {
+  schemaVersion: 1;
+  exportedAt: string;
+  entries: Record<string, string>;
+}
+
+export const workspaceStorage = {
+  exportSnapshot(): WorkspaceSnapshot {
+    const entries: Record<string, string> = {};
+    for (let index = 0; index < localStorage.length; index++) {
+      const storageKey = localStorage.key(index);
+      if (!storageKey?.startsWith(`${PREFIX}:`) || storageKey === key('runner')) continue;
+      const value = localStorage.getItem(storageKey);
+      if (value !== null) entries[storageKey] = value;
+    }
+    return { schemaVersion: 1, exportedAt: new Date().toISOString(), entries };
+  },
+  importSnapshot(snapshot: WorkspaceSnapshot) {
+    if (snapshot.schemaVersion !== 1 || !snapshot.entries || typeof snapshot.entries !== 'object') {
+      throw new Error('Unsupported or invalid progress file.');
+    }
+    const serializedSize = JSON.stringify(snapshot).length;
+    if (serializedSize > 5_000_000) throw new Error('Progress file is larger than 5 MB.');
+    Object.entries(snapshot.entries).forEach(([storageKey, value]) => {
+      if (!storageKey.startsWith(`${PREFIX}:`) || storageKey === key('runner') || typeof value !== 'string') return;
+      localStorage.setItem(storageKey, value);
+    });
   },
 };
 

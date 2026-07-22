@@ -25,6 +25,21 @@
 У якому порядку пройти курси? → topological sort
 ```
 
+```algoviz
+{
+  "type": "graph",
+  "title": "Dijkstra: minimum-distance frontier",
+  "values": ["A", "B", "C", "D"],
+  "edges": [[0,1],[0,2],[1,3],[2,3]],
+  "positions": [[0.16,0.5],[0.46,0.18],[0.46,0.82],[0.82,0.5]],
+  "steps": [
+    {"label": "Distance(A)=0, усі інші distances нескінченні", "active": [0]},
+    {"label": "Relax edges A→B і A→C та додаємо candidates у min-heap", "active": [1,2], "visited": [0], "prediction": {"prompt": "Яку вершину Dijkstra бере наступною?", "options": ["Будь-яку", "З найменшим tentative distance", "З найбільшим degree", "Останню додану"], "answer": 1}},
+    {"label": "Найближча candidate стає finalized; stale heap entries пропускаються", "active": [1], "visited": [0]}
+  ]
+}
+```
+
 ## 2. Degree та локальні властивості
 
 Не всі graph tasks потребують складного обходу.

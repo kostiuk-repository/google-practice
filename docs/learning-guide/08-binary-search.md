@@ -37,7 +37,13 @@ predicate: F F F F T T T T
       "note": "5 < 7, тому mid і всю ліву половину можна відкинути.",
       "pointers": {"lo": 0, "mid": 2, "hi": 4},
       "compare": [2],
-      "range": [0, 4]
+      "range": [0, 4],
+      "prediction": {
+        "prompt": "a[mid]=5 < target=7. Яка нова ліва межа?",
+        "options": ["lo = mid", "lo = mid + 1", "lo = 0", "hi = mid - 1"],
+        "answer": 1,
+        "explanation": "mid уже перевірено й він замалий, тому відкидаємо його разом з усією лівою половиною."
+      }
     },
     {
       "label": "Нова область [3,4], mid=3 і a[mid]=7",

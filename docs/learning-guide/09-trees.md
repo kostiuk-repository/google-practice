@@ -6,12 +6,17 @@
 
 Бінарне дерево складається з вузлів, у кожного не більше двох дітей:
 
-```text
-            8          ← root, depth 0
-          /   \
-         3     10      ← depth 1
-        / \      \
-       1   6      14   ← leaves: 1,6,14
+```algoviz
+{
+  "type": "tree",
+  "title": "Root, children, depth і leaves",
+  "values": [8, 3, 10, 1, 6, 14],
+  "steps": [
+    {"label": "Root 8 має depth 0", "active": [0], "prediction": {"prompt": "Які вузли мають depth 1?", "options": ["1 і 6", "3 і 10", "8 і 14", "Лише 3"], "answer": 1}},
+    {"label": "Вузли 3 і 10 — діти root на depth 1", "active": [1, 2], "visited": [0]},
+    {"label": "1, 6 і 14 не мають дітей, тому це leaves", "active": [3, 4, 5], "visited": [0, 1, 2]}
+  ]
+}
 ```
 
 - **root** — вузол без батька;

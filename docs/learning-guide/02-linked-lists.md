@@ -15,11 +15,22 @@ class ListNode {
 
 Змінна `head` не містить увесь список. Вона містить посилання лише на перший вузол, а вже з нього можна перейти до другого, третього тощо.
 
-```text
-head
- │
- ▼
-[10 | •] ──► [20 | •] ──► [30 | null]
+```algoviz
+{
+  "type": "linked-list",
+  "title": "Посилання head і рух current",
+  "values": [10, 20, 30],
+  "steps": [
+    {
+      "label": "head і current посилаються на перший вузол",
+      "note": "Змінна зберігає адресу одного вузла, а не весь список.",
+      "pointers": {"head": 0, "current": 0},
+      "prediction": {"prompt": "Куди перейде current після current = current.next?", "options": ["До 10", "До 20", "До 30", "До null"], "answer": 1}
+    },
+    {"label": "current перейшов за next до вузла 20", "pointers": {"head": 0, "current": 1}, "visited": [0]},
+    {"label": "Ще один next приводить current до вузла 30", "pointers": {"head": 0, "current": 2}, "visited": [0, 1]}
+  ]
+}
 ```
 
 Три базові запитання перед будь-якою зміною:

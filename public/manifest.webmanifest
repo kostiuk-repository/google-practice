@@ -1,0 +1,19 @@
+{
+  "name": "Java Lab · DSA & Concurrency",
+  "short_name": "Java Lab",
+  "description": "Java 21 DSA та Concurrency — інтерактивний навчальний тренажер",
+  "lang": "uk",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b1014",
+  "theme_color": "#0b1014",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

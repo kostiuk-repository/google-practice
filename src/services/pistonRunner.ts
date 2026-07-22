@@ -5,6 +5,7 @@ import type {
   RunnerSettings,
   TestResult,
 } from '../types/runner';
+import { buildDrillExampleContract } from './drillContracts';
 
 interface PistonStage {
   stdout?: string;
@@ -70,6 +71,8 @@ public final class Assertions {
   public static void assertEquals(double expected, double actual, double delta) { if (Math.abs(expected - actual) > delta) throw error(null, expected, actual); }
   public static void assertArrayEquals(int[] expected, int[] actual) { if (!Arrays.equals(expected, actual)) throw error(null, Arrays.toString(expected), Arrays.toString(actual)); }
   public static void assertArrayEquals(long[] expected, long[] actual) { if (!Arrays.equals(expected, actual)) throw error(null, Arrays.toString(expected), Arrays.toString(actual)); }
+  public static void assertArrayEquals(boolean[] expected, boolean[] actual) { if (!Arrays.equals(expected, actual)) throw error(null, Arrays.toString(expected), Arrays.toString(actual)); }
+  public static void assertArrayEquals(double[] expected, double[] actual) { if (!Arrays.equals(expected, actual)) throw error(null, Arrays.toString(expected), Arrays.toString(actual)); }
   public static void assertArrayEquals(char[] expected, char[] actual) { if (!Arrays.equals(expected, actual)) throw error(null, Arrays.toString(expected), Arrays.toString(actual)); }
   public static void assertArrayEquals(Object[] expected, Object[] actual) { if (!Arrays.deepEquals(expected, actual)) throw error(null, Arrays.deepToString(expected), Arrays.deepToString(actual)); }
   public static <T extends Throwable> T assertThrows(Class<T> type, Executable executable) {
@@ -125,7 +128,7 @@ public class ${entryClassName} {
       }
     }
     if (selected == 0) {
-      System.out.println("@@TEST|FAIL|embedded-test-coverage|0|No embedded assertion targets this drill iteration; compilation still succeeded.");
+      System.out.println("@@TEST|FAIL|embedded-test-coverage|0|No embedded assertion targets this drill iteration. Compilation succeeded, but correctness was not verified and progress was not marked complete.");
       failed++;
     }
     System.out.println("@@SUMMARY|" + passed + "|" + failed);
@@ -156,7 +159,15 @@ export function buildExecutionFiles(
     ?? task.iterations[0];
   const selectedClassName = selectedIteration.fileName.replace(/\.java$/, '');
   const qualifiedSolution = `${task.packageName}.${selectedClassName}`;
-  const testClass = `${task.packageName}.${task.baseName}Test`;
+  const explicitDrillPattern = new RegExp(`testDrill${String(selectedIteration.order).padStart(2, '0')}(?!\\d)`);
+  const hasExplicitDrillContract = selectedIteration.kind === 'drill' && explicitDrillPattern.test(task.testSource);
+  const generatedDrillContract = selectedIteration.kind === 'drill' && !hasExplicitDrillContract
+    ? buildDrillExampleContract(task, selectedIteration)
+    : null;
+  const generatedTestClass = generatedDrillContract?.name.replace(/\.java$/, '');
+  const testClass = generatedTestClass
+    ? `${task.packageName}.${generatedTestClass}`
+    : `${task.packageName}.${task.baseName}Test`;
   const files: SourceFile[] = [{
     name: `${entryClassName}.java`,
     content: mode === 'tests'
@@ -183,6 +194,7 @@ export function buildExecutionFiles(
     if (harness.practiceAssertions && task.testSource.includes('PracticeAssertions')) {
       files.push({ name: 'PracticeAssertions.java', content: harness.practiceAssertions });
     }
+    if (generatedDrillContract) files.push(generatedDrillContract);
   }
   return files;
 }

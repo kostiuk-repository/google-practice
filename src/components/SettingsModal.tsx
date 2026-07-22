@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import { ExternalLink, Server, ShieldAlert, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Download, ExternalLink, Server, ShieldAlert, Upload, X } from 'lucide-react';
 import { RUNNER_PRESETS, type ExecutionProvider, type RunnerSettings } from '../types/runner';
+import { workspaceStorage, type WorkspaceSnapshot } from '../services/storage';
 
 interface SettingsModalProps {
   open: boolean;
@@ -11,11 +12,36 @@ interface SettingsModalProps {
 
 export function SettingsModal({ open, settings, onClose, onSave }: SettingsModalProps) {
   const [draft, setDraft] = useState(settings);
+  const [transferMessage, setTransferMessage] = useState('');
+  const importRef = useRef<HTMLInputElement>(null);
   useEffect(() => setDraft(settings), [settings, open]);
   if (!open) return null;
 
   const selectProvider = (provider: ExecutionProvider) => {
     setDraft({ ...draft, provider, ...RUNNER_PRESETS[provider] });
+  };
+
+  const exportProgress = () => {
+    const snapshot = workspaceStorage.exportSnapshot();
+    const blob = new Blob([JSON.stringify(snapshot, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = `google-practice-progress-${snapshot.exportedAt.slice(0, 10)}.json`;
+    anchor.click();
+    URL.revokeObjectURL(url);
+    setTransferMessage(`Exported ${Object.keys(snapshot.entries).length} local records. Runner token was excluded.`);
+  };
+
+  const importProgress = async (file: File) => {
+    try {
+      const snapshot = JSON.parse(await file.text()) as WorkspaceSnapshot;
+      if (!window.confirm('Об’єднати прогрес і чернетки з цього файлу з поточними даними та перезавантажити застосунок?')) return;
+      workspaceStorage.importSnapshot(snapshot);
+      window.location.reload();
+    } catch (error) {
+      setTransferMessage(error instanceof Error ? error.message : 'Could not import progress file.');
+    }
   };
 
   return (
@@ -74,6 +100,20 @@ export function SettingsModal({ open, settings, onClose, onSave }: SettingsModal
             <input type="number" min="1000" max="60000" value={draft.runTimeoutMs} onChange={(event) => setDraft({ ...draft, runTimeoutMs: Number(event.target.value) })} />
           </label>
         </div>
+
+        <section className="progress-transfer">
+          <div><span>LOCAL WORKSPACE</span><strong>Backup progress & code</strong><p>Перенесіть чернетки, завершені задачі, hints і confidence між браузерами. Runner credentials ніколи не експортуються.</p></div>
+          <div>
+            <button onClick={exportProgress}><Download size={14} /> Export JSON</button>
+            <button onClick={() => importRef.current?.click()}><Upload size={14} /> Import JSON</button>
+            <input ref={importRef} type="file" accept="application/json,.json" hidden onChange={(event) => {
+              const file = event.target.files?.[0];
+              if (file) void importProgress(file);
+              event.target.value = '';
+            }} />
+          </div>
+          {transferMessage && <output>{transferMessage}</output>}
+        </section>
 
         <footer>
           <a href={draft.provider === 'wandbox' ? 'https://github.com/melpon/wandbox' : 'https://github.com/engineer-man/piston#public-api'} target="_blank" rel="noreferrer"><ExternalLink size={14} /> {draft.provider === 'wandbox' ? 'Wandbox project' : 'Piston API docs'}</a>

@@ -6,14 +6,19 @@
 
 Кожен виклик функції отримує власний stack frame: параметри, локальні змінні й адресу повернення. Наприклад `factorial(4)`:
 
-```text
-factorial(4) чекає 4 * factorial(3)
-  factorial(3) чекає 3 * factorial(2)
-    factorial(2) чекає 2 * factorial(1)
-      factorial(1) повертає 1
-    повертається 2
-  повертається 6
-повертається 24
+```algoviz
+{
+  "type": "recursion-tree",
+  "title": "Stack frames для factorial(4)",
+  "values": ["f(4)", "f(3)", "f(2)", "f(1)"],
+  "edges": [[0,1],[1,2],[2,3]],
+  "positions": [[0.5,0.10],[0.5,0.34],[0.5,0.58],[0.5,0.82]],
+  "steps": [
+    {"label": "factorial(4) створює frame і викликає factorial(3)", "active": [0,1]},
+    {"label": "Виклики заглиблюються, доки аргумент не досягне base case", "active": [2,3], "visited": [0,1], "prediction": {"prompt": "Що має зробити factorial(1)?", "options": ["Викликати f(0)", "Повернути 1", "Повернути 0", "Кинути exception"], "answer": 1}},
+    {"label": "Base case повертає 1, після чого frames розгортаються назад", "active": [3], "visited": [0,1,2]}
+  ]
+}
 ```
 
 Коректна recursion потребує:
