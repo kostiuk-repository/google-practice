@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "generate:content": "node scripts/generate-catalog.mjs",
+    "refresh:java-api": "node scripts/generate-java21-api.mjs",
     "predev": "npm run generate:content",
     "dev": "vite",
     "prebuild": "npm run generate:content",
@@ -13,8 +14,9 @@
     "typecheck": "tsc -b --pretty false",
     "test": "vitest run",
     "test:watch": "vitest",
-    "verify": "npm run verify:algoviz && npm run typecheck && npm test && npm run verify:runner && npm run build",
+    "verify": "npm run verify:algoviz && npm run verify:java-api && npm run typecheck && npm test && npm run verify:runner && npm run build",
     "verify:algoviz": "node scripts/verify-algoviz.mjs",
+    "verify:java-api": "node scripts/verify-java-api.mjs",
     "verify:runner": "npm run generate:content && node scripts/verify-runner.mjs",
     "verify:wandbox": "npm run generate:content && node scripts/verify-runner.mjs --wandbox"
   },
@@ -28,6 +30,7 @@
     "@codemirror/state": "^6.5.2",
     "@codemirror/theme-one-dark": "^6.1.3",
     "@codemirror/view": "^6.38.6",
+    "@lezer/highlight": "^1.2.3",
     "codemirror": "^6.0.2",
     "d3": "^7.9.0",
     "katex": "^0.16.22",

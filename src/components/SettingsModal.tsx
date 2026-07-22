@@ -1,20 +1,25 @@
 import { useEffect, useRef, useState } from 'react';
 import { Download, ExternalLink, Server, ShieldAlert, Upload, X } from 'lucide-react';
 import { RUNNER_PRESETS, type ExecutionProvider, type RunnerSettings } from '../types/runner';
+import type { DisplaySettings } from '../types/preferences';
 import { workspaceStorage, type WorkspaceSnapshot } from '../services/storage';
 
 interface SettingsModalProps {
   open: boolean;
   settings: RunnerSettings;
+  displaySettings: DisplaySettings;
   onClose: () => void;
   onSave: (settings: RunnerSettings) => void;
+  onSaveDisplay: (settings: DisplaySettings) => void;
 }
 
-export function SettingsModal({ open, settings, onClose, onSave }: SettingsModalProps) {
+export function SettingsModal({ open, settings, displaySettings, onClose, onSave, onSaveDisplay }: SettingsModalProps) {
   const [draft, setDraft] = useState(settings);
+  const [displayDraft, setDisplayDraft] = useState(displaySettings);
   const [transferMessage, setTransferMessage] = useState('');
   const importRef = useRef<HTMLInputElement>(null);
   useEffect(() => setDraft(settings), [settings, open]);
+  useEffect(() => setDisplayDraft(displaySettings), [displaySettings, open]);
   if (!open) return null;
 
   const selectProvider = (provider: ExecutionProvider) => {
@@ -35,6 +40,7 @@ export function SettingsModal({ open, settings, onClose, onSave }: SettingsModal
 
   const importProgress = async (file: File) => {
     try {
+      if (file.size > 5_000_000) throw new Error('Progress file is larger than 5 MB.');
       const snapshot = JSON.parse(await file.text()) as WorkspaceSnapshot;
       if (!window.confirm('Об’єднати прогрес і чернетки з цього файлу з поточними даними та перезавантажити застосунок?')) return;
       workspaceStorage.importSnapshot(snapshot);
@@ -49,7 +55,7 @@ export function SettingsModal({ open, settings, onClose, onSave }: SettingsModal
       <section className="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settings-title">
         <header>
           <div className="modal-icon"><Server size={18} /></div>
-          <div><span className="eyebrow">REMOTE EXECUTION</span><h2 id="settings-title">Java runner settings</h2></div>
+          <div><span className="eyebrow">PLATFORM PREFERENCES</span><h2 id="settings-title">Java Lab settings</h2></div>
           <button className="icon-button" onClick={onClose} aria-label="Закрити"><X size={18} /></button>
         </header>
 
@@ -59,6 +65,24 @@ export function SettingsModal({ open, settings, onClose, onSave }: SettingsModal
             ? <p><strong>Wandbox запускає Java 21 без API key.</strong> Це community-сервіс без SLA, оптимальний для невеликої внутрішньої групи. Код задачі надсилається на wandbox.org.</p>
             : <p><strong>Public Piston requires authorization and currently exposes an older Java runtime.</strong> Використовуйте власний Piston із JDK 21 або виданий token. Значення зберігаються лише у localStorage.</p>}
         </div>
+
+        <section className="display-settings">
+          <div><span>READABILITY</span><strong>Розмір тексту</strong><p>Comfortable тепер використовується за замовчуванням. Розмір коду налаштовується окремо.</p></div>
+          <div className="field-grid">
+            <label className="field-label">
+              <span>Interface & documentation</span>
+              <select value={displayDraft.uiFontSize} onChange={(event) => setDisplayDraft({ ...displayDraft, uiFontSize: event.target.value as DisplaySettings['uiFontSize'] })}>
+                <option value="compact">Compact</option>
+                <option value="comfortable">Comfortable</option>
+                <option value="large">Large</option>
+              </select>
+            </label>
+            <label className="field-label">
+              <span>Code editor · {displayDraft.editorFontSize}px</span>
+              <input type="range" min="12" max="20" step="1" value={displayDraft.editorFontSize} onChange={(event) => setDisplayDraft({ ...displayDraft, editorFontSize: Number(event.target.value) })} />
+            </label>
+          </div>
+        </section>
 
         <label className="field-label">
           <span>Execution provider</span>
@@ -117,7 +141,7 @@ export function SettingsModal({ open, settings, onClose, onSave }: SettingsModal
 
         <footer>
           <a href={draft.provider === 'wandbox' ? 'https://github.com/melpon/wandbox' : 'https://github.com/engineer-man/piston#public-api'} target="_blank" rel="noreferrer"><ExternalLink size={14} /> {draft.provider === 'wandbox' ? 'Wandbox project' : 'Piston API docs'}</a>
-          <div><button className="modal-cancel" onClick={onClose}>Cancel</button><button className="modal-save" onClick={() => { onSave(draft); onClose(); }}>Save locally</button></div>
+          <div><button className="modal-cancel" onClick={onClose}>Cancel</button><button className="modal-save" onClick={() => { onSave(draft); onSaveDisplay(displayDraft); onClose(); }}>Save locally</button></div>
         </footer>
       </section>
     </div>

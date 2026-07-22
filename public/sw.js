@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'java-lab-v3';
+const CACHE_VERSION = 'java-lab-v4';
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest', './favicon.svg', './content/catalog.json'];
 
 self.addEventListener('install', (event) => {
@@ -44,7 +44,7 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(networkFirst(request));
     return;
   }
-  if (url.pathname.includes('/assets/') || url.pathname.includes('/content/') || url.pathname.endsWith('.svg')) {
+  if (url.pathname.includes('/assets/') || url.pathname.includes('/content/') || url.pathname.endsWith('/java21-api.json') || url.pathname.endsWith('.svg')) {
     event.respondWith(staleWhileRevalidate(request));
   }
 });

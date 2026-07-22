@@ -7,15 +7,17 @@ import {
   type CompletionSource,
 } from '@codemirror/autocomplete';
 import { defaultKeymap, history, historyKeymap, indentWithTab } from '@codemirror/commands';
-import { bracketMatching, indentOnInput, syntaxTree } from '@codemirror/language';
+import { bracketMatching, HighlightStyle, indentOnInput, syntaxHighlighting, syntaxTree } from '@codemirror/language';
 import { java } from '@codemirror/lang-java';
 import { lintGutter, linter, type Diagnostic } from '@codemirror/lint';
 import { highlightSelectionMatches, searchKeymap } from '@codemirror/search';
 import { Compartment, EditorState } from '@codemirror/state';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { EditorView, keymap, lineNumbers } from '@codemirror/view';
+import { tags } from '@lezer/highlight';
 import { Check, Clipboard, Copy, Dumbbell, FileCode2, RotateCcw } from 'lucide-react';
 import type { Iteration } from '../types/catalog';
+import { java21CompletionSource, java21ImportDiagnostics } from '../services/java21LanguageSupport';
 
 interface EditorProps {
   code: string;
@@ -140,6 +142,21 @@ const lightTheme = EditorView.theme({
   '.cm-activeLineGutter': { backgroundColor: '#e5f0f5' },
 });
 
+const javaLightHighlightStyle = HighlightStyle.define([
+  { tag: [tags.keyword, tags.modifier, tags.operatorKeyword], color: '#7c3aed', fontWeight: '650' },
+  { tag: [tags.typeName, tags.className, tags.namespace], color: '#075985' },
+  { tag: [tags.function(tags.variableName), tags.definition(tags.function(tags.variableName))], color: '#0369a1' },
+  { tag: [tags.string, tags.character], color: '#0f766e' },
+  { tag: [tags.number, tags.bool, tags.null], color: '#b45309' },
+  { tag: [tags.comment, tags.docComment], color: '#64748b', fontStyle: 'italic' },
+  { tag: [tags.annotation, tags.meta], color: '#be123c' },
+  { tag: tags.invalid, color: '#b91c1c', textDecoration: 'underline wavy' },
+]);
+
+const editorTheme = (theme: 'dark' | 'light') => theme === 'dark'
+  ? oneDark
+  : [lightTheme, syntaxHighlighting(javaLightHighlightStyle)];
+
 function javaStructuralDiagnostics(view: EditorView): Diagnostic[] {
   const diagnostics: Diagnostic[] = [];
   const cursor = syntaxTree(view.state).cursor();
@@ -157,6 +174,10 @@ function javaStructuralDiagnostics(view: EditorView): Diagnostic[] {
     }
   } while (cursor.next());
   return diagnostics;
+}
+
+async function javaDiagnostics(view: EditorView) {
+  return [...javaStructuralDiagnostics(view), ...await java21ImportDiagnostics(view)];
 }
 
 export function Editor({
@@ -195,14 +216,14 @@ export function Editor({
         bracketMatching(),
         closeBrackets(),
         autocompletion({
-          override: [javaSnippetSource],
+          override: [javaSnippetSource, java21CompletionSource],
           activateOnTyping: true,
-          maxRenderedOptions: 12,
+          maxRenderedOptions: 30,
         }),
         highlightSelectionMatches(),
         java(),
         lintGutter(),
-        linter(javaStructuralDiagnostics, { delay: 350 }),
+        linter(javaDiagnostics, { delay: 500 }),
         keymap.of([
           ...defaultKeymap,
           ...historyKeymap,
@@ -210,7 +231,7 @@ export function Editor({
           indentWithTab,
           { key: 'Mod-Enter', run: () => { runRef.current(); return true; } },
         ]),
-        themeCompartment.of(theme === 'dark' ? oneDark : lightTheme),
+        themeCompartment.of(editorTheme(theme)),
         EditorView.lineWrapping,
         EditorView.updateListener.of((update) => {
           if (update.docChanged) changeRef.current(update.state.doc.toString());
@@ -232,7 +253,7 @@ export function Editor({
 
   useEffect(() => {
     editorRef.current?.dispatch({
-      effects: themeCompartment.reconfigure(theme === 'dark' ? oneDark : lightTheme),
+      effects: themeCompartment.reconfigure(editorTheme(theme)),
     });
   }, [theme]);
 
@@ -309,10 +330,10 @@ export function Editor({
       </div>
       <div ref={hostRef} className="editor-host" />
       <footer className="editor-statusbar">
-        <span>Java 21</span>
+        <a href="https://docs.oracle.com/en/java/javase/21/docs/api/" target="_blank" rel="noreferrer" title="4,719 types · 51,207 members">Java 21 API ↗</a>
         <span>Spaces: 4</span>
         <span>UTF-8</span>
-        <span className="shortcut-hint"><kbd>Ctrl</kbd> + <kbd>Space</kbd> Snippets</span>
+        <span className="shortcut-hint"><kbd>Ctrl</kbd> + <kbd>Space</kbd> Java 21 API</span>
         <span className={saved ? 'saved-indicator is-saved' : 'saved-indicator'}>
           {saved ? '● Saved locally' : '● Saving…'}
         </span>

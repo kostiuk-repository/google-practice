@@ -74,7 +74,7 @@ export function Header({
       <button className="icon-button" onClick={onToggleTheme} aria-label="Перемкнути тему">
         {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
       </button>
-      <button className="icon-button" onClick={onOpenSettings} aria-label="Налаштування виконання">
+      <button className="icon-button" onClick={onOpenSettings} aria-label="Налаштування платформи">
         <Settings size={17} />
       </button>
     </header>

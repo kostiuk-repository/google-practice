@@ -17,4 +17,10 @@ describe('workspaceStorage', () => {
     workspaceStorage.importSnapshot({ schemaVersion: 1, exportedAt: new Date().toISOString(), entries: { 'java-lab:v1:completed': '["task"]' } });
     expect(localStorage.getItem('java-lab:v1:completed')).toBe('["task"]');
   });
+
+  it('uses readable display defaults and clamps editor font size', () => {
+    expect(preferenceStorage.getDisplaySettings()).toEqual({ uiFontSize: 'comfortable', editorFontSize: 14 });
+    localStorage.setItem('java-lab:v1:display', JSON.stringify({ uiFontSize: 'large', editorFontSize: 99 }));
+    expect(preferenceStorage.getDisplaySettings()).toEqual({ uiFontSize: 'large', editorFontSize: 20 });
+  });
 });

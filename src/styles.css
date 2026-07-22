@@ -25,8 +25,39 @@
   --medium: #f5bd68;
   --hard: #f38ba8;
   --header-height: 58px;
+  --editor-font-size: 14px;
+  --font-label: 10px;
+  --font-small: 11.5px;
+  --font-body: 13px;
+  --font-doc: 14px;
+  --font-code: 13px;
+  --font-h1: 24px;
+  --font-h2: 18px;
+  --font-h3: 15px;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+}
+
+:root[data-ui-font-size="compact"] {
+  --font-label: 8.5px;
+  --font-small: 10px;
+  --font-body: 11.5px;
+  --font-doc: 12px;
+  --font-code: 11px;
+  --font-h1: 21px;
+  --font-h2: 16px;
+  --font-h3: 13px;
+}
+
+:root[data-ui-font-size="large"] {
+  --font-label: 12px;
+  --font-small: 13px;
+  --font-body: 15px;
+  --font-doc: 16px;
+  --font-code: 15px;
+  --font-h1: 28px;
+  --font-h2: 21px;
+  --font-h3: 17px;
 }
 
 :root[data-theme="light"] {
@@ -194,6 +225,31 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
 .doc-code-header button, .diagram-header button { border: 0; background: transparent; color: #8697a2; display: flex; align-items: center; gap: 5px; font-size: 8px; cursor: pointer; }
 .doc-code-header button:hover, .diagram-header button:hover { color: #7dd3fc; }
 .doc-code-block pre { margin: 0; padding: 11px; overflow: auto; color: #d9e2e8; font: 10px/1.6 "JetBrains Mono", Consolas, monospace; }
+.syntax-java .tok-keyword, .syntax-java .tok-modifier { color: #c4b5fd; font-weight: 650; }
+.syntax-java .tok-typeName, .syntax-java .tok-className, .syntax-java .tok-namespace { color: #7dd3fc; }
+.syntax-java .tok-function { color: #67e8f9; }
+.syntax-java .tok-string, .syntax-java .tok-character { color: #86efac; }
+.syntax-java .tok-number, .syntax-java .tok-bool, .syntax-java .tok-null { color: #fbbf24; }
+.syntax-java .tok-comment { color: #8494a0; font-style: italic; }
+.syntax-java .tok-meta, .syntax-java .tok-annotation { color: #f9a8d4; }
+.syntax-java .tok-operator, .syntax-java .tok-punctuation { color: #b9c6ce; }
+:root[data-theme="light"] .doc-code-block { background: #f8fafc; }
+:root[data-theme="light"] .doc-code-header { background: #e8eef2; border-color: #cbd7dd; color: #536570; }
+:root[data-theme="light"] .doc-code-block pre { color: #17212b; }
+:root[data-theme="light"] .syntax-java .tok-keyword,
+:root[data-theme="light"] .syntax-java .tok-modifier { color: #7c3aed; }
+:root[data-theme="light"] .syntax-java .tok-typeName,
+:root[data-theme="light"] .syntax-java .tok-className,
+:root[data-theme="light"] .syntax-java .tok-namespace { color: #075985; }
+:root[data-theme="light"] .syntax-java .tok-function { color: #0369a1; }
+:root[data-theme="light"] .syntax-java .tok-string,
+:root[data-theme="light"] .syntax-java .tok-character { color: #0f766e; }
+:root[data-theme="light"] .syntax-java .tok-number,
+:root[data-theme="light"] .syntax-java .tok-bool,
+:root[data-theme="light"] .syntax-java .tok-null { color: #b45309; }
+:root[data-theme="light"] .syntax-java .tok-comment { color: #64748b; }
+:root[data-theme="light"] .syntax-java .tok-meta,
+:root[data-theme="light"] .syntax-java .tok-annotation { color: #be123c; }
 .diagram-frame { margin: 13px 0; border: 1px solid var(--border); background: var(--surface-1); }
 .mermaid-svg { padding: 12px; overflow: auto; display: grid; place-items: center; min-height: 100px; }
 .mermaid-svg svg { max-width: 100%; height: auto; }
@@ -336,11 +392,13 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
 .drill-path:hover { color: var(--primary); border-color: var(--primary-border); }
 .drill-path code { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 8px/1 "JetBrains Mono", Consolas, monospace; text-align: left; }
 .editor-host { flex: 1; min-height: 0; overflow: hidden; background: #0d1117; }
-.editor-host .cm-editor { height: 100%; font: 12px/1.62 "JetBrains Mono", "Cascadia Code", Consolas, monospace; }
+.editor-host .cm-editor { height: 100%; font: var(--editor-font-size)/1.65 "JetBrains Mono", "Cascadia Code", Consolas, monospace; }
 .editor-host .cm-scroller { overflow: auto; }
 .editor-host .cm-gutters { border-right: 1px solid #202a31; }
 .editor-host .cm-lint-marker-error { content: "●"; }
 .editor-statusbar { height: 25px; flex: none; display: flex; align-items: center; gap: 14px; padding: 0 9px; background: var(--surface-1); border-top: 1px solid var(--border); color: var(--text-faint); font: 8.5px/1 "JetBrains Mono", Consolas, monospace; }
+.editor-statusbar a { color: var(--primary); text-decoration: none; }
+.editor-statusbar a:hover { text-decoration: underline; text-underline-offset: 2px; }
 .saved-indicator { margin-left: auto; color: var(--warning); }
 .saved-indicator.is-saved { color: var(--success); }
 .shortcut-hint { display: flex; align-items: center; gap: 4px; }
@@ -458,6 +516,13 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
 .progress-transfer > div:nth-child(2) { display: flex; align-items: center; gap: 6px; }
 .progress-transfer button { height: 31px; padding: 0 8px; display: flex; align-items: center; gap: 5px; border: 1px solid var(--primary-border); background: var(--surface-0); color: var(--primary); font-size: 8px; cursor: pointer; }
 .progress-transfer output { grid-column: 1 / -1; color: var(--success); font-size: 8px; }
+.display-settings { margin: 14px; padding: 11px; border: 1px solid var(--border); background: var(--surface-1); }
+.display-settings > div:first-child { margin-bottom: 8px; }
+.display-settings > div:first-child span { display: block; color: var(--primary); font: 800 var(--font-label)/1 "JetBrains Mono", Consolas, monospace; letter-spacing: .1em; }
+.display-settings > div:first-child strong { display: block; margin-top: 5px; color: var(--text); font-size: var(--font-body); }
+.display-settings > div:first-child p { margin: 4px 0 0; color: var(--text-muted); font-size: var(--font-small); line-height: 1.45; }
+.display-settings .field-label { margin: 7px 0 0; }
+.display-settings input[type="range"] { padding: 0; accent-color: var(--primary); }
 .field-label { margin: 12px 14px; display: flex; flex-direction: column; gap: 5px; }
 .field-label > span { color: var(--text-faint); font-size: 9px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
 .field-label input, .field-label select { width: 100%; height: 34px; padding: 0 9px; color: var(--text); background: var(--surface-1); border: 1px solid var(--border); outline: 0; font: 10px/1 "JetBrains Mono", Consolas, monospace; }
@@ -468,6 +533,43 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
 .settings-modal > footer div { display: flex; gap: 7px; }
 .modal-cancel, .modal-save { min-height: 32px; padding: 0 12px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-size: 10px; font-weight: 750; cursor: pointer; }
 .modal-save { background: var(--primary-strong); border-color: var(--primary-strong); color: #06202b; }
+
+/* Readability presets intentionally override the original high-density sizes. */
+.brand-block span, .eyebrow, .track-label, .difficulty-heading, .task-drill-count,
+.doc-toc > span, .doc-code-header, .diagram-header, .iteration-picker > span,
+.drill-switcher button, .drill-path code, .editor-statusbar, .execution-status span,
+.execution-status > code, .test-summary span, .test-card-main > code,
+.failure-insight > span, .expected-actual code, .coach-hero > span, .coach-hero code,
+.coach-hints > header span, .coach-hints > header code, .coach-hint > span,
+.coach-stats, .thread-state b, .thread-state span, .progress-transfer span,
+.progress-transfer output { font-size: var(--font-label); }
+
+.brand-block strong, .header-context strong, .header-progress-row, .quick-search input,
+.local-badge, .panel-tabs button, .topic-title, .task-count, .doc-source-toggle button,
+.doc-reader-header strong, .toolbar-button, .doc-toc a, .doc-code-header button,
+.diagram-header button, .algoviz-header strong, .algoviz-narration span,
+.algoviz-narration strong, .algoviz-narration p, .prediction-options button,
+.prediction-feedback, .file-tab, .iteration-picker select, .drill-strip-copy strong,
+.drill-strip-copy div > span, .run-button, .test-card span, .failure-insight p,
+.failure-insight blockquote, .coach-hero p, .coach-card h4, .coach-card li,
+.coach-hint p, .coach-hint-empty, .reveal-hint, .coach-confidence > div:first-child,
+.coach-confidence button, .empty-state span, .thread-viz-intro span,
+.thread-viz-note, .thread-event-list span, .thread-event-list code,
+.progress-transfer strong, .progress-transfer p, .progress-transfer button,
+.field-label > span, .settings-modal > footer a { font-size: var(--font-small); }
+
+.task-row, .markdown-body h4, .execution-status strong, .test-card strong,
+.coach-hero h3, .empty-state strong, .thread-viz-intro strong,
+.settings-notice p, .field-label input, .field-label select,
+.modal-cancel, .modal-save { font-size: var(--font-body); }
+
+.markdown-body { font-size: var(--font-doc); }
+.markdown-body h1 { font-size: var(--font-h1); }
+.markdown-body h2 { font-size: var(--font-h2); }
+.markdown-body h3 { font-size: var(--font-h3); }
+.markdown-body table { font-size: var(--font-small); }
+.inline-code { font-size: calc(var(--font-code) - 1px); }
+.doc-code-block pre, .terminal-output { font-size: var(--font-code); }
 
 .compact-workspace { display: flex; flex-direction: column; }
 .compact-tabs { height: 42px; }
@@ -493,7 +595,7 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
   .header-progress { display: none; }
   .quick-search { width: auto; flex: 1; }
   .editor-shell, .results-panel, .learning-panel { height: 100%; }
-  .markdown-body { font-size: 12px; padding-left: 18px; padding-right: 18px; }
+  .markdown-body { font-size: var(--font-doc); padding-left: 18px; padding-right: 18px; }
 }
 
 @media (max-width: 620px) {

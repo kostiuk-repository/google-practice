@@ -1,5 +1,6 @@
 import { DEFAULT_RUNNER_SETTINGS, type RunnerSettings } from '../types/runner';
 import { EMPTY_LEARNING_RECORD, type LearningRecord } from '../types/learning';
+import { DEFAULT_DISPLAY_SETTINGS, type DisplaySettings } from '../types/preferences';
 
 const PREFIX = 'java-lab:v1';
 const key = (suffix: string) => `${PREFIX}:${suffix}`;
@@ -91,6 +92,17 @@ export const preferenceStorage = {
     localStorage.getItem(key('theme')) === 'light' ? 'light' : 'dark',
   setTheme(theme: 'dark' | 'light') {
     localStorage.setItem(key('theme'), theme);
+  },
+  getDisplaySettings: (): DisplaySettings => {
+    const stored = readJson<Partial<DisplaySettings>>(key('display'), {});
+    const uiFontSize = stored.uiFontSize === 'compact' || stored.uiFontSize === 'large'
+      ? stored.uiFontSize
+      : DEFAULT_DISPLAY_SETTINGS.uiFontSize;
+    const editorFontSize = Math.min(20, Math.max(12, Number(stored.editorFontSize) || DEFAULT_DISPLAY_SETTINGS.editorFontSize));
+    return { uiFontSize, editorFontSize };
+  },
+  setDisplaySettings(settings: DisplaySettings) {
+    writeJson(key('display'), settings);
   },
   getRunnerSettings: (): RunnerSettings => {
     const stored = readJson<Partial<RunnerSettings>>(key('runner'), {});

@@ -4,6 +4,8 @@ import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import { AlertTriangle, Check, Clipboard, Expand, ListTree, X } from 'lucide-react';
+import { javaLanguage } from '@codemirror/lang-java';
+import { classHighlighter, highlightTree } from '@lezer/highlight';
 import 'katex/dist/katex.min.css';
 
 interface DocViewerProps {
@@ -102,13 +104,25 @@ function CodeBlock({ language, source }: { language: string; source: string }) {
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1_400);
   };
+  const highlighted = useMemo(() => {
+    if (language.toLowerCase() !== 'java') return source;
+    const parts: ReactNode[] = [];
+    let cursor = 0;
+    highlightTree(javaLanguage.parser.parse(source), classHighlighter, (from, to, classes) => {
+      if (from > cursor) parts.push(source.slice(cursor, from));
+      parts.push(<span className={classes} key={`${from}-${to}`}>{source.slice(from, to)}</span>);
+      cursor = to;
+    });
+    if (cursor < source.length) parts.push(source.slice(cursor));
+    return parts;
+  }, [language, source]);
   return (
     <div className="doc-code-block">
       <div className="doc-code-header">
         <span>{language || 'text'}</span>
         <button onClick={copy}>{copied ? <Check size={13} /> : <Clipboard size={13} />}{copied ? 'Copied' : 'Copy'}</button>
       </div>
-      <pre><code>{source}</code></pre>
+      <pre><code className={language.toLowerCase() === 'java' ? 'syntax-java' : undefined}>{highlighted}</code></pre>
     </div>
   );
 }

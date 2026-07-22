@@ -11,6 +11,7 @@ import { runJava } from './services/pistonRunner';
 import { codeStorage, learningStorage, preferenceStorage, progressStorage } from './services/storage';
 import type { CatalogManifest, PracticeTask, TopicContent } from './types/catalog';
 import { EMPTY_LEARNING_RECORD, type LearningRecord } from './types/learning';
+import type { DisplaySettings } from './types/preferences';
 import {
   DEFAULT_RUNNER_SETTINGS,
   type ExecutionResult,
@@ -36,6 +37,7 @@ export default function App() {
   const [search, setSearch] = useState('');
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [runnerSettings, setRunnerSettings] = useState<RunnerSettings>(() => preferenceStorage.getRunnerSettings());
+  const [displaySettings, setDisplaySettings] = useState<DisplaySettings>(() => preferenceStorage.getDisplaySettings());
   const [status, setStatus] = useState<ExecutionStatus>('idle');
   const [result, setResult] = useState<ExecutionResult | null>(null);
   const [runError, setRunError] = useState('');
@@ -47,6 +49,12 @@ export default function App() {
     document.documentElement.dataset.theme = theme;
     preferenceStorage.setTheme(theme);
   }, [theme]);
+
+  useEffect(() => {
+    document.documentElement.dataset.uiFontSize = displaySettings.uiFontSize;
+    document.documentElement.style.setProperty('--editor-font-size', `${displaySettings.editorFontSize}px`);
+    preferenceStorage.setDisplaySettings(displaySettings);
+  }, [displaySettings]);
 
   useEffect(() => {
     loadCatalog()
@@ -249,8 +257,10 @@ export default function App() {
       <SettingsModal
         open={settingsOpen}
         settings={runnerSettings}
+        displaySettings={displaySettings}
         onClose={() => setSettingsOpen(false)}
         onSave={saveRunnerSettings}
+        onSaveDisplay={setDisplaySettings}
       />
     </div>
   );
