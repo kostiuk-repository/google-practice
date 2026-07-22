@@ -205,6 +205,61 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
 .diagram-modal-content svg { max-width: min(1400px, 95%); max-height: 90vh; }
 .diagram-close { position: fixed; top: 13px; right: 13px; z-index: 101; width: 34px; height: 34px; display: grid; place-items: center; background: var(--surface-1); border: 1px solid var(--border); color: var(--text); cursor: pointer; }
 
+.algoviz-frame { margin: 15px 0; overflow: hidden; border: 1px solid var(--border); border-radius: 7px; background: var(--surface-1); box-shadow: 0 10px 28px rgba(0, 0, 0, .14); }
+.algoviz-header { min-height: 45px; padding: 0 11px; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: linear-gradient(110deg, color-mix(in srgb, var(--primary-bg) 74%, var(--surface-1)), var(--surface-1)); border-bottom: 1px solid var(--primary-border); }
+.algoviz-header > div, .algoviz-modal-title { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.algoviz-header span, .algoviz-modal-title span { color: var(--primary); font: 800 7.5px/1 "JetBrains Mono", Consolas, monospace; letter-spacing: .12em; text-transform: uppercase; }
+.algoviz-header strong, .algoviz-modal-title strong { overflow: hidden; color: var(--text); font-size: 10px; line-height: 1.15; text-overflow: ellipsis; white-space: nowrap; }
+.algoviz-header button { width: 28px; height: 28px; flex: none; display: grid; place-items: center; border: 1px solid var(--primary-border); border-radius: 4px; background: var(--surface-0); color: var(--primary); cursor: pointer; }
+.algoviz-header button:hover { background: var(--primary-bg); }
+.algoviz-body { min-width: 0; }
+.algoviz-stage { min-width: 0; padding: 7px 0 0; background-image: radial-gradient(circle at 50% 0, color-mix(in srgb, var(--primary-bg) 58%, transparent), transparent 62%); }
+.algoviz-scroll { max-width: 100%; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+.algoviz-svg { min-width: 100%; display: block; overflow: visible; font-family: "JetBrains Mono", Consolas, monospace; }
+.algoviz-range rect { fill: color-mix(in srgb, var(--primary-bg) 74%, transparent); stroke: var(--primary-border); stroke-width: 1; stroke-dasharray: 4 3; }
+.algoviz-range text { fill: var(--primary); font-size: 7px; font-weight: 800; text-anchor: middle; text-transform: uppercase; letter-spacing: .09em; }
+.algoviz-cell rect { fill: var(--surface-2); stroke: var(--border); stroke-width: 1.5; transition: fill .32s ease, stroke .32s ease, filter .32s ease; }
+.algoviz-cell.is-visited rect { fill: var(--success-bg); stroke: color-mix(in srgb, var(--success) 62%, var(--border)); }
+.algoviz-cell.is-active rect { fill: var(--primary-bg); stroke: var(--primary); stroke-width: 2; filter: drop-shadow(0 4px 8px color-mix(in srgb, var(--primary) 24%, transparent)); }
+.algoviz-index { fill: var(--text-faint); font-size: 8px; font-weight: 700; text-anchor: middle; }
+.algoviz-value { fill: var(--text); font-size: 14px; font-weight: 800; text-anchor: middle; }
+.algoviz-cell.is-active .algoviz-value { fill: var(--primary); }
+.algoviz-visited-dot { fill: var(--success); }
+.algoviz-pointer { transition: opacity .2s ease; }
+.algoviz-pointer path, .algoviz-pointer rect { fill: currentColor; }
+.algoviz-pointer text { fill: #071117; font-size: 8px; font-weight: 900; text-anchor: middle; }
+.algoviz-narration { min-height: 62px; margin: 0 10px 9px; padding: 9px 10px; display: flex; flex-direction: column; justify-content: center; gap: 5px; border: 1px solid var(--border-soft); border-radius: 5px; background: var(--surface-0); }
+.algoviz-narration > div { display: flex; align-items: baseline; gap: 8px; }
+.algoviz-narration span { flex: none; color: var(--primary); font: 800 7.5px/1 "JetBrains Mono", Consolas, monospace; letter-spacing: .06em; }
+.algoviz-narration strong { color: var(--text); font-size: 10px; line-height: 1.35; }
+.algoviz-narration p { margin: 0; color: var(--text-muted); font-size: 9px; line-height: 1.45; }
+.algoviz-controls { min-height: 43px; padding: 7px 10px; display: flex; align-items: center; gap: 5px; border-top: 1px solid var(--border); background: var(--surface-0); }
+.algoviz-controls button { height: 28px; min-width: 28px; padding: 0 7px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface-2); color: var(--text-muted); cursor: pointer; }
+.algoviz-controls button:hover:not(:disabled) { color: var(--primary); border-color: var(--primary-border); }
+.algoviz-controls button:disabled { opacity: .35; cursor: not-allowed; }
+.algoviz-controls .algoviz-play { min-width: 68px; color: #06202b; background: var(--primary); border-color: var(--primary); font-size: 8px; font-weight: 800; }
+.algoviz-speed { margin-left: auto; display: flex; align-items: center; gap: 5px; color: var(--text-faint); font: 750 7px/1 "JetBrains Mono", Consolas, monospace; text-transform: uppercase; }
+.algoviz-speed select { height: 28px; padding: 0 21px 0 7px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface-2); color: var(--text); font-size: 8px; outline: 0; }
+.algoviz-text-fallback { border-top: 1px solid var(--border-soft); background: var(--surface-0); }
+.algoviz-text-fallback summary { padding: 7px 10px; color: var(--text-faint); font-size: 8px; cursor: pointer; }
+.algoviz-text-fallback p { padding: 0 10px; font-size: 9px; }
+.markdown-body .algoviz-text-fallback table { width: calc(100% - 20px); margin: 7px 10px 10px; }
+.markdown-body .algoviz-text-fallback th, .markdown-body .algoviz-text-fallback td { min-width: 48px; padding: 4px 6px; text-align: center; }
+.algoviz-frame.is-error { padding-bottom: 10px; border-color: color-mix(in srgb, var(--danger) 55%, var(--border)); }
+.algoviz-frame.is-error > p { padding: 0 10px; color: var(--danger); font-size: 10px; }
+.algoviz-frame.is-error pre { margin: 0 10px; padding: 9px; overflow: auto; background: var(--surface-0); color: var(--text-muted); font-size: 9px; }
+.algoviz-modal { position: fixed; inset: 0; z-index: 110; display: grid; place-items: center; padding: 34px; background: rgba(5, 9, 12, .92); backdrop-filter: blur(7px); }
+.algoviz-modal-content { width: min(1180px, 100%); max-height: 92vh; overflow: auto; border: 1px solid var(--border); border-radius: 8px; background: var(--surface-1); box-shadow: 0 24px 80px rgba(0, 0, 0, .55); }
+.algoviz-modal-title { padding: 16px 18px 10px; background: var(--surface-0); }
+.algoviz-modal-title strong { font-size: 15px; }
+.algoviz-modal-content .algoviz-narration { min-height: 72px; }
+.algoviz-modal-content .algoviz-narration strong { font-size: 13px; }
+.algoviz-close { position: fixed; top: 12px; right: 12px; z-index: 111; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 4px; background: var(--surface-1); color: var(--text); cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) {
+  .algoviz-cell rect, .algoviz-pointer { transition: none; }
+}
+
 .editor-shell { display: flex; flex-direction: column; }
 .panel-toolbar { height: 40px; flex: none; display: flex; align-items: center; background: var(--surface-1); border-bottom: 1px solid var(--border); }
 .editor-toolbar { padding-right: 6px; }
@@ -361,4 +416,7 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
   .shortcut-hint { display: none; }
   .field-grid { grid-template-columns: 1fr; }
   .settings-modal > footer { align-items: flex-start; gap: 10px; flex-direction: column; }
+  .algoviz-modal { padding: 48px 8px 8px; }
+  .algoviz-narration > div { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .algoviz-speed > span { display: none; }
 }

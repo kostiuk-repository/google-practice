@@ -26,9 +26,29 @@ predicate: F F F F T T T T
 
 Для `[1,3,5,7,9]`, target 7:
 
-```text
-lo=0, hi=4, mid=2 → a[mid]=5 < 7 → lo=3
-lo=3, hi=4, mid=3 → a[mid]=7 → знайдено
+```algoviz
+{
+  "type": "binary-search",
+  "title": "Exact binary search · target = 7",
+  "values": [1, 3, 5, 7, 9],
+  "steps": [
+    {
+      "label": "Область пошуку [0,4], mid=2 і a[mid]=5",
+      "note": "5 < 7, тому mid і всю ліву половину можна відкинути.",
+      "pointers": {"lo": 0, "mid": 2, "hi": 4},
+      "compare": [2],
+      "range": [0, 4]
+    },
+    {
+      "label": "Нова область [3,4], mid=3 і a[mid]=7",
+      "note": "Значення дорівнює target — повертаємо індекс 3.",
+      "pointers": {"lo": 3, "mid": 3, "hi": 4},
+      "compare": [3],
+      "visited": [0, 1, 2],
+      "range": [3, 4]
+    }
+  ]
+}
 ```
 
 Inclusive шаблон:

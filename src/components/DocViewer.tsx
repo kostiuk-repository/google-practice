@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useState, type ReactNode } from 'react';
+import { lazy, Suspense, useEffect, useId, useMemo, useState, type ReactNode } from 'react';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
@@ -17,6 +17,9 @@ interface TocItem {
   text: string;
   id: string;
 }
+
+const AlgorithmVisualizer = lazy(() => import('./AlgorithmVisualizer')
+  .then((module) => ({ default: module.AlgorithmVisualizer })));
 
 function slugify(text: string) {
   return text
@@ -128,10 +131,16 @@ export function DocViewer({ markdown, theme, title }: DocViewerProps) {
     h2: heading(2),
     h3: heading(3),
     a: ({ href, children }) => <a href={href} target={href?.startsWith('http') ? '_blank' : undefined} rel="noreferrer">{children}</a>,
+    pre: ({ children }) => <>{children}</>,
     code: ({ className, children }) => {
       const language = className?.replace('language-', '') ?? '';
       const source = String(children).replace(/\n$/, '');
       if (language === 'mermaid') return <MermaidBlock source={source} theme={theme} />;
+      if (language === 'algoviz') return (
+        <Suspense fallback={<div className="diagram-loading">Loading interactive visualization…</div>}>
+          <AlgorithmVisualizer source={source} theme={theme} />
+        </Suspense>
+      );
       if (!className) return <code className="inline-code">{children}</code>;
       return <CodeBlock language={language} source={source} />;
     },
