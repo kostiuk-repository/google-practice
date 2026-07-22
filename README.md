@@ -1,5 +1,16 @@
 # Google Practice
 
+## Інтерактивна web-платформа
+
+У репозиторії є zero-backend тренажер для всіх 20 тем і 320 задач: документація з Mermaid/KaTeX, CodeMirror Java editor, ітерації рішень, запуск тестів через Piston-compatible API та локальне збереження прогресу.
+
+```powershell
+npm install
+npm run dev
+```
+
+Production-збірка для GitHub Pages: `npm run build`. Деталі архітектури, execution runner-а й deployment: [`docs/platform-architecture.md`](docs/platform-architecture.md).
+
 ## Навчальний посібник
 
 Повний системний курс за всіма 20 темами — з діаграмами, інваріантами, Java-шаблонами, оцінкою складності та картами задач — доступний у [`docs/learning-guide/README.md`](docs/learning-guide/README.md).

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>JavaExpert | Mastery Platform</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#171c20",
+                        "inverse-primary": "#00668a",
+                        "surface-container": "#1b2024",
+                        "on-secondary-fixed": "#0d1c2d",
+                        "on-secondary-container": "#a7b6cc",
+                        "primary-fixed-dim": "#7bd0ff",
+                        "surface-container-highest": "#303539",
+                        "surface-container-lowest": "#0a0f12",
+                        "primary-container": "#38bdf8",
+                        "tertiary": "#ffc176",
+                        "on-secondary-fixed-variant": "#39485a",
+                        "on-tertiary-container": "#613b00",
+                        "on-surface": "#dee3e8",
+                        "on-primary": "#00354a",
+                        "background": "#0f1418",
+                        "surface-tint": "#7bd0ff",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#f1a02b",
+                        "on-error": "#690005",
+                        "surface": "#0f1418",
+                        "secondary-fixed-dim": "#b9c8de",
+                        "on-background": "#dee3e8",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#252b2e",
+                        "secondary-container": "#39485a",
+                        "on-secondary": "#233143",
+                        "primary": "#8ed5ff",
+                        "outline-variant": "#3e484f",
+                        "on-primary-container": "#004965",
+                        "on-primary-fixed": "#001e2c",
+                        "on-primary-fixed-variant": "#004c69",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-bright": "#343a3e",
+                        "surface-dim": "#0f1418",
+                        "secondary": "#b9c8de",
+                        "primary-fixed": "#c4e7ff",
+                        "inverse-on-surface": "#2c3135",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#2a1700",
+                        "outline": "#87929a",
+                        "inverse-surface": "#dee3e8",
+                        "on-surface-variant": "#bdc8d1",
+                        "tertiary-fixed-dim": "#ffb960",
+                        "surface-variant": "#303539",
+                        "on-tertiary": "#472a00",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "secondary-fixed": "#d4e4fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "sidebar-width": "260px",
+                        "gutter": "16px",
+                        "container-padding": "24px",
+                        "panel-min-width": "320px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "metric-display": ["JetBrains Mono"],
+                        "code-block": ["JetBrains Mono"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["18px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "metric-display": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "code-block": ["13px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0f1418;
+            color: #dee3e8;
+            scrollbar-width: thin;
+            scrollbar-color: #3e484f transparent;
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: #3e484f; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #87929a; }
+
+        .code-editor-cursor {
+            border-left: 2px solid #8ed5ff;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .line-numbers div::before {
+            counter-increment: line;
+            content: counter(line);
+            display: inline-block;
+            width: 2rem;
+            text-align: right;
+            margin-right: 1rem;
+            color: #3e484f;
+        }
+        .line-numbers { counter-reset: line; }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden dark:bg-background">
+<div id="root"></div>
+
+<!-- React Dependencies -->
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/history@5/umd/history.development.js"></script>
+<script src="https://unpkg.com/react-router@6.3.0/umd/react-router.development.js"></script>
+<script src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<script type="text/babel">
+    const { useState, useEffect, useMemo } = React;
+    const { createRoot } = ReactDOM;
+    const { MemoryRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
+
+    // --- Shared Components ---
+
+    const TopNavBar = ({ activeTab }) => {
+        return (
+            <nav className="flex justify-between items-center h-14 px-gutter w-full fixed top-0 z-50 bg-background border-b border-outline-variant/30">
+                <div className="flex items-center gap-8">
+                    <Link to="/" className="font-headline-md text-headline-md font-bold text-primary decoration-none">JavaExpert</Link>
+                    <div className="hidden md:flex items-center gap-6">
+                        <Link
+                            to="/"
+                            className={`${activeTab === 'curriculum' ? 'text-primary border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary-fixed-dim'} pb-1 font-label-caps transition-colors`}
+                        >
+                            Curriculum
+                        </Link>
+                        <Link
+                            to="/lesson"
+                            className={`${activeTab === 'practice' ? 'text-primary border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary-fixed-dim'} pb-1 font-label-caps transition-colors`}
+                        >
+                            Practice
+                        </Link>
+                        <a className="text-on-surface-variant font-label-caps hover:text-primary-fixed-dim transition-colors cursor-pointer">Community</a>
+                    </div>
+                </div>
+                <div className="flex items-center gap-4">
+                    <div className="hidden sm:flex bg-surface-container-high px-3 py-1 items-center gap-2 border border-outline-variant/30">
+                        <span className="material-symbols-outlined text-on-surface-variant text-[18px]">search</span>
+                        <input className="bg-transparent border-none focus:ring-0 text-body-md p-0 w-48 text-on-surface" placeholder="Search modules..." type="text"/>
+                    </div>
+                    <span className="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+                    <span className="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">help</span>
+                    <div className="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/50">
+                        <img className="w-full h-full object-cover" alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrylwu8JsT04P48belyOOCEP2sYVEVrzweNvHz_spoz75m4mAgUgslarWhtQXmo9Zu88UhnuSRUfJ7IHz9X9GsRf5T--pftII6Tg9Vobd0cR4qEdCuAGyVqMtOvtSFrBlY89xEFxvf52uVVRwi42WbG3L0SucOktMaePa3kNzH3w5KTRWIgwdj_bWnf2uoIdilmAcgXQjJQnTZ82mc_FT0UEH1s58iqMUq7tmeeGFWNUK3RkP9ieUjt_j3x1mLes5xhUIssCOHXIQ"/>
+                    </div>
+                </div>
+            </nav>
+        );
+    };
+
+    // --- Screen 1: Curriculum & Progress ---
+
+    const CurriculumPage = () => {
+        const navigate = useNavigate();
+        const dsaModules = [
+            { title: 'Big O Notation', progress: 100 },
+            { title: 'Arrays & ArrayLists', progress: 100 },
+            { title: 'Linked Lists', progress: 85 },
+            { title: 'Stacks & Queues', progress: 70 },
+            { title: 'Hash Tables', progress: 40 },
+            { title: 'Recursion', progress: 10 },
+            { title: 'Binary Search', progress: 0 },
+            { title: 'Sorting Algorithms', progress: 0 },
+            { title: 'Binary Search Trees', progress: 0 },
+            { title: 'AVL Trees', progress: 0 },
+            { title: 'Heaps', progress: 0 },
+            { title: 'Graphs: BFS/DFS', progress: 0 },
+            { title: 'Dijkstra\'s Algorithm', progress: 0 },
+            { title: 'Dynamic Programming', progress: 0 },
+            { title: 'Bit Manipulation', progress: 0 },
+            { title: 'String Algorithms', progress: 0 }
+        ];
+
+        const advancedModules = [
+            { title: 'Threads & Runnables', progress: 0 },
+            { title: 'Synchronization & Locks', progress: 0 },
+            { title: 'Executor Service', progress: 0 },
+            { title: 'Project Loom: Virtual Threads', progress: 0 }
+        ];
+
+        const handleExport = () => {
+            const data = {
+                user: "Dev_Student_01",
+                path: "Java Mastery",
+                progress: 68,
+                timestamp: new Date().toISOString()
+            };
+            alert("Progress manifest generated! (Check console for raw JSON)");
+            console.log(JSON.stringify(data, null, 2));
+        };
+
+        return (
+            <div className="flex flex-col min-h-screen">
+                <TopNavBar activeTab="curriculum" />
+                <div className="pt-14 flex flex-1">
+                    {/* Sidebar */}
+                    <aside className="fixed left-0 top-14 h-[calc(100vh-56px)] w-sidebar-width flex flex-col z-40 bg-surface-container-low border-r border-outline-variant/30 p-gutter overflow-y-auto">
+                        <div className="mb-8">
+                            <h3 className="font-headline-sm text-headline-sm text-primary mb-2">Learning Path</h3>
+                            <p className="text-on-surface-variant text-body-md leading-tight">Master Java Data Structures, Algorithms, and Modern Concurrency.</p>
+                        </div>
+                        <div className="bg-surface-container rounded-lg p-4 mb-6 border border-outline-variant/20">
+                            <div className="flex justify-between items-end mb-2">
+                                <span className="font-label-caps text-on-surface-variant">Overall Progress</span>
+                                <span className="font-metric-display text-metric-display text-primary">68%</span>
+                            </div>
+                            <div className="h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+                                <div className="h-full bg-primary w-[68%] transition-all duration-1000"></div>
+                            </div>
+                        </div>
+                        <div className="space-y-4 mb-auto">
+                            <div className="flex items-center gap-3 group cursor-pointer">
+                                <span className="material-symbols-outlined text-tertiary-container group-hover:scale-110 transition-transform">emoji_events</span>
+                                <div>
+                                    <div className="text-body-md font-semibold text-on-surface">Badges Earned</div>
+                                    <div className="text-label-caps text-on-surface-variant">12 / 24</div>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3 group cursor-pointer">
+                                <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">terminal</span>
+                                <div>
+                                    <div className="text-body-md font-semibold text-on-surface">Labs Completed</div>
+                                    <div className="text-label-caps text-on-surface-variant">45 / 80</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button onClick={handleExport} className="mt-8 flex items-center justify-center gap-2 w-full py-3 bg-surface-container-high border border-outline-variant/30 hover:bg-surface-container-highest transition-all group">
+                            <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">download</span>
+                            <span className="font-label-caps text-on-surface">Export Progress (JSON)</span>
+                        </button>
+                    </aside>
+
+                    {/* Main Content */}
+                    <div className="ml-sidebar-width w-full p-container-padding">
+                        <div className="max-w-[1400px] mx-auto">
+                            <header className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                <div>
+                                    <h1 className="font-headline-lg text-headline-lg text-on-surface">Curriculum</h1>
+                                    <p className="text-on-surface-variant mt-1">Select a module to continue your mastery of high-performance Java development.</p>
+                                </div>
+                                <div className="flex gap-2">
+                                    <div className="px-3 py-1 bg-primary-container/10 border border-primary/20 rounded text-primary font-label-caps flex items-center gap-1">
+                                        <span className="material-symbols-outlined text-[14px]">bolt</span>
+                                        Next: Virtual Threads
+                                    </div>
+                                </div>
+                            </header>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter mb-20">
+                                {dsaModules.map((m, i) => (
+                                    <div
+                                        key={i}
+                                        onClick={() => navigate('/lesson')}
+                                        className="group bg-surface-container border border-outline-variant/20 hover:border-primary/40 transition-all p-5 flex flex-col relative overflow-hidden cursor-pointer"
+                                    >
+                                        <div className="flex justify-between items-start mb-6">
+                                            <div className="flex flex-col">
+                                                <span className="font-label-caps text-on-surface-variant text-[10px] mb-1">MODULE {String(i + 1).padStart(2, '0')}</span>
+                                                <h3 className="font-headline-sm text-[16px] text-on-surface group-hover:text-primary transition-colors">{m.title}</h3>
+                                            </div>
+                                            <span className="material-symbols-outlined text-on-surface-variant/40 group-hover:text-primary/60 transition-colors">
+                                                    {m.progress === 100 ? 'check_circle' : 'play_circle'}
+                                                </span>
+                                        </div>
+                                        <div className="mt-auto">
+                                            <div className="flex justify-between items-center mb-2">
+                                                <span className="text-label-caps text-[10px] text-on-surface-variant">{m.progress}% COMPLETE</span>
+                                            </div>
+                                            <div className="h-1 bg-surface-container-highest rounded-full overflow-hidden mb-4">
+                                                <div className="h-full bg-primary transition-all duration-700" style={{width: `${m.progress}%`}}></div>
+                                            </div>
+                                            <button className="w-full py-2 bg-surface-container-high hover:bg-primary hover:text-on-primary transition-all font-label-caps text-[11px] border border-outline-variant/30">
+                                                {m.progress > 0 ? (m.progress === 100 ? 'REVIEW' : 'RESUME') : 'START'}
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+
+                                {advancedModules.map((m, i) => (
+                                    <div key={i+16} className="group bg-surface-container-high border border-tertiary-container/30 hover:border-tertiary-container transition-all p-5 flex flex-col relative overflow-hidden">
+                                        <div className="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                                            <span className="material-symbols-outlined text-[120px] text-tertiary-container">bolt</span>
+                                        </div>
+                                        <div className="flex justify-between items-start mb-6">
+                                            <div className="flex flex-col">
+                                                <div className="flex items-center gap-1.5 mb-1">
+                                                    <span className="font-label-caps text-tertiary-container text-[10px]">MODULE {i + 17}</span>
+                                                    <span className="material-symbols-outlined text-[14px] text-tertiary-container" style={{fontVariationSettings: "'FILL' 1"}}>bolt</span>
+                                                </div>
+                                                <h3 className="font-headline-sm text-[16px] text-on-surface group-hover:text-tertiary transition-colors">{m.title}</h3>
+                                            </div>
+                                            <span className="px-1.5 py-0.5 rounded-sm bg-tertiary-container/10 border border-tertiary-container/20 text-[9px] font-label-caps text-tertiary-container">ADVANCED</span>
+                                        </div>
+                                        <div className="mt-auto relative z-10">
+                                            <div className="flex justify-between items-center mb-2">
+                                                <span className="text-label-caps text-[10px] text-on-surface-variant">LOCKED</span>
+                                            </div>
+                                            <div className="h-1 bg-surface-container-highest rounded-full overflow-hidden mb-4">
+                                                <div className="h-full bg-tertiary transition-all duration-700 w-0"></div>
+                                            </div>
+                                            <button className="w-full py-2 bg-tertiary-container/10 hover:bg-tertiary-container hover:text-on-tertiary-container transition-all font-label-caps text-[11px] border border-tertiary-container/30 text-tertiary-container">
+                                                UNLOCK MODULE
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="fixed bottom-8 right-8 z-50">
+                    <Link to="/lesson" className="group flex items-center gap-3 bg-primary text-on-primary p-1 pr-6 rounded-full shadow-2xl hover:scale-105 transition-transform active:scale-95 decoration-none">
+                        <div className="w-12 h-12 rounded-full bg-on-primary/20 flex items-center justify-center">
+                            <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>play_arrow</span>
+                        </div>
+                        <div className="text-left">
+                            <div className="font-label-caps text-[10px] opacity-70">CONTINUE LEARNING</div>
+                            <div className="font-body-md font-bold leading-none text-on-primary">Array Rotations</div>
+                        </div>
+                    </Link>
+                </div>
+            </div>
+        );
+    };
+
+    // --- Screen 2: Lesson Player ---
+
+    const LessonPlayerPage = () => {
+        const [activeTab, setActiveTab] = useState('ArrayRotator.java');
+
+        return (
+            <div className="flex flex-col h-screen overflow-hidden">
+                <TopNavBar activeTab="practice" />
+                <div className="mt-14 flex flex-1 overflow-hidden">
+                    {/* Sidebar Navigation */}
+                    <aside className="w-sidebar-width bg-surface-container-low flex flex-col z-40 border-r border-outline-variant/30 flex-shrink-0">
+                        <div className="p-4 border-b border-outline-variant/30">
+                            <div className="flex items-center gap-3 mb-1">
+                                <div className="p-1.5 bg-primary/10 rounded">
+                                    <span className="material-symbols-outlined text-primary text-xl">inventory_2</span>
+                                </div>
+                                <div>
+                                    <h2 className="font-headline-sm text-headline-sm text-primary leading-tight">Java Mastery</h2>
+                                    <p className="text-[10px] text-on-surface-variant font-label-caps">Module 2: Arrays</p>
+                                </div>
+                            </div>
+                        </div>
+                        <nav className="flex-1 overflow-y-auto py-2">
+                            <div className="px-3 py-2 text-on-surface-variant font-label-caps text-[10px] opacity-60">COURSE TRACK</div>
+                            <div className="space-y-1">
+                                <div className="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high cursor-pointer transition-all">
+                                    <span className="material-symbols-outlined text-lg">menu_book</span>
+                                    <span className="font-body-md">Module Overview</span>
+                                </div>
+                                <div className="flex items-center gap-3 px-4 py-2 text-primary bg-secondary-container/20 border-l-2 border-primary cursor-pointer transition-all">
+                                    <span className="material-symbols-outlined text-lg">school</span>
+                                    <span className="font-body-md">Lessons</span>
+                                </div>
+                                <div className="pl-12 space-y-1 mt-1 border-l border-outline-variant/20 ml-6">
+                                    <div className="text-xs text-on-surface-variant hover:text-primary py-1 cursor-pointer">Array Basics</div>
+                                    <div className="text-xs text-primary font-bold py-1 cursor-pointer">Array Rotations</div>
+                                    <div className="text-xs text-on-surface-variant hover:text-primary py-1 cursor-pointer">Two Pointers Tech.</div>
+                                </div>
+                                <div className="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high cursor-pointer transition-all">
+                                    <span className="material-symbols-outlined text-lg">terminal</span>
+                                    <span className="font-body-md">Lab Tasks</span>
+                                </div>
+                            </div>
+                        </nav>
+                        <div className="p-4 bg-surface-container-lowest">
+                            <button className="w-full py-2 bg-primary text-on-primary rounded font-label-caps text-xs flex items-center justify-center gap-2 hover:opacity-90 active:opacity-80 transition-all">
+                                <span className="material-symbols-outlined text-sm" style={{fontVariationSettings: "'FILL' 1"}}>play_arrow</span>
+                                Run All Tests
+                            </button>
+                        </div>
+                    </aside>
+
+                    {/* Theory Panel */}
+                    <section className="flex-1 min-w-panel-min-width border-r border-outline-variant/30 flex flex-col bg-background overflow-hidden">
+                        <div className="h-10 flex items-center px-4 border-b border-outline-variant/30 bg-surface-container-low flex-shrink-0">
+                            <div className="flex items-center gap-2 text-[10px] font-label-caps text-on-surface-variant">
+                                <span>ARRAYS</span>
+                                <span className="material-symbols-outlined text-[12px]">chevron_right</span>
+                                <span className="text-primary">ROTATIONS</span>
+                            </div>
+                        </div>
+                        <div className="flex-1 overflow-y-auto p-gutter space-y-6">
+                            <div>
+                                <h1 className="font-headline-lg text-headline-lg text-on-surface mb-2">Visualizing Array Rotations</h1>
+                                <div className="flex gap-2 mb-4">
+                                    <span className="px-2 py-0.5 bg-surface-container-high border border-outline-variant/30 rounded text-[10px] font-label-caps text-tertiary">DIFFICULTY: MEDIUM</span>
+                                    <span className="px-2 py-0.5 bg-surface-container-high border border-outline-variant/30 rounded text-[10px] font-label-caps text-secondary">EST. 15 MIN</span>
+                                </div>
+                                <div className="bg-surface-container p-4 border border-outline-variant/30 rounded-lg">
+                                    <p className="text-on-surface-variant mb-3 leading-relaxed">
+                                        Rotating an array of size <code className="bg-surface-container-highest px-1 rounded text-primary">n</code> by <code className="bg-surface-container-highest px-1 rounded text-primary">k</code> steps involves moving each element <code className="bg-surface-container-highest px-1 rounded text-primary">k</code> positions to the right.
+                                    </p>
+                                    <p className="text-on-surface-variant italic">
+                                        In this lesson, we will focus on the <span className="text-on-surface font-semibold">In-Place Reversal Algorithm</span>.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="space-y-3">
+                                <div className="flex justify-between items-center">
+                                    <h3 className="font-headline-sm text-headline-sm text-on-surface">Visualization Zone</h3>
+                                    <div className="flex gap-2">
+                                        <button className="p-1 text-on-surface-variant hover:text-primary"><span className="material-symbols-outlined">replay</span></button>
+                                        <button className="p-1 text-on-surface-variant hover:text-primary"><span className="material-symbols-outlined">skip_previous</span></button>
+                                        <button className="p-1 bg-primary/20 text-primary rounded px-3 py-0.5 font-label-caps text-[10px]">STEP 1/3</button>
+                                        <button className="p-1 text-on-surface-variant hover:text-primary"><span className="material-symbols-outlined">skip_next</span></button>
+                                    </div>
+                                </div>
+                                <div className="h-64 bg-surface-container-lowest rounded-xl border border-outline-variant/20 relative flex flex-col items-center justify-center overflow-hidden">
+                                    <div className="absolute inset-0 opacity-5" style={{backgroundImage: "radial-gradient(#8ed5ff 1px, transparent 1px)", backgroundSize: "20px 20px"}}></div>
+                                    <div className="relative z-10 flex flex-col items-center w-full max-w-lg px-8">
+                                        <div className="flex gap-2 w-full mb-8">
+                                            {[1, 2, 3, 4, 5, '...'].map((val, idx) => (
+                                                <div key={idx} className="flex-1 aspect-square bg-surface-container-highest border border-primary/40 rounded flex flex-col items-center justify-center hover:scale-105 transition-all">
+                                                    <span className="text-[10px] text-primary mb-1">{idx}</span>
+                                                    <span className="font-metric-display text-on-surface">{val}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div className="w-full relative h-12">
+                                            <svg className="w-full h-full text-tertiary" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 400 60">
+                                                <path d="M40,10 C100,50 300,50 360,10" markerEnd="url(#arrow)" strokeDasharray="4 4"></path>
+                                                <defs>
+                                                    <marker id="arrow" markerHeight="6" markerWidth="6" orient="auto-start-reverse" refX="5" refY="5" viewBox="0 0 10 10">
+                                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
+                                                    </marker>
+                                                </defs>
+                                            </svg>
+                                            <div className="absolute -bottom-2 left-0 right-0 text-center font-label-caps text-[10px] text-tertiary">ROTATE K = 3</div>
+                                        </div>
+                                    </div>
+                                    <div className="absolute bottom-4 right-4 flex items-center gap-2 px-2 py-1 bg-surface-container border border-outline-variant/30 rounded text-[10px] font-label-caps text-on-surface-variant">
+                                        <span className="material-symbols-outlined text-xs text-primary" style={{fontVariationSettings: "'FILL' 1"}}>info</span>
+                                        ANIMATION: O(1) Swapping Step
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="prose prose-invert max-w-none pb-8">
+                                <h4 className="text-on-surface font-headline-sm">Algorithm Breakdown</h4>
+                                <ul className="space-y-2 text-on-surface-variant text-sm list-disc pl-5">
+                                    <li>Reverse the entire array.</li>
+                                    <li>Reverse the first <code className="text-primary">k</code> elements.</li>
+                                    <li>Reverse the remaining <code className="text-primary">n-k</code> elements.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <footer className="h-8 border-t border-outline-variant/20 flex items-center justify-between px-4 bg-surface-container-lowest flex-shrink-0">
+                            <div className="flex items-center gap-2 text-[10px] text-on-surface-variant font-label-caps">
+                                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                IDE Connectivity: Stable
+                            </div>
+                            <div className="text-[10px] text-on-surface-variant font-label-caps flex items-center gap-1">
+                                <span className="material-symbols-outlined text-[12px]">cloud_done</span>
+                                Saved Locally
+                            </div>
+                        </footer>
+                    </section>
+
+                    {/* Editor Panel */}
+                    <section className="w-2/5 min-w-panel-min-width flex flex-col bg-surface-container-low flex-shrink-0">
+                        <div className="h-10 flex items-center bg-surface-container border-b border-outline-variant/30 flex-shrink-0">
+                            <div
+                                onClick={() => setActiveTab('ArrayRotator.java')}
+                                className={`h-full px-4 flex items-center gap-2 cursor-pointer transition-colors ${activeTab === 'ArrayRotator.java' ? 'bg-background border-r border-outline-variant/30 border-t-2 border-t-primary text-on-surface' : 'text-on-surface-variant hover:bg-surface-container-high'}`}
+                            >
+                                <span className="material-symbols-outlined text-primary text-sm">code</span>
+                                <span className="text-xs font-label-caps">ArrayRotator.java</span>
+                            </div>
+                            <div
+                                onClick={() => setActiveTab('Solution.java')}
+                                className={`h-full px-4 flex items-center gap-2 cursor-pointer transition-colors ${activeTab === 'Solution.java' ? 'bg-background border-r border-outline-variant/30 border-t-2 border-t-primary text-on-surface' : 'text-on-surface-variant hover:bg-surface-container-high'}`}
+                            >
+                                <span className="material-symbols-outlined text-sm">description</span>
+                                <span className="text-xs font-label-caps">Solution.java</span>
+                            </div>
+                        </div>
+
+                        <div className="flex-1 font-code-block text-code-block p-4 overflow-y-auto bg-surface-container-lowest line-numbers">
+                            <div className="space-y-0.5">
+                                <div className="text-secondary"><span className="text-tertiary">public class</span> <span className="text-on-surface">ArrayRotator</span> {"{"}</div>
+                                <div className="pl-4">
+                                    <span className="text-tertiary">public void</span> <span className="text-on-surface">rotate</span>(<span className="text-tertiary">int</span>[] nums, <span className="text-tertiary">int</span> k) {"{"}
+                                </div>
+                                <div className="pl-8 text-on-surface-variant opacity-60 italic">// k can be larger than array length</div>
+                                <div className="pl-8 text-on-surface">k %= nums.length;</div>
+                                <div className="pl-8 text-on-surface">reverse(nums, 0, nums.length - 1);</div>
+                                <div className="pl-8 text-on-surface">reverse(nums, 0, k - 1);</div>
+                                <div className="pl-8 text-on-surface">reverse(nums, k, nums.length - 1);</div>
+                                <div className="pl-4 text-on-surface">{"}"}</div>
+                                <div className="pl-4 mt-2">
+                                    <span className="text-tertiary">private void</span> <span className="text-on-surface">reverse</span>(<span className="text-tertiary">int</span>[] nums, <span className="text-tertiary">int</span> start, <span className="text-tertiary">int</span> end) {"{"}
+                                </div>
+                                <div className="pl-8 text-on-surface">
+                                    <span className="text-tertiary">while</span> (start &lt; end) {"{"}
+                                </div>
+                                <div className="pl-12 text-on-surface"><span className="text-tertiary">int</span> temp = nums[start];</div>
+                                <div className="pl-12 text-on-surface">nums[start] = nums[end];</div>
+                                <div className="pl-12 text-on-surface">nums[end] = temp;</div>
+                                <div className="pl-12 text-on-surface">start++;</div>
+                                <div className="pl-12 text-on-surface">end--;</div>
+                                <div className="pl-8 text-on-surface">{"}"}</div>
+                                <div className="pl-4 text-on-surface">{"}"}</div>
+                                <div className="text-on-surface">{"}"}<span className="code-editor-cursor ml-0.5"></span></div>
+                            </div>
+                        </div>
+
+                        <div className="h-1/3 border-t border-outline-variant/30 bg-surface-container flex flex-col flex-shrink-0">
+                            <div className="h-8 flex items-center justify-between px-4 bg-surface-container-high border-b border-outline-variant/30 flex-shrink-0">
+                                <div className="flex items-center gap-2">
+                                    <span className="material-symbols-outlined text-xs text-on-surface-variant">terminal</span>
+                                    <span className="text-[10px] font-label-caps text-on-surface-variant uppercase">Test Results</span>
+                                </div>
+                                <div className="flex items-center gap-4">
+                                    <div className="text-[10px] font-label-caps text-on-surface-variant">PASS: <span className="text-emerald-400">1</span>/1</div>
+                                    <button className="text-on-surface-variant hover:text-primary"><span className="material-symbols-outlined text-sm">close</span></button>
+                                </div>
+                            </div>
+                            <div className="flex-1 p-4 overflow-y-auto space-y-3 font-code-block text-[12px]">
+                                <div className="space-y-1">
+                                    <div className="flex justify-between text-[10px] font-label-caps text-on-surface-variant">
+                                        <span>JUnit 5 Execution</span>
+                                        <span>100%</span>
+                                    </div>
+                                    <div className="w-full h-1 bg-surface-container-lowest rounded-full overflow-hidden">
+                                        <div className="h-full bg-primary w-full shadow-[0_0_8px_rgba(142,213,255,0.4)]"></div>
+                                    </div>
+                                </div>
+                                <div className="space-y-1">
+                                    <div className="flex items-center gap-3 py-1 px-2 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                                        <span className="material-symbols-outlined text-sm" style={{fontVariationSettings: "'FILL' 1"}}>check_circle</span>
+                                        <div className="flex-1">testRotateRight()</div>
+                                        <span className="opacity-50">14ms</span>
+                                    </div>
+                                    <div className="px-2 text-on-surface-variant text-[11px] font-label-caps opacity-60">
+                                        <span className="text-on-surface">Input:</span> [1,2,3,4,5], k=2
+                                        <br/>
+                                        <span className="text-on-surface">Expected:</span> [4,5,1,2,3]
+                                        <br/>
+                                        <span className="text-on-surface text-emerald-400">Actual:</span> [4,5,1,2,3]
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        );
+    };
+
+    // --- Main App Component ---
+
+    const App = () => {
+        return (
+            <MemoryRouter>
+                <Routes>
+                    <Route path="/" element={<CurriculumPage />} />
+                    <Route path="/lesson" element={<LessonPlayerPage />} />
+                </Routes>
+            </MemoryRouter>
+        );
+    };
+
+    const container = document.getElementById('root');
+    const root = createRoot(container);
+    root.render(<App />);
+</script>
+</body>
+</html>

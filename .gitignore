@@ -39,3 +39,6 @@ bin/
 # Gradle files
 .gradle/
 build/
+node_modules/
+dist/
+public/content/
