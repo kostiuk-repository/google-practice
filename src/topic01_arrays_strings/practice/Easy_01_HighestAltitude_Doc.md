@@ -9,6 +9,24 @@
 
 ## Візуалізація та покроковий розбір (Visualization & Walkthrough)
 
+```algoviz
+{
+  "type": "array",
+  "title": "Running sum: поточна й найбільша висота",
+  "values": [-5, 1, 5, 0, -7],
+  "steps": [
+    {"label": "Стартуємо на висоті 0", "note": "highest також дорівнює 0: стартова точка є частиною маршруту.", "pointer": 0},
+    {"label": "i=0: altitude = -5, highest = 0", "pointer": 0, "visited": [0]},
+    {"label": "i=1: altitude = -4, highest = 0", "pointer": 1, "visited": [0, 1]},
+    {"label": "i=2: altitude = 1, highest = 1", "note": "Спочатку оновлюємо поточну висоту, потім максимум.", "pointer": 2, "visited": [0, 1, 2], "prediction": {"prompt": "Чи змінить наступний gain=0 значення highest?", "options": ["Так, стане 0", "Ні, залишиться 1"], "answer": 1, "explanation": "Нуль не змінює altitude, тому максимум залишається 1."}},
+    {"label": "i=3: altitude = 1, highest = 1", "pointer": 3, "visited": [0, 1, 2, 3]},
+    {"label": "i=4: altitude = -6; відповідь highest = 1", "pointer": 4, "visited": [0, 1, 2, 3, 4]}
+  ]
+}
+```
+
+Інваріант після обробки `i`: `altitude` дорівнює сумі `gain[0..i]`, а `highest` — максимуму серед стартової висоти й усіх уже досягнутих висот.
+
 ### a) Звичайний випадок: `gain = [-5, 1, 5, 0, -7]`
 Початкова висота (точка 0) дорівнює `0`.
 Змінні перед початком циклу: `accumulator = 0`, `highest = 0`.

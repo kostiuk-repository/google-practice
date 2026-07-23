@@ -12,6 +12,7 @@ import {
 
 type VisualizerKind =
   | 'array'
+  | 'matrix'
   | 'two-pointers'
   | 'sliding-window'
   | 'binary-search'
@@ -63,7 +64,7 @@ interface AlgorithmVisualizerProps {
 
 const POINTER_COLORS = ['#38bdf8', '#f59e0b', '#a78bfa', '#34d399'];
 const SUPPORTED_TYPES = new Set<VisualizerKind>([
-  'array', 'two-pointers', 'sliding-window', 'binary-search', 'sorting', 'stack', 'queue',
+  'array', 'matrix', 'two-pointers', 'sliding-window', 'binary-search', 'sorting', 'stack', 'queue',
   'linked-list', 'tree', 'graph', 'heap', 'dp-table', 'recursion-tree', 'thread-timeline',
 ]);
 
@@ -244,6 +245,66 @@ function DpTableScene({ definition, step }: { definition: VisualizerDefinition; 
   })}</svg></div>;
 }
 
+function MatrixScene({ definition, step, expanded }: {
+  definition: VisualizerDefinition;
+  step: VisualizerStep;
+  expanded: boolean;
+}) {
+  const values = step.values ?? definition.values;
+  const columns = definition.columns ?? Math.ceil(Math.sqrt(values.length));
+  const rows = Math.ceil(values.length / columns);
+  const cellSize = expanded ? 68 : 54;
+  const gap = expanded ? 9 : 7;
+  const width = Math.max(360, columns * (cellSize + gap) - gap + 72);
+  const height = rows * (cellSize + gap) - gap + 64;
+  const active = new Set([
+    ...(step.active ?? []),
+    ...(step.compare ?? []),
+    ...Object.values(pointerMap(step)),
+  ]);
+  const visited = new Set(step.visited ?? []);
+
+  return (
+    <div className="algoviz-scroll">
+      <svg
+        className="algoviz-svg algoviz-matrix"
+        viewBox={`0 0 ${width} ${height}`}
+        width={width}
+        height={height}
+        role="img"
+        aria-label={`Matrix: ${step.label}`}
+      >
+        {Array.from({ length: columns }, (_, column) => (
+          <text key={`column-${column}`} className="matrix-axis-label" x={54 + column * (cellSize + gap) + cellSize / 2} y={17}>
+            c{column}
+          </text>
+        ))}
+        {Array.from({ length: rows }, (_, row) => (
+          <text key={`row-${row}`} className="matrix-axis-label" x={25} y={35 + row * (cellSize + gap) + cellSize / 2}>
+            r{row}
+          </text>
+        ))}
+        {values.map((value, index) => {
+          const row = Math.floor(index / columns);
+          const column = index % columns;
+          const state = active.has(index) ? 'active' : visited.has(index) ? 'visited' : 'idle';
+          return (
+            <g
+              key={index}
+              className={`matrix-cell is-${state}`}
+              transform={`translate(${54 + column * (cellSize + gap)},${27 + row * (cellSize + gap)})`}
+            >
+              <rect width={cellSize} height={cellSize} rx={7} />
+              <text className="matrix-coordinate" x={6} y={12}>{row},{column}</text>
+              <text className="matrix-value" x={cellSize / 2} y={cellSize / 2 + 6}>{value}</text>
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
 function ThreadTimelineScene({ definition, step }: { definition: VisualizerDefinition; step: VisualizerStep }) {
   const width = 520;
   const height = definition.values.length * 52 + 28;
@@ -349,7 +410,8 @@ function VisualizerCanvas({ definition, expanded }: { definition: VisualizerDefi
   return (
     <div className="algoviz-body">
       <div className="algoviz-stage" role="group" aria-label="Animated algorithm state">
-        {definition.type === 'linked-list' ? <LinkedListScene definition={definition} step={step} />
+        {definition.type === 'matrix' ? <MatrixScene definition={definition} step={step} expanded={expanded} />
+          : definition.type === 'linked-list' ? <LinkedListScene definition={definition} step={step} />
           : definition.type === 'stack' ? <StackScene definition={definition} step={step} />
           : definition.type === 'dp-table' ? <DpTableScene definition={definition} step={step} />
           : definition.type === 'thread-timeline' ? <ThreadTimelineScene definition={definition} step={step} />

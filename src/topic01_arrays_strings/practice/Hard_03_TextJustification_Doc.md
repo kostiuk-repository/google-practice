@@ -13,6 +13,24 @@
 
 Нехай `words = ["This", "is", "an", "example", "of", "text", "justification."]`, `maxWidth = 16`.
 
+```algoviz
+{
+  "type": "sliding-window",
+  "title": "Спочатку пакуємо слова, потім розподіляємо пробіли",
+  "values": ["This", "is", "an", "example", "of", "text", "justification."],
+  "steps": [
+    {"label": "Рядок починається зі слова This", "pointers": {"start": 0, "end": 0}, "range": [0, 0]},
+    {"label": "This is an займають мінімум 10 позицій і вміщуються", "pointers": {"start": 0, "end": 2}, "range": [0, 2]},
+    {"label": "example дало б 18 > maxWidth=16 — межу знайдено", "pointers": {"start": 0, "end": 3}, "range": [0, 2], "compare": [2, 3]},
+    {"label": "8 пробілів / 2 gaps = 4; рядок \"This    is    an\"", "note": "Для звичайного рядка зайві пробіли дістаються лівим gaps.", "range": [0, 2], "visited": [0, 1, 2], "prediction": {"prompt": "Як форматується останній рядок?", "options": ["Повне вирівнювання", "По одному пробілу між словами, решта справа"], "answer": 1, "explanation": "Останній рядок завжди вирівнюється вліво."}},
+    {"label": "Наступне вікно: example, of, text", "pointers": {"start": 3, "end": 5}, "range": [3, 5], "visited": [0, 1, 2]},
+    {"label": "justification. — останній рядок; padding додається справа", "pointers": {"start": 6, "end": 6}, "range": [6, 6], "visited": [0, 1, 2, 3, 4, 5, 6]}
+  ]
+}
+```
+
+Алгоритм має дві незалежні фази для кожного рядка: greedy-пошук максимальної групи слів і детерміноване форматування вже вибраної групи. Не змішуйте їх в одному циклі.
+
 ### a) Звичайний випадок: перший та другий рядки
 
 #### **Рядок 1:**

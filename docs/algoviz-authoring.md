@@ -23,6 +23,7 @@
 | `type` | Для чого використовувати |
 |---|---|
 | `array` | звичайний прохід, prefix/suffix, порівняння елементів |
+| `matrix` | обхід, перестановки й трансформації двовимірної сітки; кількість стовпців задає `columns` |
 | `two-pointers` | left/right, read/write, slow/fast pointers |
 | `sliding-window` | фіксоване або змінне неперервне вікно |
 | `binary-search` | `lo`, `mid`, `hi` і звуження області пошуку |

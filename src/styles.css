@@ -281,6 +281,14 @@ kbd { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; paddin
 .algoviz-value { fill: var(--text); font-size: 14px; font-weight: 800; text-anchor: middle; }
 .algoviz-cell.is-active .algoviz-value { fill: var(--primary); }
 .algoviz-visited-dot { fill: var(--success); }
+.algoviz-matrix { margin-inline: auto; }
+.matrix-axis-label { fill: var(--text-faint); font-size: 7px; font-weight: 800; text-anchor: middle; }
+.matrix-cell rect { fill: var(--surface-2); stroke: var(--border); stroke-width: 1.5; transition: fill .32s ease, stroke .32s ease, filter .32s ease; }
+.matrix-cell.is-visited rect { fill: var(--success-bg); stroke: color-mix(in srgb, var(--success) 62%, var(--border)); }
+.matrix-cell.is-active rect { fill: var(--primary-bg); stroke: var(--primary); stroke-width: 2; filter: drop-shadow(0 4px 8px color-mix(in srgb, var(--primary) 24%, transparent)); }
+.matrix-coordinate { fill: var(--text-faint); font-size: 6px; font-weight: 700; }
+.matrix-value { fill: var(--text); font-size: 13px; font-weight: 850; text-anchor: middle; }
+.matrix-cell.is-active .matrix-value { fill: var(--primary); }
 .algoviz-pointer { transition: opacity .2s ease; }
 .algoviz-pointer path, .algoviz-pointer rect { fill: currentColor; }
 .algoviz-pointer text { fill: #071117; font-size: 8px; font-weight: 900; text-anchor: middle; }

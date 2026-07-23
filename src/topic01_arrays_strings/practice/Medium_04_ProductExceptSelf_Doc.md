@@ -16,6 +16,25 @@
 
 ## Візуалізація та покроковий розбір
 
+```algoviz
+{
+  "type": "array",
+  "title": "Product Except Self: prefix × suffix",
+  "values": [1, 2, 3, 4],
+  "steps": [
+    {"label": "Prefix pass: answer[0] = 1", "note": "1 — нейтральний елемент множення.", "pointer": 0, "values": [1, 0, 0, 0]},
+    {"label": "Перед 2 добуток ліворуч дорівнює 1", "pointer": 1, "values": [1, 1, 0, 0], "visited": [0]},
+    {"label": "Перед 3 prefix=2; перед 4 prefix=6", "pointer": 3, "values": [1, 1, 2, 6], "visited": [0, 1, 2, 3]},
+    {"label": "Suffix pass: i=3, answer[3]=6×1=6; suffix=4", "pointer": 3, "values": [1, 1, 2, 6]},
+    {"label": "i=2: answer[2]=2×4=8; suffix=12", "pointer": 2, "values": [1, 1, 8, 6], "visited": [2, 3]},
+    {"label": "i=1: answer[1]=1×12=12; suffix=24", "pointer": 1, "values": [1, 12, 8, 6], "visited": [1, 2, 3], "prediction": {"prompt": "Яке значення отримає answer[0]?", "options": ["1", "24", "0"], "answer": 1, "explanation": "Префікс зліва дорівнює 1, а суфікс праворуч — 2×3×4=24."}},
+    {"label": "i=0: результат [24, 12, 8, 6]", "pointer": 0, "values": [24, 12, 8, 6], "visited": [0, 1, 2, 3]}
+  ]
+}
+```
+
+На початку другого проходу `answer[i]` уже містить лише ліву частину, а `suffix` — лише праву; тому множення ніколи не включає `nums[i]`.
+
 ### a) Звичайний випадок: масив `nums = [1, 2, 3, 4]`
 
 #### Крок 1: Префіксний прохід (зліва направо)

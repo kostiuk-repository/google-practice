@@ -32,4 +32,24 @@ describe('AlgorithmVisualizer', () => {
     const results = await axe.run(container);
     expect(results.violations).toEqual([]);
   });
+
+  it('renders changing matrix values with row and column coordinates', async () => {
+    const user = userEvent.setup();
+    const matrixSource = JSON.stringify({
+      type: 'matrix',
+      title: 'Transpose',
+      columns: 2,
+      values: [1, 2, 3, 4],
+      steps: [
+        { label: 'Before swap', compare: [1, 2] },
+        { label: 'After swap', values: [1, 3, 2, 4], visited: [1, 2] },
+      ],
+    });
+    const { container } = render(<AlgorithmVisualizer source={matrixSource} theme="dark" />);
+    expect(container.querySelector('.algoviz-matrix')).toBeInTheDocument();
+    expect(screen.getByText('r0')).toBeInTheDocument();
+    expect(screen.getByText('c1')).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Next step' }));
+    expect(screen.getAllByText('After swap')).not.toHaveLength(0);
+  });
 });

@@ -9,6 +9,23 @@
 
 ## Візуалізація та покроковий розбір (Visualization & Walkthrough)
 
+```algoviz
+{
+  "type": "array",
+  "title": "Два прапорці монотонності",
+  "values": [1, 2, 2, 3],
+  "steps": [
+    {"label": "canIncrease=true, canDecrease=true", "note": "Ще не бачили жодної суперечливої пари.", "pointer": 1, "compare": [0, 1]},
+    {"label": "1 < 2: canDecrease=false", "pointer": 1, "compare": [0, 1], "visited": [0]},
+    {"label": "2 = 2: жоден прапорець не змінюється", "pointer": 2, "compare": [1, 2], "visited": [0, 1]},
+    {"label": "2 < 3: canDecrease уже false", "pointer": 3, "compare": [2, 3], "visited": [0, 1, 2]},
+    {"label": "canIncrease || canDecrease = true", "note": "Рівні сусідні значення дозволені в обох напрямках.", "pointer": 3, "visited": [0, 1, 2, 3], "prediction": {"prompt": "Що станеться для [1,3,2]?", "options": ["Лише canIncrease=false", "Обидва прапорці стануть false", "Обидва залишаться true"], "answer": 1, "explanation": "Пара 1<3 відкидає спадання, а 3>2 відкидає зростання."}}
+  ]
+}
+```
+
+Інваріант: після індексу `i` кожен прапорець точно відповідає тому, чи може вже побачений префікс бути монотонним у відповідному напрямку.
+
 ### a) Звичайний випадок: `nums = [1, 2, 2, 3]` (монотонно зростає)
 Початковий стан: `isIncreasing = true`, `isDecreasing = true`.
 Йдемо по парах `nums[i]` та `nums[i+1]`.

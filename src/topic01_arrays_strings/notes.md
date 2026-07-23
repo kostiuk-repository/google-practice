@@ -1,65 +1,187 @@
-# Arrays & Strings - Study Notes
+# Arrays & Strings — робочий конспект
 
-Arrays and Strings are the most fundamental, contiguous data structures. In Google interviews, they are frequently used as the baseline for checking code readability, understanding memory constraints, and analyzing time/space complexity.
+Це коротша практична версія великого [learning guide](../../docs/learning-guide/01-arrays-strings.md). Її мета — допомогти швидко відновити ментальну модель перед розв’язанням задач, а не замінити повний урок.
 
----
+## 1. Базова модель масиву
 
-## 1. Arrays: Core Concepts
+Масив — це послідовність комірок однакового типу з індексами `0..length-1`. Доступ `array[i]` має `O(1)`, тому що позицію можна обчислити без проходу попередніх елементів.
 
-An **array** is a collection of elements of the same type stored in contiguous memory locations.
+Завжди розділяйте:
 
-* **Memory Layout:** Because it is contiguous, the address of any element at index `i` is calculated as:
-  $$\text{Address}(A[i]) = \text{BaseAddress} + (i \times \text{SizeOfElement})$$
-  This mathematical formula is why array indexing starts at `0` and allows **$O(1)$ random access**.
-* **Key Time Complexities:**
-  * Access: $O(1)$
-  * Search: $O(N)$ (unsorted) or $O(\log N)$ (sorted, using Binary Search)
-  * Insertion: $O(N)$ (worst case, inserting at the beginning requires shifting elements)
-  * Deletion: $O(N)$ (shifting elements)
+- **значення** — що записано;
+- **індекс** — де це записано;
+- **довжину** — скільки комірок існує;
+- **межі** — які індекси алгоритм ще вважає активними.
 
-### Dynamic Arrays (e.g., `ArrayList` in Java)
-Under the hood, a dynamic array has a fixed capacity. When it runs out of space:
-1. It allocates a new, larger array (usually double the current size: $2 \times$ capacity).
-2. It copies all elements from the old array to the new array.
-3. It frees/garbage collects the old array.
-* **Amortized Time Complexity:** Although copying takes $O(N)$, it happens rarely. The average cost of insertion at the end remains **amortized $O(1)$**.
+```algoviz
+{
+  "type": "array",
+  "title": "Індекс рухається, значення лише читаються",
+  "values": [7, 12, -3, 8, 5],
+  "steps": [
+    {"label": "i=0 читає значення 7", "pointer": 0},
+    {"label": "i=1 читає значення 12", "pointer": 1, "visited": [0]},
+    {"label": "i=2 читає -3; знак значення не впливає на адресу", "pointer": 2, "visited": [0,1], "prediction": {"prompt": "Який останній валідний індекс?", "options": ["4", "5"], "answer": 0, "explanation": "Для length=5 індекси лежать у діапазоні 0..4."}},
+    {"label": "Прохід завершено після index 4", "pointer": 4, "visited": [0,1,2,3,4]}
+  ]
+}
+```
 
----
+### Статичний і динамічний масив
 
-## 2. Strings: Core Concepts (Java Specifics)
+| Властивість | `int[]` | `ArrayList<Integer>` |
+|---|---|---|
+| розмір | фіксований після створення | змінюється |
+| елементи | примітивні `int` | boxed `Integer` |
+| випадковий доступ | `O(1)` | `O(1)` |
+| append | немає як операції | амортизовано `O(1)` |
+| вставка/видалення в середині | вручну, `O(n)` | `O(n)` |
+| пам’ять | компактна | додаткові посилання й capacity |
 
-In Java, a **String** is an object that wraps a `char[]` array (or `byte[]` in modern Java versions).
+Обирайте структуру за контрактом. Якщо розмір відомий і потрібна максимальна компактність — масив. Якщо потрібні append/remove й boxing прийнятний — `ArrayList`.
 
-* **Immutability:** String objects are immutable. Once created, they cannot be modified.
-  * **Why?** Security, thread-safety, and optimization (caching hash codes, String Pool).
-  * **Interview Warning:** Modifying a string in a loop (e.g., `s += char`) creates a new string object each time, leading to $O(N^2)$ time complexity.
-* **StringBuilder:** Use `StringBuilder` (not thread-safe, faster) or `StringBuffer` (thread-safe, slower) for mutable string operations. It uses a dynamic char array under the hood, making append operations amortized $O(1)$.
+## 2. Шість питань перед циклом
 
----
+1. У якому напрямку доступна потрібна інформація?
+2. Який мінімальний стан треба перенести в наступну ітерацію?
+3. Чи входить поточний елемент у відповідь для самого себе?
+4. Який інваріант буде істинним після кожного кроку?
+5. Що монотонно рухається й гарантує завершення?
+6. Чи дозволено змінювати вхід in-place?
 
-## 3. Key Concepts to Master
+Якщо відповідь для `i` залежить лише від побаченого префікса, ідіть зліва направо. Якщо потрібне «все праворуч», часто достатньо змінити напрямок. Якщо потрібні обидві сторони, спробуйте два проходи.
 
-1. **Subarrays vs. Subsequences vs. Subsets:**
-   * **Subarray:** Contiguous elements of the array (e.g., `[2,3]` in `[1,2,3,4]`).
-   * **Subsequence:** Non-contiguous but ordered elements (e.g., `[1,3]` in `[1,2,3,4]`).
-   * **Subset:** Any selection of elements, order does not matter (e.g., `[3,1]` is a subset of `[1,2,3,4]`).
-2. **Matrix Manipulation (2D Arrays):**
-   * Stored as array of arrays.
-   * Traversals: Row-by-row, column-by-column, diagonal, spiral.
-3. **Prefix Sum / Suffix Sum:**
-   * Precomputing running sums to answer range query questions in $O(1)$ time.
+## 3. Патерни лінійного проходу
 
----
+### Акумулятор і best-so-far
 
-## 4. Google Interview Strategy & Tips
+Стан зазвичай має вигляд:
 
-* **Ask Clarifying Questions:**
-  * "Are we dealing with ASCII or Unicode characters?" (ASCII is 128/256 characters; Unicode can have over 1 million, which changes array sizes for character frequency counting).
-  * "Can the array contain negative numbers?"
-  * "Is the array sorted?"
-  * "Can we modify the input array in-place, or do we need to return a new one?"
-* **Edge Cases to Check:**
-  * Empty array / empty string (`null` or length `0`).
-  * Array of size 1.
-  * Duplicate elements.
-  * Integer overflow (when summing elements).
+```java
+int current = identity;
+int best = initialBest;
+for (int value : nums) {
+    current = update(current, value);
+    best = combine(best, current);
+}
+```
+
+Приклади: running sum, баланс, максимум, кількість елементів із властивістю, два найбільші значення, прапорці монотонності.
+
+### Carry справа наліво
+
+Цифри числа впорядковані від старшого розряду до молодшого, але перенесення виникає в молодшому. Тому Plus One читається з кінця. Ранній return коректний, щойно carry погашено.
+
+### Prefix і suffix
+
+```algoviz
+{
+  "type": "array",
+  "title": "Два напрями несуть різну інформацію",
+  "values": [1,2,3,4],
+  "steps": [
+    {"label": "Prefix перед index 0 дорівнює 1", "pointer": 0, "values": [1,0,0,0]},
+    {"label": "Після лівого проходу маємо [1,1,2,6]", "pointer": 3, "values": [1,1,2,6], "visited": [0,1,2,3]},
+    {"label": "Suffix справа починається з 1", "pointer": 3, "values": [1,1,2,6]},
+    {"label": "Зворотний прохід домножує праву інформацію", "pointer": 1, "values": [1,12,8,6], "visited": [1,2,3]},
+    {"label": "Результат [24,12,8,6]", "pointer": 0, "values": [24,12,8,6], "visited": [0,1,2,3]}
+  ]
+}
+```
+
+Нейтральні значення мають значення: для суми це `0`, для добутку `1`, для максимуму — коректна нижня межа, а не випадковий `0`.
+
+## 4. In-place як окремий контракт
+
+In-place не означає «без жодної змінної». Зазвичай дозволено `O(1)` скалярного стану: `temp`, pointers, accumulator. Заборонено створювати допоміжну структуру розміру `n`.
+
+Три типові способи:
+
+- переписувати вже непотрібну частину масиву;
+- міняти місцями елементи за координатним відображенням;
+- використати індекс як bucket: значення `x` з `1..n` належить позиції `x-1`.
+
+Перед мутацією запитайте, чи старе значення ще знадобиться. У Replace Elements порядок `temp = arr[i]` → `arr[i] = rightMax` → `rightMax = max(rightMax, temp)` є частиною правильності.
+
+## 5. Матриці: координати, межі, шари
+
+Плоский індекс для прямокутної матриці з `columns` стовпцями:
+
+$$index = row \cdot columns + column$$
+
+Зворотне перетворення:
+
+$$row = index / columns,\qquad column = index \bmod columns$$
+
+```algoviz
+{
+  "type": "matrix",
+  "title": "Координати 2×3 і плоскі індекси",
+  "columns": 3,
+  "values": [0,1,2,3,4,5],
+  "steps": [
+    {"label": "Перший рядок має flat indices 0..2", "active": [0,1,2]},
+    {"label": "Другий рядок має flat indices 3..5", "active": [3,4,5], "visited": [0,1,2]},
+    {"label": "flat=4 → row=1, column=1", "active": [4], "visited": [0,1,2], "prediction": {"prompt": "Який flat index має координата (1,2)?", "options": ["3", "5", "6"], "answer": 1, "explanation": "1×3+2=5."}}
+  ]
+}
+```
+
+Для spiral traversal стан — `top`, `bottom`, `left`, `right`. Для rotate — або шари, або `transpose + reverse rows`. Для diagonal traverse корисна властивість `row + column = constant`.
+
+## 6. Рядки в Java
+
+`String` immutable. Ви можете змінити змінну, яка посилається на рядок, але не сам об’єкт. Тому накопичення через `result += piece` у великому циклі копіює дедалі довший префікс і може коштувати `O(n²)`.
+
+Використовуйте:
+
+- `charAt(i)` для читання UTF-16 code unit;
+- `StringBuilder` для послідовної побудови;
+- `toCharArray()` лише коли справді потрібен mutable-масив і прийнятна `O(n)` копія;
+- явний ASCII-check для задач, контракт яких каже `'0'..'9'`.
+
+Для парсерів спочатку назвіть стани. Наприклад, atoi: `SPACE → SIGN? → DIGITS → STOP`. Після переходу в `STOP` алгоритм не повертається до пошуку цифр.
+
+## 7. Складність без механічних помилок
+
+| Форма коду | Типова оцінка | Зауваження |
+|---|---:|---|
+| один scan | `O(n)` | `O(1)` робота на крок |
+| два послідовні scans | `O(n)` | константи відкидаються |
+| вкладені row/column | `O(rows·columns)` | кожна комірка один раз |
+| конкатенація immutable string у циклі | до `O(n²)` | через повторне копіювання |
+| cyclic placement із swap | `O(n)` амортизовано | корисних swap не більше `n` |
+
+Пам’ять відповіді зазвичай не рахується як auxiliary space, але це слід явно сказати.
+
+## 8. Edge cases як наслідок алгоритму
+
+- `null` — лише якщо контракт дозволяє;
+- порожній масив або рядок;
+- один елемент;
+- усі елементи однакові;
+- усі зміни від’ємні;
+- carry крізь усі дев’ятки;
+- нуль у добутку;
+- `1×n` та `n×1` матриці;
+- непарний центр матриці;
+- дублікати в index placement;
+- overflow до множення або додавання;
+- лише пробіли, знак без цифр, нецифровий символ посередині.
+
+Тест має відповідати конкретній гілці чи інваріанту. «Ще один великий випадковий масив» часто менш корисний, ніж маленький контрприклад `[1,1]`.
+
+## 9. Порядок практики
+
+1. Highest Altitude — accumulator.
+2. Monotonic Array — два boolean-інваріанти.
+3. Plus One — напрямок і carry.
+4. Replace Elements — suffix state й in-place порядок.
+5. Product Except Self — два проходи.
+6. Matrix Diagonal Sum → Spiral → Rotate → Diagonal Traverse.
+7. First Missing Positive — index placement.
+8. Atoi — state machine й overflow.
+9. Read4 — стан між викликами.
+10. Text Justification — greedy packing + formatting.
+
+Для кожної задачі спочатку вручну програйте 4–6 елементів, сформулюйте інваріант, а потім пишіть код. Після коду окремо поясніть час, пам’ять і один тест, який ламає найімовірнішу помилку.
