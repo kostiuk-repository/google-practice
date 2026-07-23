@@ -10,6 +10,37 @@
 3. **Парсинг цифр**: читати символи цифр (`'0'-'9'`) підряд, доки не зустрінеться перший нецифровий символ або кінець рядка.
 4. **Запобігання переповненню (Overflow Guard)**: якщо число перевищує межі 32-бітного знакового цілого $\left[-2^{31}, 2^{31} - 1\right]$, його необхідно обмежити (clamp) до `Integer.MIN_VALUE` ($-2147483648$) або `Integer.MAX_VALUE` ($2147483647$).
 
+## Інженерний контекст: parser at a trust boundary
+
+`atoi` — це маленький deterministic parser. Він перетворює untrusted text на typed value за чітким контрактом: які пробіли дозволено, де може бути знак, що завершує token і як поводитися з числом поза діапазоном.
+
+### Де зустрічається
+
+- parsing CLI arguments, config values та environment variables;
+- protocol fields і text-based wire formats;
+- log ingestion та ETL normalization;
+- import CSV/legacy records;
+- lexer/tokenizer як перший шар compiler або interpreter.
+
+Production parser повинен розділяти:
+
+- **lexical validity** — чи символ належить числовому token;
+- **range validity** — чи математичне значення поміщається в target type;
+- **policy** — clamp, error, default або wider type;
+- **consumption** — чи дозволено trailing characters.
+
+### Надійність і безпека
+
+Overflow guard виконується **до** multiplication/addition. Інакше wrapped `int` уже втратив інформацію. Так само потрібно зафіксувати ASCII-vs-Unicode contract: `Character.isDigit` приймає більше символів, ніж `'0'..'9'`, і це не завжди бажано для protocol parser.
+
+### Що перевіряє співбесіда
+
+- чи побудуєте явні фази замість хаотичних `if`;
+- чи обробите empty input, лише sign і лише spaces;
+- чи зупинитеся на першому invalid символі;
+- чи правильно врахуєте асиметрію `Integer.MIN_VALUE` та `MAX_VALUE`;
+- чи відокремите syntax від overflow policy.
+
 ---
 
 ## Візуалізація та покроковий розбір

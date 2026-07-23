@@ -14,6 +14,35 @@
    - Матриця розглядається як набір концентричних кілець (шарів).
    - Ми обертаємо кожне кільце окремо, виконуючи циклічний обмін між чотирма відповідними елементами: top-left $\rightarrow$ top-right $\rightarrow$ bottom-right $\rightarrow$ bottom-left $\rightarrow$ top-left.
 
+## Інженерний контекст: coordinate transform + data movement
+
+Rotate Image — це задача про те, як **геометричне перетворення координат** перетворити на безпечний план переміщення даних. Формула `(r,c) → (c,n-1-r)` описує результат, але in-place реалізація додатково повинна не знищити значення, які ще не перенесені.
+
+### Де зустрічається
+
+- image orientation і preprocessing camera frames;
+- обертання tile maps, sprites і board states;
+- layout transforms у UI/printing;
+- transpose/reordering blocks у numerical computing;
+- tensor layout conversions та cache-aware data rearrangement.
+
+Розкладення `rotate = transpose + horizontal reflection` є прикладом decomposition: складну permutation розбиваємо на дві прості, добре перевірені інволюції. Layer-by-layer swap натомість реалізує permutation cycles напряму.
+
+### Production trade-offs
+
+- In-place зменшує auxiliary memory, але може мати складніший access pattern.
+- Out-of-place версія часто простіша, легше parallelize-иться і може мати кращу locality.
+- Для rectangular matrix поворот змінює dimensions, тому квадратний in-place контракт більше не працює.
+- Для великих images важливі stride, cache lines, SIMD і block/tiled transpose — асимптотики тут недостатньо.
+
+### Що перевіряє співбесіда
+
+- чи виведете coordinate mapping;
+- чи уникнете подвійного swap під час transpose (`j > i`);
+- чи залишите центр непарної матриці без зайвих special cases;
+- чи поясните $O(n^2)$ time та $O(1)$ auxiliary space;
+- чи зможете порівняти transpose+reverse з four-way cyclic swap.
+
 ---
 
 ## Візуалізація та покроковий розбір

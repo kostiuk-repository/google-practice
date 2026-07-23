@@ -6,6 +6,30 @@
 
 Базова задача: знешкодити (defang) IP-адресу, замінивши всі крапки `.` на `[.]`.
 
+## Інженерний контекст: streaming transducer
+
+Defang IP Address — маленький приклад **scan-and-build transformation**: кожен вхідний символ читається один раз і породжує нуль, один або кілька вихідних символів. Це базова форма tokenizer, encoder, escaper і text filter.
+
+### Де зустрічається
+
+- escaping HTML/JSON/CSV/SQL-подібних форматів;
+- log redaction і маскування секретів;
+- нормалізація separators та line endings;
+- побудова URL/slug або protocol-safe representation;
+- streaming preprocessing перед parser-ом.
+
+Java визначає [`StringBuilder`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html) як mutable sequence of characters. Він природно відповідає задачі, де output зростає поступово й може бути довшим за input.
+
+> Межа аналогії: заміна `.` на `[.]` не є реальною security sanitization. Безпечне escaping завжди залежить від конкретного output context; універсального «очистити рядок» не існує.
+
+### Що перевіряє співбесіда
+
+- чи уникнете повторної конкатенації immutable-рядків;
+- чи зможете оцінити максимальний output size і capacity;
+- чи розділите читання input та побудову output;
+- чи визначите правила для порожнього рядка;
+- чи не сплутаєте UTF-16 `char` з повним Unicode code point у production-коді.
+
 ---
 
 ## Візуалізація та покроковий розбір (Visualization & Walkthrough)

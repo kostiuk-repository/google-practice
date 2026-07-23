@@ -6,6 +6,30 @@
 
 Головна складність тут — коректна зміна напрямку руху при досягненні меж матриці, особливо на прямокутних (не квадратних) матрицях.
 
+## Інженерний контекст: wavefront і anti-diagonal processing
+
+Усі координати на anti-diagonal мають однакове `row + column`. Це не лише геометрична цікавинка: у багатьох grid algorithms однаковий «рівень» залежності можна обробляти як wavefront.
+
+### Де зустрічається
+
+- wavefront dynamic programming у grid-задачах;
+- parallel processing клітинок з однаковою dependency depth;
+- diagonal blocks у matrix/tensor kernels;
+- zigzag scan у compression-подібних перетвореннях;
+- image traversal уздовж oriented features.
+
+Якщо `dp[r][c]` залежить від `dp[r-1][c]` і `dp[r][c-1]`, то всі клітинки з однаковою сумою координат залежать лише від попередньої anti-diagonal. Усередині одного wavefront їх часто можна обчислювати паралельно.
+
+> Межа аналогії: LeetCode-порядок чергує напрямок заради output format. Для parallel wavefront напрямок усередині діагоналі зазвичай не є суттєвим; важливі dependencies.
+
+### Що перевіряє співбесіда
+
+- чи знайдете invariant `r + c = d`;
+- чи коректно виведете старт і кінець діагоналі для rectangular matrix;
+- чи відокремите membership у діагоналі від output direction;
+- чи уникнете пропущених/повторних boundary cells;
+- чи поясните $rows + columns - 1$ діагоналей.
+
 ---
 
 ## Візуалізація та покроковий розбір

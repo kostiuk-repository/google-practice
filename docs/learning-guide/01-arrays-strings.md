@@ -478,16 +478,38 @@ for (int i = n - 1; i >= 0; i--) {
 
 ## Карта задач репозиторію
 
-| Родина | Задачі | Метод |
-|---|---|---|
-| Простий прохід | HighestAltitude, EvenNumberOfDigits, LargestNumberTwice, FizzBuzz | акумулятор, лічильник, максимум |
-| Carry/цифри | PlusOne | прохід справа, ранній вихід |
-| Рядки | DefangIPAddress, LengthOfLastWord, StringIntegerAtoi | builder, scan, state machine |
-| Суфікс/префікс | ReplaceElements, ProductExceptSelf | накопичення з двох боків |
-| Властивість масиву | MonotonicArray | прапорці напрямків |
-| Матриці | MatrixDiagonalSum, RotateImage, SpiralMatrix, DiagonalTraverse | координати, межі, шари |
-| In-place mapping | FirstMissingPositive | cyclic sort |
-| Жадібне форматування | TextJustification | пакування слів, розподіл пробілів |
+Кожен task-документ тепер має окремий блок **«Інженерний контекст»**: абстракцію патерну, класи реальних застосувань, межі аналогії та критерії, які перевіряє співбесіда.
+
+| Родина | Задачі | Алгоритмічний метод | Загальна інженерна абстракція |
+|---|---|---|---|
+| Streaming aggregate | HighestAltitude, EvenNumberOfDigits, LargestNumberTwice | акумулятор, classifier, top-2 | fold над event stream, sufficient statistics |
+| Carry/цифри | PlusOne | прохід справа, ранній вихід | каскадне поширення стану між розрядами |
+| Scan-and-build | DefangIPAddress | `StringBuilder`, mapping символів | streaming transducer, escaping/encoding |
+| Demand-driven parsing | LengthOfLastWord | reverse scan | читати лише фрагмент, потрібний query |
+| Властивість послідовності | MonotonicArray | falsifiable boolean flags | validation через монотонний стан |
+| Rule composition | FizzBuzz | predicates + labels | маленький rule engine |
+| Суфікс/префікс | ReplaceElements, ProductExceptSelf | накопичення з одного/двох боків | exclusion aggregation без повторного scan та inverse |
+| Sparse coordinates | MatrixDiagonalSum | формули індексів | генерувати лише релевантні адреси |
+| Matrix transforms | RotateImage | transpose/reverse або cycles | coordinate transform + data movement |
+| Boundary traversal | SpiralMatrix | чотири межі | compact state замість `visited[][]` |
+| Wavefront | DiagonalTraverse | `row + column = const` | dependency levels і parallel anti-diagonals |
+| In-place mapping | FirstMissingPositive | cyclic placement | input як implicit hash table |
+| Stateful adapter | Read4 | persistent leftover buffer | узгодження різної granularity producer/consumer |
+| Parser | StringIntegerAtoi | finite-state machine | text-to-type на trust boundary |
+| Жадібне форматування | TextJustification | packing + rendering | двофазний layout pipeline |
+
+### Як переносити розв’язок у новий домен
+
+Коли бачите схожий production problem, не копіюйте код LeetCode буквально. Перевірте:
+
+1. **Операцію:** вона асоціативна? Який neutral element? Чи існує безпечний inverse?
+2. **Напрямок:** відповідь залежить від past, future чи обох частин?
+3. **Режим даних:** batch, stream, distributed partitions або updates між queries?
+4. **Контракт пам’яті:** input mutable? Чи можна використати output як workspace?
+5. **Представлення:** `int`, `long`, exact decimal, Unicode code points, matrix stride?
+6. **Failure policy:** error, clamp, skip, retry або partial result?
+7. **Конкурентність:** state локальний, shared чи partitioned?
+8. **Межу аналогії:** яка властивість навчальної задачі не переноситься у production?
 
 ## Типові помилки
 

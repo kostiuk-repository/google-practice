@@ -7,6 +7,38 @@
 1. **Жадібне пакування (Greedy Packing):** Ми намагаємося помістити якомога більше слів у поточний рядок. Кожне слово відокремлюється від попереднього щонайменше одним пробілом. Якщо наступне слово не вміщується в ліміт `maxWidth`, ми «закриваємо» поточний рядок і переходимо до кроку вирівнювання.
 2. **Розподіл пробілів (Space Distribution):** Ми вираховуємо загальну кількість пробілів, необхідних для заповнення рядка до `maxWidth`. Ці пробіли розподіляються між словами якомога рівномірніше. Якщо пробіли не діляться націло на кількість проміжків, залишок розподіляється по одному додатковому пробілу в проміжки зліва направо.
 
+## Інженерний контекст: layout як двофазний pipeline
+
+Text Justification поєднує дві різні задачі:
+
+1. **line breaking:** вибрати, які слова належать рядку;
+2. **rendering:** перетворити вибрану групу на output точної ширини.
+
+Розділення фаз зменшує кількість одночасних інваріантів і робить edge cases локальними.
+
+### Де зустрічається
+
+- text layout у редакторах, terminals і report generators;
+- formatting fixed-width records;
+- table/column rendering у CLI;
+- pagination і line wrapping;
+- greedy packing об’єктів із separator cost.
+
+LeetCode використовує просту metric `word.length()` і забороняє hyphenation. Реальні layout engines складніші: Unicode code points не дорівнюють display columns, існують combining marks, proportional fonts, kerning, bidirectional text і language-specific line breaking.
+
+### Чому greedy тут коректний
+
+Контракт прямо вимагає поміщати максимально можливу кількість слів у рядок. Тому локальне рішення «додавай наступне слово, поки воно вміщується» не конкурує з глобальною typography quality metric. В інших задачах line breaking greedy може бути неоптимальним і застосовують dynamic programming.
+
+### Що перевіряє співбесіда
+
+- чи включите мінімальні пробіли під час packing;
+- чи окремо обробите один-word і last line;
+- чи правильно розподілите quotient/remainder між gaps;
+- чи гарантуєте `line.length() == maxWidth`;
+- чи уникнете quadratic string concatenation;
+- чи зможете пояснити, чому greedy випливає саме з контракту цієї задачі.
+
 ---
 
 ## Візуалізація та покроковий розбір (Visualization & Walkthrough)

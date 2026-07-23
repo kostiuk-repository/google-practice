@@ -8,6 +8,36 @@
 ### Опис базової задачі
 Використовуючи API `read4(char[] buf4)` (яке зчитує до 4 символів з файлу у тимчасовий буфер та повертає кількість реально зчитаних символів), потрібно реалізувати метод `read(char[] buf, int n)`, який зчитує `n` символів у буфер `buf`. Метод може викликатися багаторазово.
 
+## Інженерний контекст: adapter між різними granularities I/O
+
+`read4` повертає fixed-size chunks, а consumer просить довільний `n`. Це класична задача **buffered adapter**: узгодити producer і consumer з різними розмірами порцій, не гублячи надлишково прочитані дані.
+
+### Де зустрічається
+
+- buffered file streams і block devices;
+- network socket → application message parser;
+- decompressor, який видає blocks, і consumer із короткими reads;
+- paged storage та record-oriented APIs;
+- rate-mismatched producer/consumer pipelines.
+
+Стан `cache`, `cacheIndex`, `cacheSize` є частиною поведінки об’єкта:
+
+- `cacheIndex < cacheSize` означає, що вже є дані, які треба віддати до нового I/O;
+- `read4() < 4` означає EOF для цього source contract;
+- дані між calls не можна ані дублювати, ані пропускати.
+
+### Production trade-offs
+
+Реальні I/O APIs також мають partial reads, exceptions, blocking/non-blocking semantics, cancellation і thread safety. LeetCode-версія ізолює лише buffering invariant. Один shared reader зазвичай не можна безпечно викликати з кількох потоків без synchronization.
+
+### Що перевіряє співбесіда
+
+- чи зрозумієте, що local buffer недостатній для multiple calls;
+- чи споживатимете leftovers до нового `read4`;
+- чи відрізните «скільки є в cache» від «де поточна позиція»;
+- чи зупинитеся на `n` або EOF;
+- чи протестуєте послідовність маленьких reads, а не лише один великий виклик.
+
 ---
 
 ## Візуалізація та покроковий розбір (Visualization & Walkthrough)
